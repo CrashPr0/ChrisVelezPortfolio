@@ -19,12 +19,12 @@ import { withBase } from "@/utils/paths";
     />
   </section>
 
-  <section class="container space-y-12 pb-20 md:space-y-14">
+  <section class="container flex flex-col gap-24 pb-24 md:gap-32 md:pb-28 lg:gap-40">
     {
       projects.map((project) => (
         <article id={project.slug} class="case-study reveal">
           <div class="case-grid">
-            <div class="space-y-4">
+            <div class="space-y-5 md:space-y-6">
               <img src={withBase(project.mediaPath)} alt={project.mediaAlt} class="case-image" loading="lazy" />
               <div class="rounded-2xl border border-white/12 bg-surface-800/70 p-4">
                 <p class="text-xs uppercase tracking-[0.12em] text-accent-300">Tools</p>
