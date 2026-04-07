@@ -129,6 +129,10 @@ Update environment values in `.github/workflows/deploy.yml`:
 
 The Astro config also auto-detects project-site base path from the repository name when running in GitHub Actions.
 
+For this repo (`CrashPr0/ChrisVelezPortfolio`), the expected GitHub Pages URL is:
+
+- `https://crashpr0.github.io/ChrisVelezPortfolio`
+
 ### 3) Push to deploy
 
 ```bash

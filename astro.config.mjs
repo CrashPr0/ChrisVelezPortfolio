@@ -8,7 +8,7 @@ const base =
   (process.env.GITHUB_ACTIONS ? (isUserSite ? "/" : `/${repoName}/`) : "/");
 
 export default defineConfig({
-  site: process.env.SITE_URL ?? "https://example.github.io",
+  site: process.env.SITE_URL ?? "https://crashpr0.github.io/ChrisVelezPortfolio",
   base,
   output: "static"
 });

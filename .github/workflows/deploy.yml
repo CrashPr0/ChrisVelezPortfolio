@@ -21,10 +21,10 @@ jobs:
       # Set this to your final public site URL.
       # Example user site: https://username.github.io
       # Example project site: https://username.github.io/repository-name
-      SITE_URL: "https://[Your GitHub Username].github.io"
+      SITE_URL: "https://crashpr0.github.io/ChrisVelezPortfolio"
       # Optional override for project sites. Leave empty to auto-derive from repo name.
       # BASE_PATH: "/repository-name/"
-      BASE_PATH: ""
+      BASE_PATH: "/ChrisVelezPortfolio/"
     steps:
       - name: Checkout
         uses: actions/checkout@v4

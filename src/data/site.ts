@@ -4,11 +4,11 @@ export const siteConfig = {
   shortTitle: "Christopher Velez Portfolio",
   description:
     "Computer Engineering student building XR, AR/VR, graphics, and interactive systems across research, public engagement, and game technology.",
-  email: "[your.email@example.com]",
-  linkedIn: "[LinkedIn URL]",
-  github: "[GitHub URL]",
-  resumePath: "[Resume PDF path]",
-  headshotPath: "/images/placeholders/headshot-placeholder.svg"
+  email: "christopher.al.velez@gmail.com",
+  linkedIn: "https://www.linkedin.com/in/christopher-velez-437704264/",
+  github: "https://github.com/CrashPr0",
+  resumePath: "/resume/Chris_s_Resume_General.pdf",
+  headshotPath: "/images/placeholders/Chris_Velez_Headshot.jpeg"
 };
 
 export const navItems = [
