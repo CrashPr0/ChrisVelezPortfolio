@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import ExperienceCard from "@/components/ExperienceCard.astro";
+import { experiences } from "@/data/experience";
+---
+
+<BaseLayout
+  title="Experience | Christopher Velez"
+  description="Professional experience in XR engineering, digital literacy, and immersive system deployment."
+  currentPath="/experience"
+>
+  <section class="container py-16 md:py-20">
+    <SectionHeading
+      kicker="Experience"
+      title="Building immersive systems in public, academic, and research contexts"
+      description="A blend of software engineering, technical facilitation, and deployment-focused XR operations."
+    />
+  </section>
+
+  <section class="container pb-20">
+    <div class="timeline">
+      {experiences.map((item) => <ExperienceCard item={item} />)}
+    </div>
+  </section>
+</BaseLayout>

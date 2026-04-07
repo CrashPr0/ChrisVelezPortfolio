@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { siteConfig } from "@/data/site";
+import { hrefFor } from "@/utils/paths";
+---
+
+<BaseLayout
+  title="Contact | Christopher Velez"
+  description="Contact Christopher Velez for internships, research, and immersive technology collaborations."
+  currentPath="/contact"
+>
+  <section class="container py-16 md:py-20">
+    <SectionHeading
+      kicker="Contact"
+      title="Let&apos;s build immersive technology that ships"
+      description="Open to internships, research opportunities, collaborations, and creative technical partnerships."
+    />
+  </section>
+
+  <section class="container pb-20">
+    <div class="contact-shell reveal">
+      <div class="contact-grid">
+        <article class="rounded-3xl border border-white/10 bg-surface-800/75 p-6">
+          <h2 class="font-display text-2xl text-white">Opportunities</h2>
+          <p class="mt-4 text-sm text-slate-300">
+            If you are working on XR systems, graphics tools, digital heritage technologies, or interactive
+            installations, I would love to connect.
+          </p>
+          <ul class="mt-5 space-y-2 text-sm text-slate-300">
+            <li class="timeline-bullet">Internships in XR, AR/VR, graphics, or real-time systems</li>
+            <li class="timeline-bullet">Research collaborations and technical prototyping</li>
+            <li class="timeline-bullet">Creative tech and public engagement projects</li>
+          </ul>
+        </article>
+
+        <article class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-sm">
+          <h2 class="font-display text-2xl text-white">Direct Contact</h2>
+          <div class="mt-5 space-y-4 text-sm text-slate-200">
+            <p>
+              <span class="text-slate-400">Email</span><br />
+              <a href={`mailto:${siteConfig.email}`} class="footer-link">{siteConfig.email}</a>
+            </p>
+            <button class="btn btn-sm btn-secondary" data-copy-email data-email={siteConfig.email}>
+              Copy Email
+            </button>
+            <p>
+              <span class="text-slate-400">LinkedIn</span><br />
+              <a href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noreferrer" class="footer-link">
+                {siteConfig.linkedIn}
+              </a>
+            </p>
+            <p>
+              <span class="text-slate-400">GitHub</span><br />
+              <a href={hrefFor(siteConfig.github)} target="_blank" rel="noreferrer" class="footer-link">
+                {siteConfig.github}
+              </a>
+            </p>
+          </div>
+          <p class="mt-5 text-xs uppercase tracking-[0.1em] text-accent-300" data-copy-status aria-live="polite"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

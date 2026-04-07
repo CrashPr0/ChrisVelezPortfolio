@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#142341" />
+      <stop offset="1" stop-color="#0a1022" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g)" />
+  <rect x="72" y="72" width="1056" height="556" rx="24" fill="#101b32" stroke="#2e4f7c" />
+  <text x="600" y="340" fill="#9fddf2" font-family="Inter, Arial" font-size="40" text-anchor="middle">
+    AR Google Maps Demo
+  </text>
+  <text x="600" y="390" fill="#6db3cf" font-family="Inter, Arial" font-size="24" text-anchor="middle">
+    Replace with screenshot or video thumbnail
+  </text>
+</svg>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import TagPill from "@/components/TagPill.astro";
+import { education, skillGroups, siteConfig } from "@/data/site";
+import { hrefFor } from "@/utils/paths";
+---
+
+<BaseLayout
+  title="About | Christopher Velez"
+  description="About Christopher Velez - Computer Engineering student specializing in AI-powered XR and immersive systems."
+  currentPath="/about"
+>
+  <section class="container py-16 md:py-20">
+    <SectionHeading
+      kicker="About"
+      title="Engineer focused on future-facing spatial and interactive systems"
+      description="I am a Computer Engineering student specializing in AI and XR technologies, building immersive systems for research, education, and public engagement."
+    />
+  </section>
+
+  <section class="container grid gap-8 pb-20 lg:grid-cols-[1.1fr_1fr]">
+    <article class="reveal rounded-4xl border border-white/10 bg-white/5 p-7 shadow-soft backdrop-blur-sm">
+      <h2 class="font-display text-2xl text-white">Professional Bio</h2>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-slate-300">
+        <p>
+          I design and ship immersive systems that combine technical depth with real-world usability,
+          from XR prototypes and graphics pipelines to public-facing interactive demos.
+        </p>
+        <p>
+          My work sits at the intersection of software engineering, spatial computing, and digital
+          preservation. I care about experiences that are visually strong, technically resilient, and
+          genuinely useful to the people who use them.
+        </p>
+        <p>
+          I am actively pursuing opportunities where I can contribute to next-generation XR,
+          interactive graphics, and human-centered emerging technology.
+        </p>
+      </div>
+      <img src={hrefFor(siteConfig.headshotPath)} alt="[headshot or hero image if needed]" class="mt-7 rounded-3xl border border-white/10" />
+    </article>
+
+    <div class="space-y-8">
+      <article class="reveal rounded-3xl border border-white/10 bg-surface-800/75 p-6">
+        <h2 class="font-display text-xl text-white">Education</h2>
+        <p class="mt-4 text-sm text-slate-300">{education.university}</p>
+        <p class="text-sm text-slate-300">{education.degree}</p>
+        <p class="mt-1 text-xs uppercase tracking-[0.1em] text-accent-300">{education.graduation}</p>
+      </article>
+
+      <article class="reveal rounded-3xl border border-white/10 bg-surface-800/75 p-6">
+        <h2 class="font-display text-xl text-white">Skills</h2>
+        <div class="mt-5 space-y-5">
+          {Object.entries(skillGroups).map(([group, skills]) => (
+            <section>
+              <h3 class="mb-2 text-xs uppercase tracking-[0.1em] text-accent-300">{group}</h3>
+              <div class="flex flex-wrap gap-2">
+                {skills.map((skill) => <TagPill label={skill} />)}
+              </div>
+            </section>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

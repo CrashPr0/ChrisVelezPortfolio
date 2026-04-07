@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { currentFocus, siteConfig } from "@/data/site";
+import { projects } from "@/data/projects";
+import { hrefFor, withBase } from "@/utils/paths";
+
+const featuredProjects = projects.slice(0, 3);
+---
+
+<BaseLayout
+  title="Christopher Velez | XR, Graphics, and Interactive Systems"
+  description="Computer Engineering student building immersive XR, AR/VR, graphics, and interactive systems."
+  currentPath="/"
+>
+  <section class="container pb-14 pt-16 md:pb-20 md:pt-24">
+    <div class="hero-card reveal">
+      <p class="kicker">Computer Engineering Student</p>
+      <h1 class="hero-title">
+        Hi, I&apos;m Christopher Velez a Computer Engineering student building XR, AR/VR, graphics, and
+        interactive systems.
+      </h1>
+      <p class="hero-subtitle">
+        I create immersive experiences across research, public engagement, and game development using
+        Unity, Unreal, WebAR, photogrammetry, and emerging spatial technologies.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={withBase("/projects")} class="btn">View Projects</a>
+        <a href={hrefFor(siteConfig.resumePath)} class="btn btn-secondary" download>
+          Download Resume
+        </a>
+      </div>
+      <div class="mt-10 grid gap-3 sm:grid-cols-2">
+        {currentFocus.map((item) => <p class="focus-chip">{item}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-14 md:py-20" id="featured-projects">
+    <SectionHeading
+      kicker="Selected Work"
+      title="Projects at the intersection of graphics, spatial systems, and public-facing XR"
+      description="A curated set of projects spanning game development, immersive demo deployment, and community-centered technical work."
+    />
+    <div class="mt-8 grid gap-6 lg:grid-cols-3">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <section class="container py-14 md:py-20">
+    <SectionHeading
+      kicker="Available For"
+      title="Internships, research, and interactive technology collaborations"
+      description="I am especially interested in roles focused on XR prototyping, graphics pipelines, and immersive experience engineering."
+    />
+    <div class="reveal mt-7">
+      <a href={withBase("/contact")} class="btn">
+        Start a conversation
+      </a>
+    </div>
+  </section>
+</BaseLayout>

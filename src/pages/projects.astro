@@ -1,0 +1,55 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import TagPill from "@/components/TagPill.astro";
+import { projects } from "@/data/projects";
+import { withBase } from "@/utils/paths";
+---
+
+<BaseLayout
+  title="Projects | Christopher Velez"
+  description="Case studies in XR, graphics, and interactive systems by Christopher Velez."
+  currentPath="/projects"
+>
+  <section class="container py-16 md:py-20">
+    <SectionHeading
+      kicker="Projects"
+      title="Case studies in immersive systems and interactive technology"
+      description="Each project balances technical execution, design intent, and real-world deployment constraints."
+    />
+  </section>
+
+  <section class="container space-y-8 pb-20">
+    {
+      projects.map((project) => (
+        <article id={project.slug} class="case-study reveal">
+          <div class="case-grid">
+            <div class="space-y-4">
+              <img src={withBase(project.mediaPath)} alt={project.mediaAlt} class="case-image" loading="lazy" />
+              <div class="rounded-2xl border border-white/12 bg-surface-800/70 p-4">
+                <p class="text-xs uppercase tracking-[0.12em] text-accent-300">Tools</p>
+                <p class="mt-2 text-sm text-slate-300">{project.tools.join(" • ")}</p>
+              </div>
+            </div>
+            <div>
+              <div class="mb-5 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.08em] text-slate-300">
+                <span>{project.year}</span>
+                <span class="dot" aria-hidden="true"></span>
+                <span>{project.role}</span>
+              </div>
+              <h2 class="font-display text-3xl text-white">{project.title}</h2>
+              <p class="mt-4 text-slate-300">{project.summary}</p>
+              <p class="mt-4 text-sm text-slate-100">{project.impact}</p>
+              <div class="mt-6 space-y-4 text-sm leading-relaxed text-slate-300">
+                {project.description.map((paragraph) => <p>{paragraph}</p>)}
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => <TagPill label={tag} />)}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>
