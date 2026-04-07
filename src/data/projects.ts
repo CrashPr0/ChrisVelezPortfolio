@@ -29,8 +29,9 @@ export const projects: Project[] = [
       "Our team intentionally treats mistakes as learning opportunities. That mindset helps us improve rapidly while keeping scope aligned with the intended player experience."
     ],
     tags: ["Co-op", "Underwater", "Atmosphere", "Graphics Direction", "Unreal"],
-    mediaAlt: "Benthos placeholder key art",
-    mediaPath: "/images/placeholders/project-benthos.svg"
+    mediaAlt:
+      "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead",
+    mediaPath: "/images/placeholders/benthos.png"
   },
   {
     slug: "immersion-2026-featured-showcase",
@@ -67,8 +68,8 @@ export const projects: Project[] = [
       "This project reflects both technical execution and community impact by connecting digital tooling with cultural stewardship goals."
     ],
     tags: ["Photogrammetry", "Education", "Accessibility", "Cultural Preservation"],
-    mediaAlt: "Cultural preservation workshop placeholder",
-    mediaPath: "/images/placeholders/project-cultural-preservation.svg"
+    mediaAlt: "Photogrammetry and cultural preservation workshop at ATALM 2025",
+    mediaPath: "/images/placeholders/PhotogrametryWorkshop.jfif"
   },
   {
     slug: "ar-google-maps-demo",
