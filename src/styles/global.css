@@ -65,8 +65,33 @@
     @apply mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg;
   }
 
-  .focus-chip {
-    @apply rounded-xl border border-white/10 bg-surface-800/70 px-4 py-3 text-sm text-slate-200;
+  .focus-areas {
+    @apply w-full;
+  }
+
+  .focus-areas-label {
+    @apply mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent-300/90;
+  }
+
+  .focus-areas-grid {
+    @apply grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-4;
+  }
+
+  .focus-area-card {
+    @apply flex min-h-[3.25rem] items-stretch gap-3 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent px-4 py-3.5 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset] transition duration-200;
+  }
+
+  .focus-area-card:hover {
+    @apply border-accent-400/25 bg-white/[0.05] shadow-soft;
+  }
+
+  .focus-area-accent {
+    @apply mt-0.5 w-0.5 shrink-0 self-stretch rounded-full bg-gradient-to-b from-accent-300 via-accent-500 to-hologram-500;
+    min-height: 2.25rem;
+  }
+
+  .focus-area-text {
+    @apply text-left text-[0.9375rem] font-medium leading-snug tracking-tight text-slate-100;
   }
 
   .nav-link {
@@ -214,5 +239,9 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .focus-area-card:hover {
+    @apply border-white/[0.08] bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent shadow-none;
   }
 }

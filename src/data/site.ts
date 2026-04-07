@@ -21,10 +21,10 @@ export const navItems = [
 ] as const;
 
 export const currentFocus = [
-  "XR / AR / VR systems",
-  "graphics and immersive experiences",
-  "digital heritage / cultural preservation",
-  "game and interactive technology"
+  "XR, AR, and VR systems",
+  "Graphics and immersive experiences",
+  "Digital heritage and cultural preservation",
+  "Game and interactive technology"
 ] as const;
 
 export const education = {

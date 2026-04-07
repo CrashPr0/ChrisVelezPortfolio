@@ -31,8 +31,18 @@ const featuredProjects = projects.slice(0, 3);
           Download Resume
         </a>
       </div>
-      <div class="mt-10 grid gap-3 sm:grid-cols-2">
-        {currentFocus.map((item) => <p class="focus-chip">{item}</p>)}
+      <div class="focus-areas reveal mt-12 border-t border-white/10 pt-10">
+        <p class="focus-areas-label" id="focus-areas-heading">Currently focused on</p>
+        <ul class="focus-areas-grid" aria-labelledby="focus-areas-heading">
+          {
+            currentFocus.map((item) => (
+              <li class="focus-area-card">
+                <span class="focus-area-accent" aria-hidden="true" />
+                <span class="focus-area-text">{item}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   </section>
