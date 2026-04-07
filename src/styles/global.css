@@ -103,6 +103,10 @@
 
   .case-study {
     @apply rounded-4xl border border-white/10 bg-white/[0.02] p-6 shadow-soft md:p-8;
+    position: relative;
+    isolation: isolate;
+    z-index: 0;
+    scroll-margin-top: 6.5rem;
   }
 
   .case-grid {
