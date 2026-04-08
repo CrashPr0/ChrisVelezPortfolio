@@ -10,6 +10,11 @@ export type Project = {
   tags: string[];
   mediaAlt: string;
   mediaPath: string;
+  /**
+   * CSS `object-position` value for `object-fit: cover` images.
+   * Example: "50% 40%" (x y).
+   */
+  mediaFocus?: string;
 };
 
 export const projects: Project[] = [
@@ -31,7 +36,8 @@ export const projects: Project[] = [
     tags: ["Co-op", "Underwater", "Atmosphere", "Graphics Direction", "Unreal"],
     mediaAlt:
       "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead",
-    mediaPath: "/images/placeholders/benthos.png"
+    mediaPath: "/images/placeholders/benthos.png",
+    mediaFocus: "50% 58%"
   },
   {
     slug: "immersion-2026-featured-showcase",
@@ -49,8 +55,10 @@ export const projects: Project[] = [
       "The final deployment balanced visual ambition and practical stability, ensuring consistent interaction quality for attendees."
     ],
     tags: ["WebAR", "Public Demo", "Performance Tuning", "A-Frame", "AR.js"],
-    mediaAlt: "Immersion 2026 mobile WebAR placeholder",
-    mediaPath: "/images/placeholders/project-immersion-2026.svg"
+    mediaAlt:
+      "Sharkways onsite deliverable: two mobile WebAR screenshots of a shark character on a sidewalk, including a selfie view and an event prompt screen",
+    mediaPath: "/images/placeholders/project-immersion-2026.png",
+    mediaFocus: "68% 52%"
   },
   {
     slug: "digital-tools-cultural-preservation-workshop",
@@ -69,7 +77,8 @@ export const projects: Project[] = [
     ],
     tags: ["Photogrammetry", "Education", "Accessibility", "Cultural Preservation"],
     mediaAlt: "Photogrammetry and cultural preservation workshop at ATALM 2025",
-    mediaPath: "/images/placeholders/PhotogrametryWorkshop.jfif"
+    mediaPath: "/images/placeholders/PhotogrametryWorkshop.jfif",
+    mediaFocus: "50% 45%"
   },
   {
     slug: "ar-google-maps-demo",

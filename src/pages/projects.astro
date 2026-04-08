@@ -25,7 +25,13 @@ import { withBase } from "@/utils/paths";
         <article id={project.slug} class="case-study reveal">
           <div class="case-grid">
             <div class="space-y-6 md:space-y-7">
-              <img src={withBase(project.mediaPath)} alt={project.mediaAlt} class="case-image" loading="lazy" />
+              <img
+                src={withBase(project.mediaPath)}
+                alt={project.mediaAlt}
+                class="case-image"
+                loading="lazy"
+                style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
+              />
               <div class="rounded-2xl border border-white/12 bg-surface-800/70 p-4">
                 <p class="text-xs uppercase tracking-[0.12em] text-accent-300">Tools</p>
                 <p class="mt-2 text-sm text-slate-300">{project.tools.join(" • ")}</p>
