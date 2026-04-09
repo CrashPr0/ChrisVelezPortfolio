@@ -22,20 +22,20 @@ const { project, showLink = true } = Astro.props;
     />
   </div>
   <div class="space-y-4 p-6">
-    <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-slate-300">
+    <div class="flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
       <span>{project.year}</span>
       <span class="dot" aria-hidden="true"></span>
       <span>{project.role}</span>
     </div>
-    <h3 class="font-display text-2xl text-white">{project.title}</h3>
-    <p class="text-sm text-slate-300">{project.summary}</p>
-    <p class="text-sm text-slate-200"><strong class="font-medium text-white/90">Impact:</strong> {project.impact}</p>
+    <h3 class="font-display text-2xl font-bold tracking-tight text-white">{project.title}</h3>
+    <p class="text-sm text-neutral-400">{project.summary}</p>
+    <p class="text-sm text-neutral-300"><strong class="font-medium text-white/80">Impact:</strong> {project.impact}</p>
     <ul class="flex flex-wrap gap-2">
       {project.tags.map((tag) => <TagPill label={tag} />)}
     </ul>
     {
       showLink && (
-        <a href={withBase(`/projects#${project.slug}`)} class="inline-flex text-sm font-medium text-accent-300 hover:text-accent-200">
+        <a href={withBase(`/projects#${project.slug}`)} class="inline-flex text-xs font-semibold uppercase tracking-wider text-accent-400 hover:text-accent-300">
           View case study
         </a>
       )

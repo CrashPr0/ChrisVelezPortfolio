@@ -16,14 +16,12 @@ const featuredProjects = projects.slice(0, 3);
 >
   <section class="container pb-14 pt-16 md:pb-20 md:pt-24">
     <div class="hero-card reveal">
-      <p class="kicker">Computer Engineering Student</p>
+      <p class="kicker">Computer Engineering</p>
       <h1 class="hero-title">
-        Hi, I&apos;m Christopher Velez a Computer Engineering student building XR, AR/VR, graphics, and
-        interactive systems.
+        Christopher Velez builds XR, graphics, and interactive systems.
       </h1>
       <p class="hero-subtitle">
-        I create immersive experiences across research, public engagement, and game development using
-        Unity, Unreal, WebAR, photogrammetry, and emerging spatial technologies.
+        Immersive experiences across research, public engagement, and game development.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a href={withBase("/projects")} class="btn">View Projects</a>
@@ -31,8 +29,8 @@ const featuredProjects = projects.slice(0, 3);
           Download Resume
         </a>
       </div>
-      <div class="focus-areas reveal mt-12 border-t border-white/10 pt-10">
-        <p class="focus-areas-label" id="focus-areas-heading">Currently focused on</p>
+      <div class="focus-areas reveal mt-14 border-t border-white/[0.06] pt-10">
+        <p class="focus-areas-label" id="focus-areas-heading">Focus</p>
         <ul class="focus-areas-grid" aria-labelledby="focus-areas-heading">
           {
             currentFocus.map((item) => (
@@ -50,8 +48,8 @@ const featuredProjects = projects.slice(0, 3);
   <section class="container py-14 md:py-20" id="featured-projects">
     <SectionHeading
       kicker="Selected Work"
-      title="Projects at the intersection of graphics, spatial systems, and public-facing XR"
-      description="A curated set of projects spanning game development, immersive demo deployment, and community-centered technical work."
+      title="Graphics, spatial systems, and public-facing XR"
+      description="Game development, immersive deployment, and community-centered technical work."
     />
     <div class="mt-8 grid gap-6 lg:grid-cols-3">
       {featuredProjects.map((project) => <ProjectCard project={project} />)}
@@ -61,8 +59,8 @@ const featuredProjects = projects.slice(0, 3);
   <section class="container py-14 md:py-20">
     <SectionHeading
       kicker="Available For"
-      title="Internships, research, and interactive technology collaborations"
-      description="I am especially interested in roles focused on XR prototyping, graphics pipelines, and immersive experience engineering."
+      title="Internships, research, and collaboration"
+      description="XR prototyping, graphics pipelines, and immersive experience engineering."
     />
     <div class="reveal mt-7">
       <a href={withBase("/contact")} class="btn">

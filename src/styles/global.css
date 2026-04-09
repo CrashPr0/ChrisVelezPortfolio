@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   * {
-    @apply border-slate-600;
+    @apply border-white/10;
   }
 
   html,
@@ -15,8 +15,7 @@
   }
 
   body {
-    background: radial-gradient(circle at 10% 10%, rgba(22, 110, 148, 0.2), transparent 34%),
-      radial-gradient(circle at 80% 8%, rgba(98, 91, 255, 0.18), transparent 38%), #070b17;
+    background: #0a0a0a;
   }
 }
 
@@ -30,7 +29,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-xl border border-accent-300/50 bg-accent-400 px-5 py-2.5 text-sm font-medium text-surface-900 transition duration-200 hover:-translate-y-[1px] hover:bg-accent-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
+    @apply inline-flex items-center justify-center rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 transition duration-200 hover:bg-accent-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
   }
 
   .btn-sm {
@@ -38,31 +37,31 @@
   }
 
   .btn-secondary {
-    @apply border-white/20 bg-white/5 text-slate-100 hover:bg-white/10;
+    @apply border-white/10 bg-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white;
   }
 
   .kicker {
-    @apply text-xs uppercase tracking-[0.14em] text-accent-300;
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
   }
 
   .section-title {
-    @apply mt-2 font-display text-3xl leading-tight text-white md:text-4xl;
+    @apply mt-3 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white md:text-5xl;
   }
 
   .section-description {
-    @apply mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base;
+    @apply mt-5 max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base;
   }
 
   .hero-card {
-    @apply rounded-4xl border border-white/10 bg-white/[0.03] p-7 shadow-glow backdrop-blur-sm md:p-10;
+    @apply rounded-4xl border border-white/[0.06] bg-surface-800/50 p-8 md:p-12;
   }
 
   .hero-title {
-    @apply mt-3 max-w-4xl font-display text-3xl leading-tight text-white md:text-5xl;
+    @apply mt-4 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-6xl;
   }
 
   .hero-subtitle {
-    @apply mt-6 max-w-3xl text-base leading-relaxed text-slate-300 md:text-lg;
+    @apply mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg;
   }
 
   .focus-areas {
@@ -70,7 +69,7 @@
   }
 
   .focus-areas-label {
-    @apply mb-4 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent-300/90;
+    @apply mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
   }
 
   .focus-areas-grid {
@@ -78,68 +77,65 @@
   }
 
   .focus-area-card {
-    @apply flex min-h-[3.25rem] items-stretch gap-3 rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent px-4 py-3.5 shadow-[0_1px_0_rgba(255,255,255,0.06)_inset] transition duration-200;
+    @apply flex min-h-[3rem] items-stretch gap-3 rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3 transition duration-200;
   }
 
   .focus-area-card:hover {
-    @apply border-accent-400/25 bg-white/[0.05] shadow-soft;
+    @apply border-accent-400/20 bg-white/[0.04];
   }
 
   .focus-area-accent {
-    @apply mt-0.5 w-0.5 shrink-0 self-stretch rounded-full bg-gradient-to-b from-accent-300 via-accent-500 to-hologram-500;
-    min-height: 2.25rem;
+    @apply mt-0.5 w-0.5 shrink-0 self-stretch rounded-full bg-accent-400;
+    min-height: 2rem;
   }
 
   .focus-area-text {
-    @apply text-left text-[0.9375rem] font-medium leading-snug tracking-tight text-slate-100;
+    @apply text-left text-sm font-medium leading-snug text-neutral-300;
   }
 
   .nav-link {
-    @apply inline-flex rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:text-white;
+    @apply inline-flex rounded-md px-3 py-2 text-xs font-medium uppercase tracking-wider text-neutral-400 transition hover:text-white;
   }
 
   .nav-link.is-active {
-    @apply bg-white/10 text-white;
+    @apply bg-white/[0.06] text-white;
   }
 
   .footer-link {
-    @apply text-slate-200 underline-offset-4 transition hover:text-white hover:underline;
+    @apply text-neutral-400 underline-offset-4 transition hover:text-white hover:underline;
   }
 
   .project-card {
-    @apply overflow-hidden rounded-3xl border border-white/10 bg-surface-800/75 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent-300/50;
+    @apply overflow-hidden rounded-4xl border border-white/[0.06] bg-surface-800/60 transition duration-300 hover:border-white/10;
   }
 
   .project-media-wrap {
-    @apply relative overflow-hidden border-b border-white/10;
+    @apply relative overflow-hidden;
   }
 
   .project-media {
-    @apply h-44 w-full object-cover transition duration-500 hover:scale-[1.03];
+    @apply h-48 w-full object-cover;
   }
 
   .tag-pill {
-    @apply rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-xs text-slate-200;
+    @apply rounded-full border border-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-wider text-neutral-400;
   }
 
   .dot {
-    @apply h-1 w-1 rounded-full bg-slate-400;
+    @apply h-1 w-1 rounded-full bg-neutral-600;
   }
 
   .case-study {
-    @apply rounded-4xl border border-white/10 bg-white/[0.02] p-6 shadow-soft md:p-8;
-    position: relative;
-    isolation: isolate;
-    z-index: 0;
+    @apply border-b border-white/[0.06] pb-16 md:pb-20;
     scroll-margin-top: 6.5rem;
   }
 
   .case-grid {
-    @apply grid gap-6 lg:grid-cols-[1fr_1.35fr];
+    @apply grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14;
   }
 
   .case-image {
-    @apply h-56 w-full rounded-2xl border border-white/10 object-cover md:h-full;
+    @apply h-64 w-full rounded-lg object-cover md:h-full;
   }
 
   .timeline {
@@ -148,7 +144,7 @@
 
   .timeline::before {
     content: "";
-    @apply absolute left-4 top-0 hidden h-full w-px bg-gradient-to-b from-accent-400/70 via-white/20 to-transparent md:block;
+    @apply absolute left-4 top-0 hidden h-full w-px bg-white/10 md:block;
   }
 
   .timeline-card {
@@ -156,7 +152,7 @@
   }
 
   .timeline-dot {
-    @apply absolute -left-6 top-8 hidden h-3 w-3 rounded-full bg-accent-400 shadow-[0_0_0_6px_rgba(58,210,242,0.15)] md:block;
+    @apply absolute -left-6 top-8 hidden h-2.5 w-2.5 rounded-full bg-accent-400 md:block;
   }
 
   .timeline-bullet {
@@ -165,12 +161,12 @@
 
   .timeline-bullet::before {
     content: "";
-    @apply absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full bg-accent-300/90;
+    @apply absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full bg-accent-400;
   }
 
   .resume-shell,
   .contact-shell {
-    @apply rounded-4xl border border-white/10 bg-white/[0.03] p-6 shadow-soft md:p-8;
+    @apply rounded-4xl border border-white/[0.06] bg-surface-800/40 p-6 md:p-8;
   }
 
   .contact-grid {
@@ -178,50 +174,19 @@
   }
 }
 
-.bg-orb {
-  pointer-events: none;
-  position: fixed;
-  z-index: -2;
-  filter: blur(42px);
-}
-
-.bg-orb-a {
-  width: 22rem;
-  height: 22rem;
-  top: -5rem;
-  right: -6rem;
-  background: radial-gradient(circle, rgba(60, 203, 244, 0.24), transparent 68%);
-}
-
-.bg-orb-b {
-  width: 25rem;
-  height: 25rem;
-  bottom: -7rem;
-  left: -5rem;
-  background: radial-gradient(circle, rgba(108, 112, 252, 0.2), transparent 67%);
-}
-
+/* bg-orb and bg-grid elements are hidden for a flat, stark aesthetic */
+.bg-orb,
 .bg-grid {
-  pointer-events: none;
-  position: fixed;
-  z-index: -3;
-  inset: 0;
-  opacity: 0.18;
-  background-image: linear-gradient(to right, rgba(141, 168, 199, 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(141, 168, 199, 0.2) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 28%, transparent 88%);
+  display: none;
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.6s ease;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -238,10 +203,9 @@
 
   .reveal {
     opacity: 1;
-    transform: none;
   }
 
   .focus-area-card:hover {
-    @apply border-white/[0.08] bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent shadow-none;
+    @apply border-white/[0.06] bg-white/[0.02];
   }
 }
