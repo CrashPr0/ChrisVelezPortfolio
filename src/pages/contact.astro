@@ -21,43 +21,43 @@ import { hrefFor } from "@/utils/paths";
   <section class="container pb-20">
     <div class="contact-shell reveal">
       <div class="contact-grid">
-        <article class="rounded-3xl border-2 border-white/10 bg-gradient-to-br from-surface-800/90 to-surface-700/50 p-6">
-          <h2 class="font-display text-2xl text-white">Opportunities</h2>
-          <p class="mt-4 text-sm text-white/60">
+        <article class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
+          <h2 class="font-display text-xl font-bold text-white">Opportunities</h2>
+          <p class="mt-4 text-sm text-neutral-400">
             If you are working on XR systems, graphics tools, digital heritage technologies, or interactive
             installations, I would love to connect.
           </p>
-          <ul class="mt-5 space-y-2 text-sm text-white/65">
+          <ul class="mt-5 space-y-2 text-sm text-neutral-400">
             <li class="timeline-bullet">Internships in XR, AR/VR, graphics, or real-time systems</li>
             <li class="timeline-bullet">Research collaborations and technical prototyping</li>
             <li class="timeline-bullet">Creative tech and public engagement projects</li>
           </ul>
         </article>
 
-        <article class="rounded-3xl border-2 border-accent-400/20 bg-gradient-to-br from-accent-500/[0.08] via-white/[0.04] to-sky-500/[0.04] p-6 shadow-glow backdrop-blur-sm">
-          <h2 class="font-display text-2xl text-white">Direct Contact</h2>
-          <div class="mt-5 space-y-4 text-sm text-white/75">
+        <article class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
+          <h2 class="font-display text-xl font-bold text-white">Direct Contact</h2>
+          <div class="mt-5 space-y-4 text-sm text-neutral-300">
             <p>
-              <span class="text-white/40">Email</span><br />
+              <span class="text-neutral-500">Email</span><br />
               <a href={`mailto:${siteConfig.email}`} class="footer-link">{siteConfig.email}</a>
             </p>
             <button class="btn btn-sm btn-secondary" data-copy-email data-email={siteConfig.email}>
               Copy Email
             </button>
             <p>
-              <span class="text-white/40">LinkedIn</span><br />
+              <span class="text-neutral-500">LinkedIn</span><br />
               <a href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noreferrer" class="footer-link">
                 {siteConfig.linkedIn}
               </a>
             </p>
             <p>
-              <span class="text-white/40">GitHub</span><br />
+              <span class="text-neutral-500">GitHub</span><br />
               <a href={hrefFor(siteConfig.github)} target="_blank" rel="noreferrer" class="footer-link">
                 {siteConfig.github}
               </a>
             </p>
           </div>
-          <p class="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-accent-300" data-copy-status aria-live="polite"></p>
+          <p class="mt-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400" data-copy-status aria-live="polite"></p>
         </article>
       </div>
     </div>
