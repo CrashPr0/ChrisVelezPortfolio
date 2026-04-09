@@ -24,7 +24,7 @@ import { withBase } from "@/utils/paths";
       projects.map((project) => (
         <article id={project.slug} class="case-study reveal">
           <div class="case-grid">
-            <div class="space-y-6 md:space-y-7">
+            <div class="flex flex-col gap-10 md:gap-12">
               <img
                 src={withBase(project.mediaPath)}
                 alt={project.mediaAlt}
