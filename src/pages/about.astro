@@ -20,9 +20,9 @@ import { hrefFor } from "@/utils/paths";
   </section>
 
   <section class="container grid gap-8 pb-20 lg:grid-cols-[1.1fr_1fr]">
-    <article class="reveal rounded-4xl border border-white/[0.06] bg-surface-800/40 p-8">
-      <h2 class="font-display text-2xl font-bold text-white">Professional Bio</h2>
-      <div class="mt-5 space-y-4 text-sm leading-relaxed text-neutral-400">
+    <article class="reveal rounded-5xl border-2 border-accent-400/15 bg-gradient-to-br from-white/[0.07] via-accent-500/[0.03] to-sky-500/[0.03] p-7 shadow-pop backdrop-blur-sm">
+      <h2 class="font-display text-2xl text-white">Professional Bio</h2>
+      <div class="mt-5 space-y-4 text-sm leading-relaxed text-white/65">
         <p>
           I design and ship immersive systems that combine technical depth with real-world usability,
           from XR prototypes and graphics pipelines to public-facing interactive demos.
@@ -37,23 +37,23 @@ import { hrefFor } from "@/utils/paths";
           interactive graphics, and human-centered emerging technology.
         </p>
       </div>
-      <img src={hrefFor(siteConfig.headshotPath)} alt="[headshot or hero image if needed]" class="mt-7 rounded-lg border border-white/[0.06]" />
+      <img src={hrefFor(siteConfig.headshotPath)} alt="[headshot or hero image if needed]" class="mt-7 rounded-3xl border-2 border-accent-400/15 shadow-soft" />
     </article>
 
     <div class="space-y-8">
-      <article class="reveal rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
-        <h2 class="font-display text-lg font-bold text-white">Education</h2>
-        <p class="mt-4 text-sm text-neutral-400">{education.university}</p>
-        <p class="text-sm text-neutral-400">{education.degree}</p>
-        <p class="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{education.graduation}</p>
+      <article class="reveal rounded-3xl border-2 border-white/10 bg-gradient-to-br from-surface-800/90 to-surface-700/50 p-6">
+        <h2 class="font-display text-xl text-white">Education</h2>
+        <p class="mt-4 text-sm text-white/60">{education.university}</p>
+        <p class="text-sm text-white/60">{education.degree}</p>
+        <p class="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-sunny-300">{education.graduation}</p>
       </article>
 
-      <article class="reveal rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
-        <h2 class="font-display text-lg font-bold text-white">Skills</h2>
+      <article class="reveal rounded-3xl border-2 border-white/10 bg-gradient-to-br from-surface-800/90 to-surface-700/50 p-6">
+        <h2 class="font-display text-xl text-white">Skills</h2>
         <div class="mt-5 space-y-5">
           {Object.entries(skillGroups).map(([group, skills]) => (
             <section>
-              <h3 class="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{group}</h3>
+              <h3 class="mb-2 text-xs font-bold uppercase tracking-[0.14em] text-accent-300">{group}</h3>
               <div class="flex flex-wrap gap-2">
                 {skills.map((skill) => <TagPill label={skill} />)}
               </div>

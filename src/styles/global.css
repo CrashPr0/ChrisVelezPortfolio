@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   * {
-    @apply border-white/10;
+    @apply border-white/15;
   }
 
   html,
@@ -15,7 +15,11 @@
   }
 
   body {
-    background: #0a0a0a;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255, 110, 180, 0.18), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(100, 181, 246, 0.16), transparent 40%),
+      radial-gradient(circle at 60% 80%, rgba(255, 159, 67, 0.1), transparent 40%),
+      linear-gradient(to bottom, #1a1040, #0f0a1e);
   }
 }
 
@@ -25,11 +29,11 @@
   }
 
   .skip-link {
-    @apply absolute left-4 top-2 z-[70] -translate-y-12 rounded-lg bg-accent-400 px-3 py-2 text-sm text-surface-900 transition focus:translate-y-0;
+    @apply absolute left-4 top-2 z-[70] -translate-y-12 rounded-xl bg-accent-400 px-3 py-2 text-sm font-bold text-surface-900 transition focus:translate-y-0;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 transition duration-200 hover:bg-accent-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
+    @apply inline-flex items-center justify-center rounded-2xl border-2 border-accent-400/60 bg-gradient-to-r from-accent-400 to-accent-500 px-6 py-2.5 text-sm font-bold text-white shadow-glow transition duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-pop focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
   }
 
   .btn-sm {
@@ -37,31 +41,31 @@
   }
 
   .btn-secondary {
-    @apply border-white/10 bg-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white;
+    @apply border-sky-400/40 bg-gradient-to-r from-sky-400/20 to-sky-500/10 text-sky-300 shadow-none hover:from-sky-400/30 hover:to-sky-500/20 hover:text-white;
   }
 
   .kicker {
-    @apply text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
+    @apply text-xs font-bold uppercase tracking-[0.16em] text-accent-300;
   }
 
   .section-title {
-    @apply mt-3 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white md:text-5xl;
+    @apply mt-2 font-display text-3xl leading-tight text-white md:text-4xl;
   }
 
   .section-description {
-    @apply mt-5 max-w-xl text-sm leading-relaxed text-neutral-400 md:text-base;
+    @apply mt-4 max-w-2xl text-sm leading-relaxed text-white/60 md:text-base;
   }
 
   .hero-card {
-    @apply rounded-4xl border border-white/[0.06] bg-surface-800/50 p-8 md:p-12;
+    @apply rounded-5xl border-2 border-accent-400/20 bg-gradient-to-br from-white/[0.08] via-accent-500/[0.04] to-sky-500/[0.04] p-7 shadow-pop backdrop-blur-sm md:p-10;
   }
 
   .hero-title {
-    @apply mt-4 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-6xl;
+    @apply mt-3 max-w-4xl font-display text-4xl leading-tight text-white md:text-5xl;
   }
 
   .hero-subtitle {
-    @apply mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg;
+    @apply mt-6 max-w-3xl text-base leading-relaxed text-white/65 md:text-lg;
   }
 
   .focus-areas {
@@ -69,7 +73,7 @@
   }
 
   .focus-areas-label {
-    @apply mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
+    @apply mb-4 text-[0.7rem] font-bold uppercase tracking-[0.2em] text-sunny-300;
   }
 
   .focus-areas-grid {
@@ -77,36 +81,36 @@
   }
 
   .focus-area-card {
-    @apply flex min-h-[3rem] items-stretch gap-3 rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3 transition duration-200;
+    @apply flex min-h-[3.25rem] items-stretch gap-3 rounded-2xl border-2 border-white/[0.08] bg-gradient-to-br from-accent-500/10 via-sky-500/5 to-transparent px-4 py-3.5 transition duration-300;
   }
 
   .focus-area-card:hover {
-    @apply border-accent-400/20 bg-white/[0.04];
+    @apply -translate-y-0.5 border-accent-400/30 shadow-glow;
   }
 
   .focus-area-accent {
-    @apply mt-0.5 w-0.5 shrink-0 self-stretch rounded-full bg-accent-400;
-    min-height: 2rem;
+    @apply mt-0.5 w-1 shrink-0 self-stretch rounded-full bg-gradient-to-b from-accent-400 via-sunny-400 to-sky-400;
+    min-height: 2.25rem;
   }
 
   .focus-area-text {
-    @apply text-left text-sm font-medium leading-snug text-neutral-300;
+    @apply text-left text-[0.9375rem] font-semibold leading-snug text-white/90;
   }
 
   .nav-link {
-    @apply inline-flex rounded-md px-3 py-2 text-xs font-medium uppercase tracking-wider text-neutral-400 transition hover:text-white;
+    @apply inline-flex rounded-xl px-3 py-2 text-sm font-semibold text-white/60 transition duration-200 hover:text-white;
   }
 
   .nav-link.is-active {
-    @apply bg-white/[0.06] text-white;
+    @apply bg-accent-500/20 text-accent-300;
   }
 
   .footer-link {
-    @apply text-neutral-400 underline-offset-4 transition hover:text-white hover:underline;
+    @apply text-white/70 underline-offset-4 transition hover:text-accent-300 hover:underline;
   }
 
   .project-card {
-    @apply overflow-hidden rounded-4xl border border-white/[0.06] bg-surface-800/60 transition duration-300 hover:border-white/10;
+    @apply overflow-hidden rounded-4xl border-2 border-white/10 bg-gradient-to-br from-surface-800/90 to-surface-700/50 shadow-soft transition duration-300 hover:-translate-y-2 hover:border-accent-400/40 hover:shadow-pop;
   }
 
   .project-media-wrap {
@@ -114,28 +118,31 @@
   }
 
   .project-media {
-    @apply h-48 w-full object-cover;
+    @apply h-48 w-full object-cover transition duration-500 hover:scale-105;
   }
 
   .tag-pill {
-    @apply rounded-full border border-white/10 px-3 py-1 text-[0.65rem] uppercase tracking-wider text-neutral-400;
+    @apply rounded-full border border-accent-400/20 bg-gradient-to-r from-accent-500/15 to-sky-500/10 px-3 py-1 text-xs font-semibold text-accent-300;
   }
 
   .dot {
-    @apply h-1 w-1 rounded-full bg-neutral-600;
+    @apply h-1.5 w-1.5 rounded-full bg-accent-400/60;
   }
 
   .case-study {
-    @apply border-b border-white/[0.06] pb-16 md:pb-20;
+    @apply rounded-5xl border-2 border-white/10 bg-gradient-to-br from-white/[0.05] via-accent-500/[0.02] to-sky-500/[0.02] p-6 shadow-soft md:p-8;
+    position: relative;
+    isolation: isolate;
+    z-index: 0;
     scroll-margin-top: 6.5rem;
   }
 
   .case-grid {
-    @apply grid gap-10 lg:grid-cols-[1fr_1.25fr] lg:gap-14;
+    @apply grid gap-8 lg:grid-cols-[1fr_1.35fr];
   }
 
   .case-image {
-    @apply h-64 w-full rounded-lg object-cover md:h-full;
+    @apply h-56 w-full rounded-3xl border-2 border-white/10 object-cover shadow-soft md:h-full;
   }
 
   .timeline {
@@ -144,7 +151,8 @@
 
   .timeline::before {
     content: "";
-    @apply absolute left-4 top-0 hidden h-full w-px bg-white/10 md:block;
+    @apply absolute left-4 top-0 hidden h-full w-0.5 bg-gradient-to-b from-accent-400 via-sunny-400 to-sky-400 md:block;
+    border-radius: 9999px;
   }
 
   .timeline-card {
@@ -152,7 +160,7 @@
   }
 
   .timeline-dot {
-    @apply absolute -left-6 top-8 hidden h-2.5 w-2.5 rounded-full bg-accent-400 md:block;
+    @apply absolute -left-6 top-8 hidden h-3.5 w-3.5 rounded-full bg-accent-400 shadow-[0_0_0_6px_rgba(255,110,180,0.2)] md:block;
   }
 
   .timeline-bullet {
@@ -161,12 +169,12 @@
 
   .timeline-bullet::before {
     content: "";
-    @apply absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full bg-accent-400;
+    @apply absolute left-0 top-[0.55em] h-2 w-2 rounded-full bg-gradient-to-br from-accent-400 to-sunny-400;
   }
 
   .resume-shell,
   .contact-shell {
-    @apply rounded-4xl border border-white/[0.06] bg-surface-800/40 p-6 md:p-8;
+    @apply rounded-5xl border-2 border-white/10 bg-gradient-to-br from-white/[0.05] to-accent-500/[0.03] p-6 shadow-soft md:p-8;
   }
 
   .contact-grid {
@@ -174,19 +182,51 @@
   }
 }
 
-/* bg-orb and bg-grid elements are hidden for a flat, stark aesthetic */
-.bg-orb,
+.bg-orb {
+  pointer-events: none;
+  position: fixed;
+  z-index: -2;
+  filter: blur(50px);
+}
+
+.bg-orb-a {
+  width: 28rem;
+  height: 28rem;
+  top: -6rem;
+  right: -8rem;
+  background: radial-gradient(circle, rgba(255, 110, 180, 0.28), transparent 65%);
+}
+
+.bg-orb-b {
+  width: 30rem;
+  height: 30rem;
+  bottom: -8rem;
+  left: -6rem;
+  background: radial-gradient(circle, rgba(100, 181, 246, 0.25), transparent 65%);
+}
+
+.bg-orb-c {
+  width: 20rem;
+  height: 20rem;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(255, 217, 61, 0.15), transparent 65%);
+}
+
 .bg-grid {
   display: none;
 }
 
 .reveal {
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
   opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -203,9 +243,11 @@
 
   .reveal {
     opacity: 1;
+    transform: none;
   }
 
   .focus-area-card:hover {
-    @apply border-white/[0.06] bg-white/[0.02];
+    @apply border-white/[0.08] bg-gradient-to-br from-accent-500/10 via-sky-500/5 to-transparent shadow-none;
+    transform: none;
   }
 }

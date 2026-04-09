@@ -46,11 +46,11 @@ const ogImage = new URL(ogImagePath, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
   </head>
-  <body class="min-h-screen bg-surface-900 text-slate-100 antialiased">
+  <body class="min-h-screen bg-surface-900 text-white/90 antialiased">
     <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
     <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
-    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-c" aria-hidden="true"></div>
     <NavBar currentPath={currentPath} />
     <main id="main-content">
       <slot />
