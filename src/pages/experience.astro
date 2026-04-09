@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
-import ExperienceCard from "@/components/ExperienceCard.astro";
-import { experiences } from "@/data/experience";
+import { withBase } from "@/utils/paths";
 ---
 
 <BaseLayout
@@ -10,17 +8,17 @@ import { experiences } from "@/data/experience";
   description="Professional experience in XR engineering, digital literacy, and immersive system deployment."
   currentPath="/experience"
 >
-  <section class="container py-16 md:py-20">
-    <SectionHeading
-      kicker="Experience"
-      title="Building immersive systems in public, academic, and research contexts"
-      description="A blend of software engineering, technical facilitation, and deployment-focused XR operations."
-    />
-  </section>
-
-  <section class="container pb-20">
-    <div class="timeline">
-      {experiences.map((item) => <ExperienceCard item={item} />)}
+  <head>
+    <meta http-equiv="refresh" content={`0; url=${withBase("/resume")}`} />
+  </head>
+  <section class="container flex min-h-[60vh] flex-col items-start justify-center py-20">
+    <p class="kicker">Redirect</p>
+    <h1 class="hero-title max-w-3xl">Experience moved to Resume.</h1>
+    <p class="mt-4 max-w-xl text-neutral-400">
+      This page is now combined with the Resume page.
+    </p>
+    <div class="mt-8">
+      <a href={withBase("/resume")} class="btn">Go to Resume</a>
     </div>
   </section>
 </BaseLayout>

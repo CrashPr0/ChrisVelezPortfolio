@@ -35,8 +35,8 @@ const { project, showLink = true } = Astro.props;
     </ul>
     {
       showLink && (
-        <a href={withBase(`/projects#${project.slug}`)} class="inline-flex text-sm font-bold text-accent-300 transition hover:text-accent-400 hover:underline">
-          View case study &rarr;
+        <a href={withBase(`/projects#${project.slug}`)} class="inline-flex text-xs font-semibold uppercase tracking-wider text-accent-400 hover:text-accent-300">
+          View project
         </a>
       )
     }
