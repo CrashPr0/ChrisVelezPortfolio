@@ -1,0 +1,164 @@
+---
+interface Slide {
+  path: string;
+  alt: string;
+}
+
+interface Props {
+  slides: Slide[];
+  focus?: string;
+  id: string;
+}
+
+const { slides, focus, id } = Astro.props;
+import { withBase } from "@/utils/paths";
+---
+
+<div class="carousel" id={`carousel-${id}`} data-count={slides.length}>
+  <div class="carousel-track">
+    {slides.map((slide, i) => (
+      <img
+        src={withBase(slide.path)}
+        alt={slide.alt}
+        class="carousel-slide"
+        loading={i === 0 ? "eager" : "lazy"}
+        aria-hidden={i !== 0 ? "true" : undefined}
+        style={focus ? `object-position: ${focus};` : undefined}
+      />
+    ))}
+  </div>
+
+  {slides.length > 1 && (
+    <>
+      <div class="carousel-dots" role="tablist" aria-label="Slide indicators">
+        {slides.map((_, i) => (
+          <button
+            class:list={["carousel-dot", { active: i === 0 }]}
+            role="tab"
+            aria-selected={i === 0 ? "true" : "false"}
+            aria-label={`Slide ${i + 1}`}
+            data-index={i}
+          />
+        ))}
+      </div>
+      <button class="carousel-prev" aria-label="Previous slide">&#8592;</button>
+      <button class="carousel-next" aria-label="Next slide">&#8594;</button>
+    </>
+  )}
+</div>
+
+<style>
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: theme('colors.surface.800', #1e2030);
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+    width: 100%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    object-fit: contain;
+    max-height: 420px;
+    display: block;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .carousel-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+  }
+
+  .carousel-dot.active {
+    background: rgba(255,255,255,0.9);
+  }
+
+  .carousel-prev,
+  .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.45);
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1;
+    transition: background 0.2s;
+  }
+
+  .carousel-prev:hover,
+  .carousel-next:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .carousel-prev { left: 0.5rem; }
+  .carousel-next { right: 0.5rem; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.carousel').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('.carousel-track')!;
+    const dots = carousel.querySelectorAll<HTMLButtonElement>('.carousel-dot');
+    const slides = carousel.querySelectorAll<HTMLImageElement>('.carousel-slide');
+    const count = parseInt(carousel.dataset.count ?? '1', 10);
+    let current = 0;
+    let timer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      current = (index + count) % count;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+        d.setAttribute('aria-selected', String(i === current));
+      });
+      slides.forEach((s, i) => {
+        s.setAttribute('aria-hidden', String(i !== current));
+      });
+    }
+
+    function startAuto() {
+      timer = setInterval(() => goTo(current + 1), 4000);
+    }
+
+    function resetAuto() {
+      clearInterval(timer);
+      startAuto();
+    }
+
+    carousel.querySelector('.carousel-prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    carousel.querySelector('.carousel-next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index ?? '0', 10)); resetAuto(); });
+    });
+
+    if (count > 1) startAuto();
+  });
+</script>

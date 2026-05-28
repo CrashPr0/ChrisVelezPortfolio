@@ -10,6 +10,8 @@ export type Project = {
   tags: string[];
   mediaAlt: string;
   mediaPath: string;
+  /** Additional images for a slideshow. First slide is mediaPath. */
+  mediaSlides?: { path: string; alt: string }[];
   /**
    * CSS `object-position` value for `object-fit: cover` images.
    * Example: "50% 40%" (x y).
@@ -36,9 +38,12 @@ export const projects: Project[] = [
       "Our team intentionally treats mistakes as learning opportunities. That mindset helps us improve rapidly while keeping scope aligned with the intended player experience."
     ],
     tags: ["Co-op", "Underwater", "Atmosphere", "Graphics Direction", "Unreal"],
-    mediaAlt:
-      "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead",
-    mediaPath: "/images/placeholders/benthos.png",
+    mediaAlt: "Benthos header artwork",
+    mediaPath: "/images/placeholders/benthos-header.png",
+    mediaSlides: [
+      { path: "/images/placeholders/benthos-header.png", alt: "Benthos header artwork" },
+      { path: "/images/placeholders/benthos.png", alt: "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead" }
+    ],
     mediaFocus: "50% 58%"
   },
   {
@@ -67,23 +72,27 @@ export const projects: Project[] = [
   },
   {
     slug: "digital-tools-cultural-preservation-workshop",
-    title: "Digital Tools for Cultural Preservation Workshop",
+    title: "Community Education & Outreach",
     summary:
-      "Co-developed and facilitated a cultural preservation workshop at ATALM 2025 focused on accessible artifact digitization workflows for low digital-literacy audiences.",
-    role: "Co-developer / Facilitator",
-    tools: ["Polycam", "Photogrammetry"],
-    year: "2025",
+      "Led hands-on STEM and digital preservation workshops at public events — including a drone coding session at the City of Santa Clara's STEM Zone and a photogrammetry workshop at ATALM 2025.",
+    role: "Workshop Facilitator",
+    tools: ["Polycam", "Photogrammetry", "DJI Tello", "Scratch", "Python"],
+    year: "2025–2026",
     impact:
-      "Enabled participants to capture and digitize cultural artifacts through approachable workflows that support preservation, education, and long-term access.",
+      "Brought accessible, hands-on technology education to diverse public audiences — from indigenous cultural stewards digitizing artifacts to students writing their first lines of drone code.",
     description: [
-      "I co-developed curriculum and live exercises for a workshop designed to make photogrammetry approachable, even for audiences with limited technical background.",
-      "The work emphasized accessibility, language clarity, and practical outputs that participants could continue using after the session.",
-      "This project reflects both technical execution and community impact by connecting digital tooling with cultural stewardship goals."
+      "At the City of Santa Clara's STEM Zone (April 2026), I facilitated a drone coding workshop as part of the SJSU iSchool's booth alongside Stanford, SCU, and Mission College. Participants learned to program DJI Ryze Tello drones using Scratch and Python, turning flight paths into a first coding experience.",
+      "At ATALM 2025, I co-developed curriculum and live exercises making photogrammetry approachable for audiences with limited technical background, with a focus on cultural artifact digitization for indigenous communities.",
+      "Both workshops shared a core design principle: technical tools should lower barriers, not raise them. Outputs were practical, portable, and participant-owned."
     ],
-    tags: ["Photogrammetry", "Education", "Accessibility", "Cultural Preservation"],
-    mediaAlt: "Photogrammetry and cultural preservation workshop at ATALM 2025",
-    mediaPath: "/images/placeholders/PhotogrametryWorkshop.jfif",
-    mediaFocus: "50% 45%"
+    tags: ["Education", "Drones", "Photogrammetry", "Accessibility", "Cultural Preservation", "Community"],
+    mediaAlt: "SJSU iSchool drone coding workshop at STEM Zone Santa Clara 2026",
+    mediaPath: "/images/placeholders/StemZoneSantaClara1.jpg",
+    mediaSlides: [
+      { path: "/images/placeholders/StemZoneSantaClara1.jpg", alt: "SJSU iSchool booth at STEM Zone Santa Clara 2026" },
+      { path: "/images/placeholders/StemZoneSantaClara2.jpg", alt: "Drone coding workshop activity at STEM Zone Santa Clara 2026" },
+      { path: "/images/placeholders/PhotogrametryWorkshop.jfif", alt: "Photogrammetry and cultural preservation workshop at ATALM 2025" }
+    ]
   },
   {
     slug: "ar-google-maps-demo",
