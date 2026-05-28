@@ -35,9 +35,9 @@ export const projects: Project[] = [
     impact:
       "Defined visual quality standards and environment look/feel to strengthen atmosphere, readability, and immersion for cooperative gameplay.",
     description: [
-      "On Benthos, I serve as Graphics Lead, focusing on visual direction, mood, and a cohesive underwater identity that supports exploration and teamwork.",
-      "My work includes shaping lighting language, material consistency, and environmental storytelling so players can navigate unknown spaces while still feeling a sense of spatial trust.",
-      "Our team intentionally treats mistakes as learning opportunities. That mindset helps us improve rapidly while keeping scope aligned with the intended player experience."
+      "On Benthos, I am the Graphics Lead. My focus is on the look and feel of the game: lighting, materials, color, and how the environment reads to a player who has never seen it before.",
+      "A lot of the work is about building spatial trust. Players need to feel comfortable navigating an alien underwater world without a map in their hand, so the visuals have to do a lot of the communicating.",
+      "We treat the project as a learning experience as much as a product, which means we ship, get feedback, and adjust. That loop has pushed the quality forward faster than trying to get it perfect before anyone sees it."
     ],
     tags: ["Co-op", "Underwater", "Atmosphere", "Graphics Direction", "Unreal"],
     mediaAlt: "Benthos header artwork",
@@ -54,17 +54,16 @@ export const projects: Project[] = [
     slug: "immersion-2026-featured-showcase",
     title: "Immersion 2026 Featured Showcase",
     summary:
-      "Built a mobile WebAR experience showcased to 50 attendees at Hometown Heroes — featured in SJSU Spring 2026 Magazine.",
+      "Built a mobile WebAR experience showcased to 50 attendees at Hometown Heroes, featured in SJSU Spring 2026 Magazine.",
     role: "Developer",
     tools: ["8th Wall", "A-Frame", "AR.js", "Mobile WebAR"],
     year: "2026",
     impact:
-      "Delivered a stable, public-facing immersive demo with adaptive performance logic for heterogeneous mobile devices.",
+      "Shipped a stable, public-facing WebAR demo with device performance checks so it ran smoothly across all the different phones attendees brought.",
     description: [
-      "This project was engineered for real-world reliability in a live event setting, where device variation is expected rather than exceptional.",
-      "I implemented dynamic device performance checks and conditionally enabled real-time physics simulation only on capable devices to maintain a smooth experience.",
-      "The final deployment balanced visual ambition and practical stability, ensuring consistent interaction quality for attendees.",
-      "The project was recognized in the SJSU Spring 2026 Magazine as part of the Immersion 2026 showcase coverage."
+      "This project had to work in the real world, not just in testing. Attendees showed up with all kinds of devices, so I built in performance checks that scaled the experience up or down depending on what each phone could handle.",
+      "On capable devices, real-time physics ran live. On lower-end phones, it fell back gracefully without breaking the experience.",
+      "It was featured in the SJSU Spring 2026 Magazine as part of the Immersion 2026 showcase coverage."
     ],
     tags: ["WebAR", "Public Demo", "Performance Tuning", "8th Wall", "A-Frame", "AR.js"],
     mediaAlt:
@@ -78,16 +77,16 @@ export const projects: Project[] = [
     slug: "digital-tools-cultural-preservation-workshop",
     title: "Community Education & Outreach",
     summary:
-      "Led hands-on STEM and digital preservation workshops at public events — including a drone coding session at the City of Santa Clara's STEM Zone and a photogrammetry workshop at ATALM 2025.",
+      "Led hands-on STEM and digital preservation workshops at public events, including a drone coding session at Santa Clara's STEM Zone and a photogrammetry workshop at ATALM 2025.",
     role: "Workshop Facilitator",
     tools: ["Polycam", "Photogrammetry", "DJI Tello", "Scratch", "Python"],
     year: "2025–2026",
     impact:
-      "Brought accessible, hands-on technology education to diverse public audiences — from indigenous cultural stewards digitizing artifacts to students writing their first lines of drone code.",
+      "Ran hands-on technology workshops for public audiences ranging from students writing their first drone code to indigenous communities digitizing cultural artifacts.",
     description: [
-      "At the City of Santa Clara's STEM Zone (April 2026), I facilitated a drone coding workshop as part of the SJSU iSchool's booth alongside Stanford, SCU, and Mission College. Participants learned to program DJI Ryze Tello drones using Scratch and Python, turning flight paths into a first coding experience.",
-      "At ATALM 2025, I co-developed curriculum and live exercises making photogrammetry approachable for audiences with limited technical background, with a focus on cultural artifact digitization for indigenous communities.",
-      "Both workshops shared a core design principle: technical tools should lower barriers, not raise them. Outputs were practical, portable, and participant-owned."
+      "At the City of Santa Clara's STEM Zone (April 2026), I ran a drone coding workshop at the SJSU iSchool's booth alongside Stanford, SCU, and Mission College. Participants programmed DJI Ryze Tello drones in Scratch and Python, many of them for the first time.",
+      "At ATALM 2025, I co-developed curriculum and hands-on exercises to make photogrammetry accessible to audiences with limited technical backgrounds, focused on digitizing indigenous cultural artifacts.",
+      "The goal in both cases was the same: make the technology easy enough to actually use, and leave people with something they can take home."
     ],
     tags: ["Education", "Drones", "Photogrammetry", "Accessibility", "Cultural Preservation", "Community"],
     mediaAlt: "SJSU iSchool drone coding workshop at STEM Zone Santa Clara 2026",
@@ -107,11 +106,11 @@ export const projects: Project[] = [
     tools: ["Unity", "Google Earth", "Cesium", "Image Anchors"],
     year: "2024",
     impact:
-      "Proved live AR wayfinding feasibility by combining mapped POIs, image-anchored alignment, and event-ready deployment workflows.",
+      "Showed that live AR wayfinding is doable by combining real map data, image anchors, and a deployment setup that actually held up during the event.",
     description: [
-      "I led both product direction and technical implementation, ensuring the demo communicated location context clearly while remaining intuitive during live use.",
-      "The system integrated image anchors with Google Earth and Cesium data, mapping eight points of interest into a coherent mixed-reality navigation flow.",
-      "Deployment focused on practical demonstration value: onboarding participants quickly, maintaining alignment reliability, and validating the concept with real users."
+      "I handled both the design direction and the technical build, making sure the navigation was clear enough to use without instructions.",
+      "The system pulled from Google Earth and Cesium to place eight points of interest in AR, with image anchors keeping everything aligned as participants moved around.",
+      "Getting it working reliably in front of 40+ people was the real test, and it passed."
     ],
     tags: ["AR Navigation", "Unity", "Cesium", "Live Deployment", "Mapping"],
     mediaAlt: "AR Google Maps demo placeholder",
@@ -126,12 +125,12 @@ export const projects: Project[] = [
     tools: ["React", "Python", "LLM APIs", "RAG"],
     year: "2026",
     impact:
-      "Reduced repetitive advising load for iSchool staff by providing students instant, source-backed answers to common program and course questions.",
+      "Gives students faster answers to common advising questions while freeing up iSchool staff to focus on cases that actually need a person.",
     description: [
-      "Advisors and professors at SJSU average 40–60 hours of work per week, with a significant portion spent answering repeated student questions — a problem this chatbot was built to address.",
-      "The system grounds responses in a vetted knowledge base drawn from official iSchool sources (program handbooks, FAQs, websites), returning cited answers and routing edge cases to human advisors.",
-      "Built with a React frontend and Python backend, the pipeline evaluates multiple LLMs to optimize accuracy, while an admin analytics dashboard surfaces documentation gaps and common confusion points.",
-      "This is an ongoing senior design project developed with teammates Marios Tawdros and Joshua Rieta, advised by Karen D. Wang."
+      "SJSU advisors and professors already work 40 to 60 hours a week. A big chunk of that goes to answering the same questions over and over. This chatbot handles those.",
+      "Responses are grounded in official iSchool sources like the program handbook and FAQs, so students get cited answers instead of guesses. Anything outside that scope gets routed to a real advisor.",
+      "Built with React on the front end and Python on the back end. We tested several LLMs to find the best fit, and added an admin dashboard so staff can see what questions keep coming up.",
+      "This is an ongoing senior design project with teammates Marios Tawdros and Joshua Rieta, advised by Karen D. Wang."
     ],
     tags: ["AI", "Chatbot", "RAG", "React", "Python", "Higher Education"],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
