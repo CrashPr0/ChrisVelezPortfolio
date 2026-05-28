@@ -15,6 +15,7 @@ export type Project = {
    * Example: "50% 40%" (x y).
    */
   mediaFocus?: string;
+  githubUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -100,22 +101,24 @@ export const projects: Project[] = [
     mediaPath: "/images/placeholders/project-ar-maps.svg"
   },
   {
-    slug: "tilt-five-racing-game",
-    title: "Tilt Five Racing Game",
+    slug: "ischool-advising-chatbot",
+    title: "iSchool Advising Support Chatbot",
     summary:
-      "Developed a 3D racing game for Tilt Five AR glasses with real-time object tracking and physics systems.",
+      "Designed and built an AI-powered advising chatbot for SJSU's School of Information to answer program-specific questions with cited, accurate responses.",
     role: "Developer",
-    tools: ["Tilt Five SDK", "AR", "Physics Systems"],
-    year: "2023",
+    tools: ["React", "Python", "LLM APIs", "RAG"],
+    year: "2026",
     impact:
-      "Built an interaction-rich AR gameplay prototype with responsive tracking and tuned physics behavior for tabletop mixed reality.",
+      "Reduced repetitive advising load for iSchool staff by providing students instant, source-backed answers to common program and course questions.",
     description: [
-      "This project focused on blending arcade-style racing mechanics with the unique affordances of Tilt Five's spatial hardware.",
-      "I implemented tracking-aware gameplay behavior and a physics pipeline that felt consistent under real-time tabletop constraints.",
-      "The result was a playable AR experience that demonstrated system integration across rendering, interactions, and simulation."
+      "Advisors and professors at SJSU average 40–60 hours of work per week, with a significant portion spent answering repeated student questions — a problem this chatbot was built to address.",
+      "The system grounds responses in a vetted knowledge base drawn from official iSchool sources (program handbooks, FAQs, websites), returning cited answers and routing edge cases to human advisors.",
+      "Built with a React frontend and Python backend, the pipeline evaluates multiple LLMs to optimize accuracy, while an admin analytics dashboard surfaces documentation gaps and common confusion points.",
+      "This is an ongoing senior design project developed with teammates Marios Tawdros and Joshua Rieta, advised by Karen D. Wang."
     ],
-    tags: ["Tilt Five", "AR Gameplay", "Physics", "Real-time Tracking"],
-    mediaAlt: "Tilt Five racing game placeholder",
-    mediaPath: "/images/placeholders/project-tilt-five.svg"
+    tags: ["AI", "Chatbot", "RAG", "React", "Python", "Higher Education"],
+    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
+    mediaPath: "/images/placeholders/project-ischool-chatbot.svg",
+    githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22"
   }
 ];
