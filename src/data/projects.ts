@@ -16,6 +16,7 @@ export type Project = {
    */
   mediaFocus?: string;
   githubUrl?: string;
+  pressUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -44,22 +45,25 @@ export const projects: Project[] = [
     slug: "immersion-2026-featured-showcase",
     title: "Immersion 2026 Featured Showcase",
     summary:
-      "Built a mobile WebAR experience showcased to 50 attendees at Hometown Heroes.",
+      "Built a mobile WebAR experience showcased to 50 attendees at Hometown Heroes — featured in SJSU Spring 2026 Magazine.",
     role: "Developer",
-    tools: ["A-Frame", "AR.js", "Mobile WebAR"],
+    tools: ["8th Wall", "A-Frame", "AR.js", "Mobile WebAR"],
     year: "2026",
     impact:
       "Delivered a stable, public-facing immersive demo with adaptive performance logic for heterogeneous mobile devices.",
     description: [
       "This project was engineered for real-world reliability in a live event setting, where device variation is expected rather than exceptional.",
       "I implemented dynamic device performance checks and conditionally enabled real-time physics simulation only on capable devices to maintain a smooth experience.",
-      "The final deployment balanced visual ambition and practical stability, ensuring consistent interaction quality for attendees."
+      "The final deployment balanced visual ambition and practical stability, ensuring consistent interaction quality for attendees.",
+      "The project was recognized in the SJSU Spring 2026 Magazine as part of the Immersion 2026 showcase coverage."
     ],
-    tags: ["WebAR", "Public Demo", "Performance Tuning", "A-Frame", "AR.js"],
+    tags: ["WebAR", "Public Demo", "Performance Tuning", "8th Wall", "A-Frame", "AR.js"],
     mediaAlt:
       "Sharkways onsite deliverable: two mobile WebAR screenshots of a shark character on a sidewalk, including a selfie view and an event prompt screen",
     mediaPath: "/images/placeholders/project-immersion-2026.png",
-    mediaFocus: "68% 52%"
+    mediaFocus: "68% 52%",
+    githubUrl: "https://github.com/klevrlab/city-project",
+    pressUrl: "https://sjsu.foleon.com/sjsu-magazine/spring-2026-sjsu-magazine/"
   },
   {
     slug: "digital-tools-cultural-preservation-workshop",
