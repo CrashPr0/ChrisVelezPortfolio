@@ -19,6 +19,8 @@ export type Project = {
   mediaFocus?: string;
   githubUrl?: string;
   pressUrl?: string;
+  siteUrl?: string;
+  siteLabel?: string;
 };
 
 export const projects: Project[] = [
@@ -44,7 +46,9 @@ export const projects: Project[] = [
       { path: "/images/placeholders/benthos-header.png", alt: "Benthos header artwork" },
       { path: "/images/placeholders/benthos.png", alt: "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead" }
     ],
-    mediaFocus: "50% 58%"
+    mediaFocus: "50% 58%",
+    siteUrl: "https://doodlefishgames.pages.dev/benthos/",
+    siteLabel: "Visit Site (In Construction)"
   },
   {
     slug: "immersion-2026-featured-showcase",
