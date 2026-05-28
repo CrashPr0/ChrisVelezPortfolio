@@ -118,7 +118,7 @@ export const projects: Project[] = [
     ],
     tags: ["AI", "Chatbot", "RAG", "React", "Python", "Higher Education"],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.svg",
+    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
     githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22"
   }
 ];
