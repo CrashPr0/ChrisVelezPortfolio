@@ -135,7 +135,8 @@
   }
 
   .case-image {
-    @apply h-64 w-full rounded-lg object-cover md:h-full;
+    @apply w-full rounded-lg object-contain md:h-full;
+    background-color: theme('colors.surface.800');
   }
 
   .timeline {
