@@ -19,7 +19,10 @@ const revealElements = () => {
     { threshold: 0.12 }
   );
 
-  items.forEach((item) => observer.observe(item));
+  items.forEach((item) => {
+    item.classList.add("js-reveal-pending");
+    observer.observe(item);
+  });
 };
 
 const setupCopyEmail = () => {
