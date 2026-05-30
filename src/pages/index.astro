@@ -2,7 +2,6 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
-import PortfolioGallery from "@/components/PortfolioGallery.astro";
 import { currentFocus, siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
 import { hrefFor, withBase } from "@/utils/paths";
@@ -49,29 +48,15 @@ const featuredProjects = projects.slice(0, 3);
     </div>
   </section>
 
-  <PortfolioGallery
-    title="Browse my work"
-    archiveHref="/projects"
-    archiveText="View all projects"
-    images={projects.map((p, i) => ({
-      src: p.mediaPath,
-      alt: p.mediaAlt,
-      title: p.title,
-      span: i === 0 ? "wide" : i === 2 ? "tall" : "default"
-    }))}
-  />
-
   <section class="container py-14 md:py-20" id="featured-projects">
     <SectionHeading
       kicker="Selected Work"
       title="Graphics, spatial systems, and public-facing XR"
       description="Game development, immersive deployment, and community-centered technical work."
     />
-    <div class="mt-10 grid gap-6 md:grid-cols-2 stagger-children">
-      {featuredProjects.map((project, i) => (
-        <div class:list={["reveal", i === 0 ? "md:col-span-2 lg:col-span-1" : ""]}>
-          <ProjectCard project={project} />
-        </div>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3 stagger-children">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project} />
       ))}
     </div>
   </section>

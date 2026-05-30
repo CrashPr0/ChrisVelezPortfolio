@@ -11,7 +11,10 @@ type Props = {
 const { project, showLink = true } = Astro.props;
 ---
 
-<article class="project-card reveal">
+<article class="project-card reveal spotlight-card">
+  <!-- Accent bar: slides in from left on hover -->
+  <div class="project-accent-bar" aria-hidden="true"></div>
+
   <div class="project-media-wrap">
     <img
       src={withBase(project.mediaPath)}
@@ -21,24 +24,96 @@ const { project, showLink = true } = Astro.props;
       style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
     />
   </div>
+
   <div class="space-y-4 p-6">
     <div class="flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
       <span>{project.year}</span>
       <span class="dot" aria-hidden="true"></span>
       <span>{project.role}</span>
     </div>
-    <h3 class="font-display text-2xl font-bold tracking-tight text-white">{project.title}</h3>
+    <h3 class="font-display text-2xl font-bold tracking-tighter text-white">{project.title}</h3>
     <p class="text-sm text-neutral-400">{project.summary}</p>
     <p class="text-sm text-neutral-300"><strong class="font-medium text-white/80">Impact:</strong> {project.impact}</p>
     <ul class="flex flex-wrap gap-2">
       {project.tags.map((tag) => <TagPill label={tag} />)}
     </ul>
-    {
-      showLink && (
-        <a href={withBase(`/projects#${project.slug}`)} class="inline-flex text-xs font-semibold uppercase tracking-wider text-accent-400 hover:text-accent-300">
-          View project
-        </a>
-      )
-    }
+    {showLink && (
+      <a
+        href={withBase(`/projects#${project.slug}`)}
+        class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-400 transition hover:text-accent-300 hover:gap-2.5"
+      >
+        View project
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    )}
   </div>
+
+  <!-- Spotlight overlay (positioned via JS mouse tracking) -->
+  <div class="project-spotlight" aria-hidden="true"></div>
 </article>
+
+<style>
+  .project-card {
+    position: relative;
+  }
+
+  /* Accent bar: 2px line that sweeps across the top on hover */
+  .project-accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 9999px 9999px 0 0;
+    background: linear-gradient(90deg, theme('colors.accent.500'), theme('colors.accent.300'));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  .project-card:hover .project-accent-bar {
+    transform: scaleX(1);
+  }
+
+  /* Spotlight radial glow follows cursor */
+  .project-spotlight {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(
+      400px circle at var(--x, 50%) var(--y, 50%),
+      rgba(58, 210, 242, 0.07),
+      transparent 70%
+    );
+    z-index: 0;
+  }
+
+  .project-card:hover .project-spotlight {
+    opacity: 1;
+  }
+
+  /* Image zoom on card hover */
+  .project-card:hover .project-media {
+    transform: scale(1.04);
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.spotlight-card').forEach((card) => {
+    const spotlight = card.querySelector<HTMLElement>('.project-spotlight');
+    if (!spotlight) return;
+    card.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', `${x}%`);
+      card.style.setProperty('--y', `${y}%`);
+    });
+  });
+</script>
