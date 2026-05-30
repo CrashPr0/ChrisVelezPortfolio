@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import PortfolioGallery from "@/components/PortfolioGallery.astro";
 import { currentFocus, siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
 import { hrefFor, withBase } from "@/utils/paths";
@@ -44,6 +45,13 @@ const featuredProjects = projects.slice(0, 3);
       </div>
     </div>
   </section>
+
+  <PortfolioGallery
+    title="Browse my work"
+    archiveHref="/projects"
+    archiveText="View all projects"
+    images={projects.map(p => ({ src: p.mediaPath, alt: p.mediaAlt, title: p.title }))}
+  />
 
   <section class="container py-14 md:py-20" id="featured-projects">
     <SectionHeading

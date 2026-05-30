@@ -1,0 +1,140 @@
+---
+import { withBase } from "@/utils/paths";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  title?: string;
+}
+
+interface Props {
+  title?: string;
+  archiveHref?: string;
+  archiveText?: string;
+  images: GalleryImage[];
+  maxHeight?: number;
+}
+
+const {
+  title = "Browse my work",
+  archiveHref = "/projects",
+  archiveText = "View all projects",
+  images,
+  maxHeight = 120,
+} = Astro.props;
+
+const total = images.length;
+const middle = Math.floor(total / 2);
+---
+
+<section
+  aria-label={title}
+  class="relative py-20 px-4"
+  id="portfolio-gallery"
+>
+  <div class="mx-auto max-w-7xl rounded-2xl border border-white/[0.06] bg-surface-800/50 backdrop-blur-sm overflow-hidden">
+
+    <!-- Header -->
+    <div class="relative z-10 text-center pt-16 pb-8 px-8">
+      <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">{title}</h2>
+      <a
+        href={withBase(archiveHref)}
+        class="inline-flex items-center gap-3 bg-white text-surface-900 px-6 py-3 rounded-full font-medium hover:bg-neutral-200 transition-colors group mb-20"
+      >
+        <span>{archiveText}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Desktop: 3D overlapping layout -->
+    <div class="hidden md:block relative overflow-hidden h-[400px] -mb-[200px]">
+      <div class="gallery-track flex pb-8 pt-40 items-end justify-center" style={`--spacing: -18rem`}>
+        {images.map((image, index) => {
+          const distanceFromMiddle = Math.abs(index - middle);
+          const staggerOffset = maxHeight - distanceFromMiddle * 20;
+          const zIndex = total - index;
+          return (
+            <div
+              class="gallery-card group cursor-pointer flex-shrink-0"
+              style={`z-index: ${zIndex}; --stagger: ${staggerOffset}px; margin-left: -18rem;`}
+              data-index={index}
+            >
+              <div
+                class="relative aspect-video w-64 md:w-80 lg:w-96 rounded-lg overflow-hidden transition-transform duration-200 group-hover:scale-105"
+                style="box-shadow: rgba(0,0,0,0.01) 0.8px 0 0.8px, rgba(0,0,0,0.03) 2.4px 0 2.4px, rgba(0,0,0,0.08) 6.4px 0 6.4px, rgba(0,0,0,0.25) 20px 0 20px;"
+              >
+                <img
+                  src={withBase(image.src)}
+                  alt={image.alt}
+                  class="w-full h-full object-cover object-left-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- Mobile: marquee layout -->
+    <div class="block md:hidden relative pb-8">
+      <div class="group flex overflow-hidden p-2 gap-4">
+        {[0, 1, 2, 3].map((repeat) => (
+          <div class:list={["flex shrink-0 gap-4 animate-marquee", { "group-hover:[animation-play-state:paused]": true }]}>
+            {images.map((image, index) => (
+              <div class="flex-shrink-0">
+                <div
+                  class="relative aspect-video w-64 rounded-lg overflow-hidden"
+                  style="box-shadow: rgba(0,0,0,0.01) 0.8px 0 0.8px, rgba(0,0,0,0.25) 20px 0 20px;"
+                >
+                  <img
+                    src={withBase(image.src)}
+                    alt={image.alt}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+  function applyState(hoveredIndex: number | null) {
+    cards.forEach((card, i) => {
+      const stagger = parseFloat(card.style.getPropertyValue('--stagger')) || 0;
+      let yOffset: number;
+
+      if (hoveredIndex === null) {
+        yOffset = -stagger;
+      } else if (i === hoveredIndex) {
+        yOffset = -120;
+      } else {
+        yOffset = 0;
+      }
+
+      card.style.transform = `perspective(5000px) rotateY(-45deg) translateY(${yOffset}px)`;
+    });
+  }
+
+  // Initial state
+  cards.forEach((card, i) => {
+    const stagger = parseFloat(card.style.getPropertyValue('--stagger')) || 0;
+    card.style.transform = `perspective(5000px) rotateY(-45deg) translateY(${-stagger}px)`;
+    card.style.transition = 'transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1)';
+
+    card.addEventListener('mouseenter', () => applyState(i));
+    card.addEventListener('mouseleave', () => applyState(null));
+  });
+</script>
