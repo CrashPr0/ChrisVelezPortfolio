@@ -66,8 +66,13 @@ export const projects: Project[] = [
       "It was featured in the SJSU Spring 2026 Magazine as part of the Immersion 2026 showcase coverage."
     ],
     tags: ["WebAR", "Public Demo", "Performance Tuning", "8th Wall", "A-Frame", "AR.js"],
-    mediaAlt: "Sharkways onsite deliverable: two mobile WebAR screenshots of a shark character on a sidewalk, including a selfie view and an event prompt screen",
-    mediaPath: "/images/placeholders/project-immersion-2026.png",
+    mediaAlt: "Sharks Way AR experience: teal shark character overlaid on the SJSU campus sidewalk",
+    mediaPath: "/images/placeholders/SharksWayIMG1.jpg",
+    mediaSlides: [
+      { path: "/images/placeholders/SharksWayIMG1.jpg", alt: "Sharks Way AR: teal shark on SJSU campus sidewalk with checkpoint UI" },
+      { path: "/images/placeholders/SharksWayIMG2.jpg", alt: "Sharks Way AR: second view of the shark AR experience on campus" },
+      { path: "/images/placeholders/project-immersion-2026.png", alt: "Sharkways onsite deliverable: mobile WebAR screenshots at Hometown Heroes" }
+    ],
     mediaFocus: "68% 52%",
     githubUrl: "https://github.com/klevrlab/city-project",
     pressUrl: "https://sjsu.foleon.com/sjsu-magazine/spring-2026-sjsu-magazine/"
