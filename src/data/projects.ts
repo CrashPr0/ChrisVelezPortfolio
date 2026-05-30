@@ -97,25 +97,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "ar-google-maps-demo",
-    title: "AR Google Maps Demo",
-    summary:
-      "Led design and Unity development of an AR navigation demo featuring 8 points of interest, deployed live with 40+ participants.",
-    role: "Lead Designer / Unity Developer",
-    tools: ["Unity", "Google Earth", "Cesium", "Image Anchors"],
-    year: "2024",
-    impact:
-      "Showed that live AR wayfinding is doable by combining real map data, image anchors, and a deployment setup that actually held up during the event.",
-    description: [
-      "I handled both the design direction and the technical build, making sure the navigation was clear enough to use without instructions.",
-      "The system pulled from Google Earth and Cesium to place eight points of interest in AR, with image anchors keeping everything aligned as participants moved around.",
-      "Getting it working reliably in front of 40+ people was the real test, and it passed."
-    ],
-    tags: ["AR Navigation", "Unity", "Cesium", "Live Deployment", "Mapping"],
-    mediaAlt: "AR Google Maps demo placeholder",
-    mediaPath: "/images/placeholders/project-ar-maps.svg"
-  },
-  {
     slug: "ischool-advising-chatbot",
     title: "iSchool Advising Support Chatbot",
     summary:
