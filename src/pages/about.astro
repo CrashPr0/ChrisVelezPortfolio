@@ -1,65 +1,390 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
 import TagPill from "@/components/TagPill.astro";
 import { education, skillGroups, siteConfig } from "@/data/site";
-import { hrefFor } from "@/utils/paths";
+import { hrefFor, withBase } from "@/utils/paths";
+
+const highlights = [
+  {
+    title: "Current Work",
+    description:
+      "Graphics Lead on Benthos, a co-op underwater exploration game. Senior design: AI advising chatbot for SJSU's iSchool.",
+  },
+  {
+    title: "Focus Areas",
+    description:
+      "XR and AR/VR systems, immersive graphics pipelines, cultural preservation through photogrammetry, and game technology.",
+  },
+  {
+    title: "Availability",
+    description:
+      "Actively seeking internships and research roles in XR, graphics, and emerging tech. Open to remote and Bay Area opportunities.",
+  },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    handle: "christopher-velez",
+    href: siteConfig.linkedIn,
+    icon: "linkedin",
+  },
+  {
+    label: "GitHub",
+    handle: "CrashPr0",
+    href: siteConfig.github,
+    icon: "github",
+  },
+];
 ---
 
 <BaseLayout
   title="About | Christopher Velez"
-  description="About Christopher Velez - Computer Engineering student specializing in AI-powered XR and immersive systems."
+  description="About Christopher Velez - Computer Engineering student specializing in XR and immersive systems."
   currentPath="/about"
 >
-  <section class="container py-16 md:py-20">
-    <SectionHeading
-title="Engineer focused on future-facing spatial and interactive systems"
-      description="I am a Computer Engineering student specializing in AI and XR technologies, building immersive systems for research, education, and public engagement."
-    />
-  </section>
+  <section class="container py-16 md:py-20 pb-24 md:pb-32">
 
-  <section class="container grid gap-8 pb-20 lg:grid-cols-[1.1fr_1fr]">
-    <article class="reveal rounded-4xl border border-white/[0.06] bg-surface-800/40 p-8">
-      <h2 class="font-display text-2xl font-bold text-white">Professional Bio</h2>
-      <div class="mt-5 space-y-4 text-sm leading-relaxed text-neutral-400">
-        <p>
-          I design and ship immersive systems that combine technical depth with real-world usability,
-          from XR prototypes and graphics pipelines to public-facing interactive demos.
-        </p>
-        <p>
-          My work sits at the intersection of software engineering, spatial computing, and digital
-          preservation. I care about experiences that are visually strong, technically resilient, and
-          genuinely useful to the people who use them.
-        </p>
-        <p>
-          I am actively pursuing opportunities where I can contribute to next-generation XR,
-          interactive graphics, and human-centered emerging technology.
-        </p>
-      </div>
-      <img src={hrefFor(siteConfig.headshotPath)} alt="[headshot or hero image if needed]" class="mt-7 rounded-lg border border-white/[0.06]" />
-    </article>
+    <!-- Glassmorphism outer card -->
+    <div class="glass-card reveal">
+      <!-- Gradient overlay -->
+      <div class="glass-overlay" aria-hidden="true"></div>
 
-    <div class="space-y-8">
-      <article class="reveal rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
-        <h2 class="font-display text-lg font-bold text-white">Education</h2>
-        <p class="mt-4 text-sm text-neutral-400">{education.university}</p>
-        <p class="text-sm text-neutral-400">{education.degree}</p>
-        <p class="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{education.graduation}</p>
-      </article>
+      <div class="relative grid gap-12 lg:grid-cols-2">
 
-      <article class="reveal rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
-        <h2 class="font-display text-lg font-bold text-white">Skills</h2>
-        <div class="mt-5 space-y-5">
-          {Object.entries(skillGroups).map(([group, skills]) => (
-            <section>
-              <h3 class="mb-2 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{group}</h3>
-              <div class="flex flex-wrap gap-2">
-                {skills.map((skill) => <TagPill label={skill} />)}
+        <!-- Left column: bio + highlights + CTA -->
+        <div class="space-y-8">
+          <span class="glass-badge">Computer Engineering · SJSU</span>
+
+          <div class="space-y-4">
+            <h1 class="text-2xl font-semibold tracking-tight text-white md:text-3xl">
+              Christopher Velez, Computer Engineer &amp; XR Systems Developer
+            </h1>
+            <p class="max-w-xl text-base leading-relaxed text-neutral-400">
+              Computer Engineering student at SJSU building immersive systems that combine technical
+              depth with real-world usability — from XR prototypes and graphics pipelines to
+              public-facing interactive demos.
+            </p>
+          </div>
+
+          <!-- Highlights grid -->
+          <div class="grid gap-4">
+            {highlights.map((item, i) => (
+              <div class="highlight-card reveal" style={`animation-delay: ${i * 80}ms`}>
+                <div class="highlight-hover-overlay" aria-hidden="true"></div>
+                <div class="relative space-y-1.5">
+                  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">
+                    {item.title}
+                  </p>
+                  <p class="text-sm leading-relaxed text-neutral-400">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </section>
-          ))}
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div class="flex flex-wrap gap-3 pt-2">
+            <a href={withBase("/projects")} class="btn">
+              View projects
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </a>
+            <a href={hrefFor(siteConfig.resumePath)} class="btn btn-secondary" download>
+              Download Resume
+            </a>
+          </div>
         </div>
-      </article>
+
+        <!-- Right column: profile card -->
+        <div class="relative">
+          <div class="profile-glow" aria-hidden="true"></div>
+
+          <div class="profile-card reveal">
+            <!-- Avatar -->
+            <div class="flex flex-col items-center text-center">
+              <div class="avatar-wrap">
+                <div class="avatar-glow" aria-hidden="true"></div>
+                <img
+                  src={withBase(siteConfig.headshotPath)}
+                  alt="Christopher Velez headshot"
+                  class="avatar-img"
+                  loading="eager"
+                />
+              </div>
+
+              <div class="mt-5 space-y-1">
+                <h2 class="text-2xl font-semibold tracking-tight text-white">
+                  Christopher Velez
+                </h2>
+                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-neutral-500">
+                  Computer Engineer · XR Systems
+                </p>
+              </div>
+
+              <p class="mt-4 max-w-xs text-sm leading-relaxed text-neutral-400">
+                Building immersive experiences where engineering rigor meets creative vision.
+              </p>
+            </div>
+
+            <!-- Social links -->
+            <div class="mt-8 flex flex-col gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-link"
+                >
+                  <div class="flex items-center gap-3">
+                    <span class="social-icon-wrap">
+                      {link.icon === "linkedin" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                      )}
+                      {link.icon === "github" && (
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.52 11.52 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                      )}
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-white">{link.label}</p>
+                      <p class="text-xs text-neutral-500">{link.handle}</p>
+                    </div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="social-arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                  </svg>
+                </a>
+              ))}
+            </div>
+
+            <!-- Skills summary inside profile card -->
+            <div class="mt-8 border-t border-white/[0.06] pt-6">
+              <p class="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">Skills</p>
+              <div class="space-y-4">
+                {Object.entries(skillGroups).map(([group, skills]) => (
+                  <section>
+                    <p class="mb-2 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">{group}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {skills.map((skill) => <TagPill label={skill} />)}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
+
+    <!-- Education strip below the card -->
+    <div class="edu-strip reveal mt-8">
+      <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{education.university}</p>
+      <p class="mt-1 text-sm text-neutral-300">{education.degree}</p>
+      <p class="mt-0.5 text-xs text-neutral-500">{education.graduation}</p>
+    </div>
+
   </section>
 </BaseLayout>
+
+<style>
+  /* Glassmorphism outer card */
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 2rem;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 40px 80px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (min-width: 768px) {
+    .glass-card {
+      padding: 3rem;
+    }
+  }
+
+  .glass-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+    border-radius: inherit;
+  }
+
+  /* Badge */
+  .glass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.375rem 1rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Highlight cards */
+  .highlight-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.25rem;
+    backdrop-filter: blur(8px);
+    transition: border-color 200ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .highlight-card:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .highlight-card:hover .highlight-hover-overlay {
+      opacity: 1;
+    }
+  }
+
+  .highlight-hover-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+    z-index: 0;
+  }
+
+  /* Profile card (right column) */
+  .profile-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    background: radial-gradient(ellipse at 50% 0%, rgba(58, 210, 242, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    filter: blur(40px);
+  }
+
+  .profile-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    height: 100%;
+  }
+
+  /* Avatar */
+  .avatar-wrap {
+    position: relative;
+    margin-bottom: 0.25rem;
+  }
+
+  .avatar-glow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 8rem;
+    height: 8rem;
+    border-radius: 9999px;
+    background: rgba(58, 210, 242, 0.15);
+    filter: blur(24px);
+    pointer-events: none;
+  }
+
+  .avatar-img {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    object-fit: cover;
+    object-position: top;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Social links */
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    transition: border-color 160ms ease-out, transform 160ms ease-out, background-color 160ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .social-link:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .social-link:hover .social-arrow {
+      transform: translate(2px, -2px);
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .social-link:active {
+    transform: scale(0.97);
+    transition-duration: 100ms;
+  }
+
+  .social-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .social-arrow {
+    color: rgba(255, 255, 255, 0.3);
+    transition: transform 160ms ease-out, color 160ms ease;
+    flex-shrink: 0;
+  }
+
+  /* Education strip */
+  .edu-strip {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+</style>
