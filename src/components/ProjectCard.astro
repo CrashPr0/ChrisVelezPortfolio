@@ -1,6 +1,7 @@
 ---
 import type { Project } from "@/data/projects";
 import TagPill from "@/components/TagPill.astro";
+import ImageCarousel from "@/components/ImageCarousel.astro";
 import { withBase } from "@/utils/paths";
 
 type Props = {
@@ -16,13 +17,21 @@ const { project, showLink = true } = Astro.props;
   <div class="project-accent-bar" aria-hidden="true"></div>
 
   <div class="project-media-wrap">
-    <img
-      src={withBase(project.mediaPath)}
-      alt={project.mediaAlt}
-      class="project-media"
-      loading="lazy"
-      style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
-    />
+    {project.mediaSlides && project.mediaSlides.length > 1 ? (
+      <ImageCarousel
+        slides={project.mediaSlides}
+        focus={project.mediaFocus}
+        id={`card-${project.slug}`}
+      />
+    ) : (
+      <img
+        src={withBase(project.mediaPath)}
+        alt={project.mediaAlt}
+        class="project-media"
+        loading="lazy"
+        style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
+      />
+    )}
   </div>
 
   <div class="space-y-4 p-6">

@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import TagPill from "@/components/TagPill.astro";
+import ImageCarousel from "@/components/ImageCarousel.astro";
 import { projects } from "@/data/projects";
 import { withBase } from "@/utils/paths";
 ---
@@ -24,13 +25,21 @@ title="Immersive systems and interactive technology"
         <article id={project.slug} class="case-study reveal">
           <div class="case-grid">
             <div class="flex flex-col gap-8">
-              <img
-                src={withBase(project.mediaPath)}
-                alt={project.mediaAlt}
-                class="case-image"
-                loading="lazy"
-                style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
-              />
+              {project.mediaSlides && project.mediaSlides.length > 1 ? (
+                <ImageCarousel
+                  slides={project.mediaSlides}
+                  focus={project.mediaFocus}
+                  id={project.slug}
+                />
+              ) : (
+                <img
+                  src={withBase(project.mediaPath)}
+                  alt={project.mediaAlt}
+                  class="case-image"
+                  loading="lazy"
+                  style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
+                />
+              )}
               <div class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-4">
                 <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">Tools</p>
                 <p class="mt-2 text-sm text-neutral-400">{project.tools.join(" · ")}</p>
