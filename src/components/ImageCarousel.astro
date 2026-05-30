@@ -159,6 +159,12 @@ import { withBase } from "@/utils/paths";
       dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index ?? '0', 10)); resetAuto(); });
     });
 
+    // Pause auto-play on hover/focus — resume on leave
+    carousel.addEventListener('mouseenter', () => clearInterval(timer));
+    carousel.addEventListener('focusin', () => clearInterval(timer));
+    carousel.addEventListener('mouseleave', () => { if (count > 1) startAuto(); });
+    carousel.addEventListener('focusout', () => { if (count > 1) startAuto(); });
+
     if (count > 1) startAuto();
   });
 </script>

@@ -25,7 +25,7 @@ const ogImage = new URL(ogImagePath, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,6 +34,8 @@ const ogImage = new URL(ogImagePath, Astro.site);
     <meta name="author" content={siteConfig.name} />
     <meta name="robots" content="index,follow" />
     <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
 
     <meta property="og:type" content="website" />
@@ -46,7 +48,7 @@ const ogImage = new URL(ogImagePath, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
   </head>
-  <body class="min-h-screen bg-surface-900 text-white/90 antialiased">
+  <body class="min-h-dvh bg-surface-900 text-white/90 antialiased">
     <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
     <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
@@ -56,6 +58,7 @@ const ogImage = new URL(ogImagePath, Astro.site);
       <slot />
     </main>
     <Footer />
+    <script>document.documentElement.classList.remove('no-js');</script>
     <script type="module" src={hrefFor("/scripts/site.js")}></script>
   </body>
 </html>
