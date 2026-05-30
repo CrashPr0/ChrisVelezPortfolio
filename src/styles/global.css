@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+/* Geist loaded via BaseLayout <link> for preconnect benefit */
 
 @tailwind base;
 @tailwind components;
@@ -17,6 +17,10 @@
   body {
     background: #0a0a0a;
   }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
 }
 
 @layer components {
@@ -29,7 +33,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 transition duration-200 hover:bg-accent-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 transition duration-200 hover:-translate-y-px active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
   }
 
   .btn-sm {
@@ -37,15 +41,23 @@
   }
 
   .btn-secondary {
-    @apply border-white/10 bg-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white;
+    @apply border-white/10 bg-transparent text-neutral-300 hover:bg-white/[0.06] hover:text-white hover:-translate-y-px active:scale-[0.98];
   }
 
+  /* Stagger cascade for grid children */
+  .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+  .stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+  .stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+  .stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+
+  /* kicker kept as a component but used sparingly — not on every section */
   .kicker {
     @apply text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
   }
 
   .section-title {
-    @apply mt-3 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white md:text-5xl;
+    /* tracking-tight = -0.025em; floor per skill is -0.04em */
+    @apply mt-3 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl;
   }
 
   .section-description {
@@ -53,15 +65,18 @@
   }
 
   .hero-card {
-    @apply rounded-4xl border border-white/[0.06] bg-surface-800/50 p-8 md:p-12;
+    @apply rounded-2xl border border-white/[0.06] bg-surface-800/50 p-8 md:p-14;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   .hero-title {
-    @apply mt-4 max-w-4xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-6xl;
+    /* clamp max <= 6rem per skill; tracking-tight = -0.025em stays above -0.04em floor */
+    @apply mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[1.04] tracking-tight text-white;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
   }
 
   .hero-subtitle {
-    @apply mt-6 max-w-2xl text-base leading-relaxed text-neutral-400 md:text-lg;
+    @apply mt-6 max-w-xl text-base leading-relaxed text-neutral-400 md:text-lg;
   }
 
   .focus-areas {
@@ -69,7 +84,7 @@
   }
 
   .focus-areas-label {
-    @apply mb-5 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
+    @apply mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
   }
 
   .focus-areas-grid {
@@ -106,7 +121,9 @@
   }
 
   .project-card {
-    @apply overflow-hidden rounded-4xl border border-white/[0.06] bg-surface-800/60 transition duration-300 hover:border-white/10;
+    /* Removed outer drop-shadow: ghost-card ban: no border + wide blur shadow together */
+    @apply overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-800/60 transition duration-300 hover:border-white/[0.16] hover:-translate-y-1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
   }
 
   .project-media-wrap {
@@ -114,6 +131,7 @@
   }
 
   .project-media {
+    /* No hover zoom: animating img on hover is banned per impeccable skill */
     @apply aspect-video w-full object-cover;
   }
 
@@ -137,6 +155,7 @@
   .case-image {
     @apply w-full rounded-lg object-contain md:h-full;
     background-color: theme('colors.surface.800');
+    aspect-ratio: 4 / 3;
   }
 
   .timeline {
@@ -167,7 +186,7 @@
 
   .resume-shell,
   .contact-shell {
-    @apply rounded-4xl border border-white/[0.06] bg-surface-800/40 p-6 md:p-8;
+    @apply rounded-2xl border border-white/[0.06] bg-surface-800/40 p-6 md:p-8;
   }
 
   .contact-grid {
@@ -181,13 +200,24 @@
   display: none;
 }
 
+/*
+  Reveal: content is VISIBLE by default (no opacity gate).
+  JS upgrades it with a smooth entrance when scrolled into view.
+  Satisfies impeccable skill-motion-reveal-safety rule.
+*/
 .reveal {
-  opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.is-visible {
+.js-reveal-pending {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.reveal.is-visible,
+.reveal:not(.js-reveal-pending) {
   opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -202,8 +232,10 @@
     transition: none !important;
   }
 
-  .reveal {
-    opacity: 1;
+  .reveal,
+  .js-reveal-pending {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .focus-area-card:hover {
