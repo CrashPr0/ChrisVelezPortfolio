@@ -17,8 +17,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ["Inter", "Helvetica Neue", "Helvetica", "Arial", "system-ui", "sans-serif"],
-        display: ["Inter", "Helvetica Neue", "Helvetica", "Arial", "system-ui", "sans-serif"]
+        sans: ["Geist", "Helvetica Neue", "Helvetica", "Arial", "system-ui", "sans-serif"],
+        display: ["Geist", "Helvetica Neue", "Helvetica", "Arial", "system-ui", "sans-serif"]
       },
       boxShadow: {
         soft: "0 8px 30px rgba(0, 0, 0, 0.5)"
