@@ -18,14 +18,16 @@ const featuredProjects = projects.slice(0, 3);
     <div class="hero-card grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
       <!-- Left: primary content -->
       <div>
-        <p class="kicker">Computer Engineering · SJSU</p>
-        <h1 class="hero-title">
-          Christopher Velez<br/>builds XR, graphics,<br/>and interactive systems.
+        <p class="kicker hero-seq" style="animation-delay: 80ms">Computer Engineering · SJSU</p>
+        <h1 class="hero-title" aria-label="Christopher Velez builds XR, graphics, and interactive systems.">
+          <span class="hero-line hero-seq" style="animation-delay: 160ms">Christopher Velez</span>
+          <span class="hero-line hero-seq" style="animation-delay: 260ms">builds XR, graphics,</span>
+          <span class="hero-line hero-seq" style="animation-delay: 360ms">and interactive systems.</span>
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle hero-seq" style="animation-delay: 480ms">
           Immersive experiences across research, public engagement, and game development.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3 hero-seq" style="animation-delay: 580ms">
           <a href={withBase("/projects")} class="btn">View Projects</a>
           <a href={hrefFor(siteConfig.resumePath)} class="btn btn-secondary" download>
             Download Resume

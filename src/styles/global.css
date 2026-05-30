@@ -321,6 +321,16 @@
   transform: none;
 }
 
+/* Hero text sequence: each element animates in on its own delay */
+.hero-seq {
+  animation: fade-up 400ms var(--ease-out-quint) both;
+}
+
+/* Each h1 line is block so it slides in on its own baseline */
+.hero-line {
+  display: block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
