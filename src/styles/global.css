@@ -4,10 +4,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Strong ease-out for UI interactions */
+/* Animation custom properties */
 :root {
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  /* kept for back-compat */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero entrance: card slides up on page load */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
@@ -40,18 +69,20 @@
   }
 
   .btn {
-    @apply relative inline-flex items-center justify-center overflow-hidden rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
-    transition: transform 160ms ease-out, background-color 160ms ease, border-color 160ms ease;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg border border-accent-400/60 bg-accent-400 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider text-surface-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-300;
+    transition: transform 160ms var(--ease-out-cubic), background-color 160ms ease, border-color 160ms ease, box-shadow 160ms var(--ease-out-cubic);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .btn:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(58, 210, 242, 0.25);
     }
   }
 
   .btn:active {
     transform: scale(0.97);
+    box-shadow: none;
     transition-duration: 100ms;
   }
 
@@ -61,13 +92,13 @@
 
   .btn-secondary {
     @apply border-white/10 bg-transparent text-neutral-300;
-    transition: transform 160ms ease-out, background-color 160ms ease, color 160ms ease;
+    transition: transform 160ms var(--ease-out-cubic), background-color 160ms ease, color 160ms ease, box-shadow 160ms var(--ease-out-cubic);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .btn-secondary:hover {
       @apply bg-white/[0.06] text-white;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
   }
 
@@ -76,19 +107,22 @@
     transition-duration: 100ms;
   }
 
-  /* Stagger cascade for grid children */
+  /* ── Stagger cascade: children animate in with fade-up ─────── */
+  /* "both" fill-mode: respects animation-delay, holds end state */
+  .stagger-children > * {
+    animation: fade-up 280ms var(--ease-out-quint) both;
+  }
   .stagger-children > *:nth-child(1) { animation-delay: 0ms; }
-  .stagger-children > *:nth-child(2) { animation-delay: 50ms; }
-  .stagger-children > *:nth-child(3) { animation-delay: 100ms; }
-  .stagger-children > *:nth-child(4) { animation-delay: 150ms; }
+  .stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+  .stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+  .stagger-children > *:nth-child(4) { animation-delay: 180ms; }
 
-  /* kicker kept as a component but used sparingly — not on every section */
+  /* kicker used sparingly, not on every section */
   .kicker {
     @apply text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400;
   }
 
   .section-title {
-    /* tracking-tight = -0.025em; floor per skill is -0.04em */
     @apply mt-3 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-white md:text-5xl;
   }
 
@@ -99,10 +133,11 @@
   .hero-card {
     @apply rounded-2xl border border-white/[0.06] bg-surface-800/50 p-8 md:p-14;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+    /* Above-fold: animate on page paint, not scroll intersection */
+    animation: hero-in 500ms var(--ease-out-quint) both;
   }
 
   .hero-title {
-    /* clamp max <= 6rem per skill; tracking-tight = -0.025em stays above -0.04em floor */
     @apply mt-4 max-w-4xl font-display text-5xl font-extrabold leading-[1.04] tracking-tight text-white;
     font-size: clamp(2.5rem, 6vw, 5.5rem);
   }
@@ -170,16 +205,20 @@
   }
 
   .project-card {
-    /* Removed outer drop-shadow: ghost-card ban */
     @apply overflow-hidden rounded-2xl border border-white/[0.08] bg-surface-800/60;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-    transition: border-color 200ms ease-out, transform 200ms ease-out;
+    transition: border-color 200ms var(--ease-out-cubic), transform 200ms var(--ease-out-cubic), box-shadow 200ms var(--ease-out-cubic);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .project-card:hover {
       @apply border-white/[0.16];
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      /* Shadow deepens with lift for physical depth */
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 6px 12px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -251,18 +290,18 @@
   }
 }
 
-/* bg-orb and bg-grid elements are hidden for a flat, stark aesthetic */
+/* bg-orb and bg-grid elements hidden for stark aesthetic */
 .bg-orb,
 .bg-grid {
   display: none;
 }
 
 /*
-  Reveal: content is VISIBLE by default (no opacity gate).
-  JS upgrades it with a smooth entrance when scrolled into view.
+  Reveal: content VISIBLE by default (no opacity gate).
+  JS adds js-reveal-pending before observing, then is-visible on entry.
 */
 .reveal {
-  transition: opacity 250ms ease-out, transform 250ms var(--ease-out);
+  transition: opacity 250ms ease-out, transform 250ms var(--ease-out-quint);
 }
 
 .js-reveal-pending {
@@ -272,6 +311,12 @@
 
 .reveal.is-visible,
 .reveal:not(.js-reveal-pending) {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero card is above-fold — skip JS reveal, use CSS animation directly */
+.hero-card.js-reveal-pending {
   opacity: 1;
   transform: none;
 }

@@ -15,7 +15,7 @@ const featuredProjects = projects.slice(0, 3);
   currentPath="/"
 >
   <section class="container pb-14 pt-16 md:pb-20 md:pt-28">
-    <div class="hero-card reveal grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
+    <div class="hero-card grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
       <!-- Left: primary content -->
       <div>
         <p class="kicker">Computer Engineering · SJSU</p>
@@ -36,7 +36,7 @@ const featuredProjects = projects.slice(0, 3);
       <!-- Right: focus areas -->
       <aside class="w-full md:w-64 lg:w-72" aria-labelledby="focus-areas-heading">
         <p class="focus-areas-label" id="focus-areas-heading">Focus</p>
-        <ul class="mt-3 space-y-2">
+        <ul class="mt-3 space-y-2 stagger-children">
           {currentFocus.map((item) => (
             <li class="focus-area-card">
               <span class="focus-area-accent" aria-hidden="true" />
