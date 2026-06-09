@@ -21,6 +21,7 @@ export type Project = {
   pressUrl?: string;
   siteUrl?: string;
   siteLabel?: string;
+  steamUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -48,7 +49,8 @@ export const projects: Project[] = [
     ],
     mediaFocus: "50% 58%",
     siteUrl: "https://doodlefishgames.pages.dev/benthos/",
-    siteLabel: "Visit Site (In Construction)"
+    siteLabel: "Visit Site (In Construction)",
+    steamUrl: "https://store.steampowered.com/app/4276370/Benthos/"
   },
   {
     slug: "immersion-2026-featured-showcase",
