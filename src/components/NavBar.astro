@@ -15,17 +15,17 @@ const isActive = (href: string) => {
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/[0.06] bg-surface-900/90 backdrop-blur-md">
-  <nav class="container flex items-center justify-between py-4" aria-label="Primary navigation">
+  <nav class="container flex flex-wrap items-center justify-between gap-y-1 py-3 md:py-4" aria-label="Primary navigation">
     <a href={withBase("/")} class="font-display text-sm font-semibold tracking-tight text-white/90" style="transition: color 160ms ease;">
       Christopher Velez
     </a>
-    <ul class="hidden gap-1 md:flex">
+    <ul class="order-last -mx-2 flex w-full gap-0.5 overflow-x-auto md:order-none md:mx-0 md:w-auto md:gap-1">
       {
         navItems.map((item) => (
           <li>
             <a
               href={withBase(item.href)}
-              class={`nav-link ${isActive(item.href) ? "is-active" : ""}`}
+              class={`nav-link whitespace-nowrap ${isActive(item.href) ? "is-active" : ""}`}
               data-nav-link
             >
               {item.label}
@@ -34,8 +34,5 @@ const isActive = (href: string) => {
         ))
       }
     </ul>
-    <a href={withBase("/contact")} class="btn btn-sm md:hidden">
-      Contact
-    </a>
   </nav>
 </header>

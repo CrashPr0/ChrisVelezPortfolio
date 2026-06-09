@@ -60,6 +60,18 @@ title="Graphics, spatial systems, and public-facing XR"
         <ProjectCard project={project} />
       ))}
     </div>
+    <div class="reveal mt-8">
+      <a
+        href={withBase("/projects")}
+        class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-400 hover:text-accent-300 hover:gap-2.5"
+        style="transition: color 160ms ease, gap 160ms ease;"
+      >
+        All {projects.length} projects
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <section class="container py-14 md:py-20">

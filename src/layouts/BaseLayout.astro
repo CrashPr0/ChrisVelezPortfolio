@@ -15,7 +15,8 @@ type Props = {
 const {
   title = siteConfig.title,
   description = siteConfig.description,
-  image = "/images/placeholders/og-default.svg",
+  /* PNG, not SVG — LinkedIn/Twitter/iMessage reject SVG og:images */
+  image = "/images/placeholders/benthos-header.png",
   currentPath = "/"
 } = Astro.props;
 
