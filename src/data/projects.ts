@@ -22,6 +22,9 @@ export type Project = {
   siteUrl?: string;
   siteLabel?: string;
   steamUrl?: string;
+  process?: { heading: string; body: string }[];
+  challenges?: string[];
+  lessons?: string[];
 };
 
 export const projects: Project[] = [
@@ -50,7 +53,20 @@ export const projects: Project[] = [
     mediaFocus: "50% 58%",
     siteUrl: "https://doodlefishgames.pages.dev/benthos/",
     siteLabel: "Visit Site (In Construction)",
-    steamUrl: "https://store.steampowered.com/app/4276370/Benthos/"
+    steamUrl: "https://store.steampowered.com/app/4276370/Benthos/",
+    process: [
+      { heading: "Establishing the visual language", body: "TODO: describe how you defined the lighting, materials, and color palette for Benthos." },
+      { heading: "Iterating in-engine", body: "TODO: describe your workflow for testing and refining visuals inside Unreal Engine." },
+      { heading: "Shipping and adjusting", body: "TODO: describe the feedback loop between builds and how it shaped the final look." }
+    ],
+    challenges: [
+      "TODO: describe a technical or creative challenge you faced as Graphics Lead.",
+      "TODO: describe a challenge specific to underwater environments or cooperative gameplay readability."
+    ],
+    lessons: [
+      "TODO: what did you take away from leading graphics on a shipped (or shipping) game?",
+      "TODO: what would you do differently next time?"
+    ]
   },
   {
     slug: "immersion-2026-featured-showcase",
@@ -77,7 +93,20 @@ export const projects: Project[] = [
     ],
     mediaFocus: "68% 52%",
     githubUrl: "https://github.com/klevrlab/city-project",
-    pressUrl: "https://sjsu.foleon.com/sjsu-magazine/spring-2026-sjsu-magazine/"
+    pressUrl: "https://sjsu.foleon.com/sjsu-magazine/spring-2026-sjsu-magazine/",
+    process: [
+      { heading: "Scoping for real-world devices", body: "TODO: describe how you researched device constraints before building the AR experience." },
+      { heading: "Building the performance fallback", body: "TODO: describe how you implemented the adaptive physics/fallback system." },
+      { heading: "Event day deployment", body: "TODO: describe what it was like running the demo live at Hometown Heroes." }
+    ],
+    challenges: [
+      "TODO: describe the hardest technical problem you hit building for mobile WebAR.",
+      "TODO: describe any last-minute issues at the event and how you handled them."
+    ],
+    lessons: [
+      "TODO: what did shipping a public-facing demo teach you about resilience and UX?",
+      "TODO: what would you build differently with more time?"
+    ]
   },
   {
     slug: "digital-tools-cultural-preservation-workshop",
@@ -95,6 +124,19 @@ export const projects: Project[] = [
       "The goal in both cases was the same: make the technology easy enough to actually use, and leave people with something they can take home."
     ],
     tags: ["Education", "Drones", "Photogrammetry", "Accessibility", "Cultural Preservation", "Community"],
+    process: [
+      { heading: "Designing accessible curriculum", body: "TODO: describe how you structured the drone coding or photogrammetry curriculum for non-technical audiences." },
+      { heading: "Running the workshop", body: "TODO: describe what the event day looked like and how you facilitated hands-on activity." },
+      { heading: "Adapting on the fly", body: "TODO: describe any moments where you had to adjust based on audience needs or technical issues." }
+    ],
+    challenges: [
+      "TODO: describe the challenge of making technical content accessible to people with no prior coding or 3D experience.",
+      "TODO: describe any logistical or equipment challenges at the events."
+    ],
+    lessons: [
+      "TODO: what did facilitating public workshops teach you about communication and education?",
+      "TODO: what would you improve about the curriculum or delivery?"
+    ],
     mediaAlt: "SJSU iSchool drone coding workshop at STEM Zone Santa Clara 2026",
     mediaPath: "/images/placeholders/StemZoneSantaClara1.jpg",
     mediaSlides: [
@@ -120,6 +162,19 @@ export const projects: Project[] = [
       "This is an ongoing senior design project with teammates Marios Tawdros and Joshua Rieta, advised by Karen D. Wang."
     ],
     tags: ["AI", "Chatbot", "RAG", "React", "Python", "Higher Education"],
+    process: [
+      { heading: "Identifying the problem", body: "TODO: describe how you scoped the chatbot's purpose and spoke to advisors about pain points." },
+      { heading: "Building the RAG pipeline", body: "TODO: describe the retrieval-augmented generation setup and how you grounded responses in iSchool sources." },
+      { heading: "Testing and iteration", body: "TODO: describe how you evaluated response quality and iterated with your team." }
+    ],
+    challenges: [
+      "TODO: describe the challenge of keeping LLM responses accurate and on-topic for a specific institution.",
+      "TODO: describe any challenges working across a team on a senior design timeline."
+    ],
+    lessons: [
+      "TODO: what did you learn about building production-ready AI applications?",
+      "TODO: what would you add or change given more time?"
+    ],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
     mediaPath: "/images/placeholders/project-ischool-chatbot.png",
     githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22"
