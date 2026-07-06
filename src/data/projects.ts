@@ -34,16 +34,17 @@ export const projects: Project[] = [
     summary:
       "A co-op submarine underwater exploration game where players work together to uncover the secrets of Europa's ocean.",
     role: "Graphics Lead",
-    tools: ["Unreal Engine"],
+    tools: ["Unreal Engine 5.4", "C++", "Blueprint"],
     year: "In development",
     impact:
-      "Defined visual quality standards and environment look/feel to strengthen atmosphere, readability, and immersion for cooperative gameplay.",
+      "Integrated and polished a multiplayer treasure-and-interaction loop in UE5.4—fixing replication and crash bugs in C++, separating post-process pipelines, and unifying crosshair feedback with E-prompt overlap detection.",
     description: [
       "On Benthos, I am the Graphics Lead. My focus is on the look and feel of the game: lighting, materials, color, and how the environment reads to a player who has never seen it before.",
-      "A lot of the work is about building spatial trust. Players need to feel comfortable navigating an alien underwater world without a map in their hand, so the visuals have to do a lot of the communicating.",
+      "Recent work on the treasuresystem branch covered cross-system integration beyond visuals: treasure hunting, shared inventory and hotbar, submarine deposits, downed/revive mechanics, shield and power consoles, and interaction prompts—the “E” UI. The goal was not a feature list but production-grade polish where C++, Blueprint, replication, and UX all had to agree.",
+      "A lot of the work is about building spatial trust. Players need to feel comfortable navigating an alien underwater world without a map in their hand, so the visuals have to do a lot of the communicating—and feedback systems like the crosshair and outline effects have to reinforce that same language.",
       "We treat the project as a learning experience as much as a product, which means we ship, get feedback, and adjust. That loop has pushed the quality forward faster than trying to get it perfect before anyone sees it."
     ],
-    tags: ["Co-op", "Underwater", "Atmosphere", "Graphics Direction", "Unreal"],
+    tags: ["Co-op", "Underwater", "Multiplayer", "Unreal C++", "Gameplay Systems", "UX", "Graphics Direction"],
     mediaAlt: "Benthos header artwork",
     mediaPath: "/images/placeholders/benthos-header.png",
     mediaSlides: [
@@ -55,17 +56,40 @@ export const projects: Project[] = [
     siteLabel: "Visit Site (In Construction)",
     steamUrl: "https://store.steampowered.com/app/4276370/Benthos/",
     process: [
-      { heading: "Establishing the visual language", body: "TODO: describe how you defined the lighting, materials, and color palette for Benthos." },
-      { heading: "Iterating in-engine", body: "TODO: describe your workflow for testing and refining visuals inside Unreal Engine." },
-      { heading: "Shipping and adjusting", body: "TODO: describe the feedback loop between builds and how it shaped the final look." }
+      {
+        heading: "Sync and assess",
+        body: "Pulled and fast-forwarded a local branch that had fallen ~112 commits behind remote after crosshair HUD, shield system, debug console, and map work landed elsewhere. Audited recent C++ for bugs, replication gaps, and polish issues rather than guessing from commit messages alone."
+      },
+      {
+        heading: "Audit by priority",
+        body: "Reviewed gameplay code in parallel for TODOs, replication correctness, crash risks, and debug noise. Prioritized P0 crashes and correctness first, then logging and performance polish."
+      },
+      {
+        heading: "Fix crashes and replication",
+        body: "Added bounds-checked power-tier mapping, OnRep_IsDead for death state ordering, weak lambda timers for revive, and treasure destruction on deposit with a DepositedTreasureCount counter. Gated debug spam behind bLogPickupQueryDebug and stripped on-screen messages in shipping builds."
+      },
+      {
+        heading: "Playtest-driven UX",
+        body: "Tracked down why disabling pickup outline did not remove the submarine hologram look, and why the crosshair enlarged for treasure pickups but not when the E prompt appeared at terminals and ladders. Separated the two post-process pipelines and unified detection so crosshair and interaction prompts share one feedback language."
+      },
+      {
+        heading: "Extend systems cleanly",
+        body: "Added HasInteractionPromptFocus(), RegisterInteractionPromptSource / Unregister for Blueprint overlap events, an IInteractionFocusProvider interface, and an InteractionPrompt actor tag—instead of hardcoding every Blueprint class name. Verified with a full BenthosEditor compile after interface and timer fixes."
+      }
     ],
     challenges: [
-      "TODO: describe a technical or creative challenge you faced as Graphics Lead.",
-      "TODO: describe a challenge specific to underwater environments or cooperative gameplay readability."
+      "Stale branch plus a large integration surface: integration debt showed up as broken Blueprint references and mismatched systems, not just merge conflicts.",
+      "High-impact C++ bugs—power consoles indexing arrays without bounds checks, shield visuals updating before power values, death replication arriving out of order on clients, revive timers capturing raw this, and deposited treasures hidden but never destroyed.",
+      "Blueprint compile failures after a shield refactor: BP_AdvancedSubmarine pointed at the wrong actor/class after child-actor and component renames, not because properties were deleted from AShieldConsole.",
+      "Two separate post-process pipelines controlled by one checkbox: pickup outline (M_PP_Outline on interactables) vs submarine hologram (MI_ShieldHologram / MI_SubHologram on a post-process volume)—turning off one did not remove the other.",
+      "Split interaction detection: pickups used a center-screen trace and cone query while E prompts relied on overlap volumes in Blueprint, so the crosshair system never knew the player was in an interaction zone."
     ],
     lessons: [
-      "TODO: what did you take away from leading graphics on a shipped (or shipping) game?",
-      "TODO: what would you do differently next time?"
+      "Big content branches need periodic sync; integration debt accumulates quietly until playtesting or compile errors surface it.",
+      "C++ refactors with child-actor setups need a deliberate Blueprint validation pass—compiler errors often mean wrong target, not missing property.",
+      "A visual “one effect” can be multiple pipelines; document which Blueprint or asset owns each so toggles behave as players expect.",
+      "UX consistency requires unified “am I targeting this?” logic. If pickups and interactables use different detection, presentation will drift.",
+      "Multiplayer correctness details matter: OnRep ordering, weak delegates for timers, bounds checks, and destroying replicated actors instead of only hiding them."
     ]
   },
   {
