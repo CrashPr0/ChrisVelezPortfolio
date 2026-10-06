@@ -72,26 +72,37 @@ import { withBase } from "@/utils/paths";
 
   .carousel-dots {
     position: absolute;
-    bottom: 0.6rem;
+    bottom: 0.35rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 0.4rem;
+    gap: 0.15rem;
   }
 
   .carousel-dot {
-    width: 7px;
-    height: 7px;
+    width: 24px;
+    height: 24px;
     border-radius: 9999px;
-    background: rgba(255,255,255,0.3);
+    background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .carousel-dot::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.35);
     transition: background 0.2s;
   }
 
-  .carousel-dot.active {
-    background: rgba(255,255,255,0.9);
+  .carousel-dot.active::before {
+    background: rgba(255,255,255,0.95);
   }
 
   .carousel-prev,
@@ -129,8 +140,9 @@ import { withBase } from "@/utils/paths";
     const dots = carousel.querySelectorAll<HTMLButtonElement>('.carousel-dot');
     const slides = carousel.querySelectorAll<HTMLImageElement>('.carousel-slide');
     const count = parseInt(carousel.dataset.count ?? '1', 10);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let current = 0;
-    let timer: ReturnType<typeof setInterval>;
+    let timer: ReturnType<typeof setInterval> | undefined;
 
     function goTo(index: number) {
       current = (index + count) % count;
@@ -145,11 +157,18 @@ import { withBase } from "@/utils/paths";
     }
 
     function startAuto() {
+      if (reduceMotion || count < 2) return;
+      clearInterval(timer);
       timer = setInterval(() => goTo(current + 1), 4000);
     }
 
-    function resetAuto() {
+    function stopAuto() {
       clearInterval(timer);
+      timer = undefined;
+    }
+
+    function resetAuto() {
+      stopAuto();
       startAuto();
     }
 
@@ -159,12 +178,14 @@ import { withBase } from "@/utils/paths";
       dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index ?? '0', 10)); resetAuto(); });
     });
 
-    // Pause auto-play on hover/focus — resume on leave
-    carousel.addEventListener('mouseenter', () => clearInterval(timer));
-    carousel.addEventListener('focusin', () => clearInterval(timer));
-    carousel.addEventListener('mouseleave', () => { if (count > 1) startAuto(); });
-    carousel.addEventListener('focusout', () => { if (count > 1) startAuto(); });
+    // Pause autoplay on hover or focus. Resume when the pointer or focus leaves.
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('focusin', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('focusout', (event) => {
+      if (!carousel.contains(event.relatedTarget as Node | null)) startAuto();
+    });
 
-    if (count > 1) startAuto();
+    startAuto();
   });
 </script>

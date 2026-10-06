@@ -49,7 +49,7 @@ export const projects: Project[] = [
     mediaPath: "/images/placeholders/benthos-header.png",
     mediaSlides: [
       { path: "/images/placeholders/benthos-header.png", alt: "Benthos header artwork" },
-      { path: "/images/placeholders/benthos.png", alt: "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead" }
+      { path: "/images/placeholders/benthos.jpg", alt: "Benthos in-game view: first-person perspective inside a rusted underwater interior with a diver in a teal suit ahead" }
     ],
     mediaFocus: "50% 58%",
     siteUrl: "https://doodlefishgames.pages.dev/benthos/",
@@ -113,23 +113,32 @@ export const projects: Project[] = [
     mediaSlides: [
       { path: "/images/placeholders/SharksWayIMG1.jpg", alt: "Sharks Way AR: teal shark on SJSU campus sidewalk with checkpoint UI" },
       { path: "/images/placeholders/SharksWayIMG2.jpg", alt: "Sharks Way AR: second view of the shark AR experience on campus" },
-      { path: "/images/placeholders/project-immersion-2026.png", alt: "Sharkways onsite deliverable: mobile WebAR screenshots at Hometown Heroes" }
+      { path: "/images/placeholders/project-immersion-2026.jpg", alt: "Sharkways onsite deliverable: mobile WebAR screenshots at Hometown Heroes" }
     ],
     mediaFocus: "68% 52%",
     githubUrl: "https://github.com/klevrlab/city-project",
-    pressUrl: "https://sjsu.foleon.com/sjsu-magazine/spring-2026-sjsu-magazine/",
+    pressUrl: "https://www.sjsu.edu/magazine/archive/2026-spring/sj-26-where-digital-art-thrives.html",
     process: [
-      { heading: "Scoping for real-world devices", body: "TODO: describe how you researched device constraints before building the AR experience." },
-      { heading: "Building the performance fallback", body: "TODO: describe how you implemented the adaptive physics/fallback system." },
-      { heading: "Event day deployment", body: "TODO: describe what it was like running the demo live at Hometown Heroes." }
+      {
+        heading: "Scoping for real-world devices",
+        body: "Hometown Heroes was a public booth, so the demo had to run on the phones people already carried. I scoped Sharks Way as mobile WebAR with 8th Wall, A-Frame, and AR.js, and I treated the spread of those phones as part of the design."
+      },
+      {
+        heading: "Building the performance fallback",
+        body: "The page checks the device before it turns on the heavy layer. On a phone that can take it, real-time physics runs live. On a weaker phone, that layer stays off and the AR scene still loads. One experience degrades. It does not die on half the handsets."
+      },
+      {
+        heading: "Event day deployment",
+        body: "At the booth the job was keeping that path stable while people walked up with their own devices. The same Immersion 2026 season includes a separate build in my EchoesOfExpression repo: a location-based exhibition for a walking route across the SJSU campus, the MLK Library, and San Jose City Hall. That one uses A-Frame with Niantic's distributed Spatial XR engine. Phones need HTTPS before the camera, compass, and GPS will start, and a ?preview mode walks the route on a desktop with no camera and no GPS. Statements, coordinates, and placement sit in one artworks.js file."
+      }
     ],
     challenges: [
-      "TODO: describe the hardest technical problem you hit building for mobile WebAR.",
-      "TODO: describe any last-minute issues at the event and how you handled them."
+      "The hard problem was the spread of phones, not one bug. Physics that feels fine on a test device will stutter on the next phone in line. The performance check is what makes the Sharks Way scene safe to hand to a stranger.",
+      "Public WebAR has a hard floor, and EchoesOfExpression spells it out: camera, compass, and GPS are blocked on plain HTTP except for localhost. A live demo has to be served over HTTPS, with a no-sensor preview for checking placement at a desk."
     ],
     lessons: [
-      "TODO: what did shipping a public-facing demo teach you about resilience and UX?",
-      "TODO: what would you build differently with more time?"
+      "A public demo is a fallback problem. If physics cannot run, the visitor should still see the shark and the checkpoint UI. The page has to make sense on the weak phone, not only on mine.",
+      "With more time I would split content from the tracker the way EchoesOfExpression already does, so statements and coordinates can change without a scene rewrite. I would keep a no-sensor preview next to every phone build. That is the fastest check before a booth opens."
     ]
   },
   {
@@ -149,24 +158,33 @@ export const projects: Project[] = [
     ],
     tags: ["Education", "Drones", "Photogrammetry", "Accessibility", "Cultural Preservation", "Community"],
     process: [
-      { heading: "Designing accessible curriculum", body: "TODO: describe how you structured the drone coding or photogrammetry curriculum for non-technical audiences." },
-      { heading: "Running the workshop", body: "TODO: describe what the event day looked like and how you facilitated hands-on activity." },
-      { heading: "Adapting on the fly", body: "TODO: describe any moments where you had to adjust based on audience needs or technical issues." }
+      {
+        heading: "Designing accessible curriculum",
+        body: "For the photogrammetry workshop I kept the session on Polycam: capture, clean up a model, leave with a file. The audience was people digitizing cultural artifacts who do not already do 3D. For the Santa Clara STEM Zone drone session, the path was Scratch and Python on a DJI Ryze Tello, short enough that a first program could move the aircraft. My TelloProject repo is a separate browser workshop for the same drone: one-click takeoff and landing, direction and flip controls, and a block builder."
+      },
+      {
+        heading: "Running the workshop",
+        body: "STEM Zone was a booth: people stopped, wrote a short drone program, and watched a Tello respond. The photogrammetry workshop was hands-on capture in Polycam, aimed at audiences with limited technical background. ischool-hologram-workshop is another public iSchool page, for Spectre displays. You drop in an image or video, it builds the four-face layout the pyramid prism needs, then you preview or download it."
+      },
+      {
+        heading: "Adapting on the fly",
+        body: "The setups fail in different ways, so one plan cannot cover every table. TelloProject only reaches the drone from a computer already joined to that aircraft's Wi-Fi (the drone hosts a network named TELLO- plus an id). The hologram page is static files, so it still opens on GitHub Pages if you only have a phone. When the live drone link is the fragile part, the Polycam path does not need the aircraft at all."
+      }
     ],
     challenges: [
-      "TODO: describe the challenge of making technical content accessible to people with no prior coding or 3D experience.",
-      "TODO: describe any logistical or equipment challenges at the events."
+      "The first ten minutes are the hard part for someone who has never coded or scanned. Polycam has to be a capture recipe, not a lecture on meshes. Scratch or Python has to end in a movement the person can see. If the step after hello is unclear, the tool lost them.",
+      "The gear is picky. A Tello takes commands from a device on its own Wi-Fi, so a laptop still on venue Wi-Fi will not connect. That constraint is written into TelloProject. A Spectre prism needs a four-face clip, not a normal fullscreen video, which is why the hologram page reformats the file before download."
     ],
     lessons: [
-      "TODO: what did facilitating public workshops teach you about communication and education?",
-      "TODO: what would you improve about the curriculum or delivery?"
+      "Facilitating these rooms is mostly translation. People remember the model or the flight, not the stack. I try to end on something they can take with them: a Polycam file, or a program they watched run.",
+      "I would write the participant path first and keep the instructor demo as the fallback. TelloProject already has large manual controls and blocks, and it still depends on that drone Wi-Fi. The hologram app formats a file and previews it. It is not yet a step-by-step lesson."
     ],
     mediaAlt: "SJSU iSchool drone coding workshop at STEM Zone Santa Clara 2026",
     mediaPath: "/images/placeholders/StemZoneSantaClara1.jpg",
     mediaSlides: [
       { path: "/images/placeholders/StemZoneSantaClara1.jpg", alt: "SJSU iSchool booth at STEM Zone Santa Clara 2026" },
       { path: "/images/placeholders/StemZoneSantaClara2.jpg", alt: "Drone coding workshop activity at STEM Zone Santa Clara 2026" },
-      { path: "/images/placeholders/PhotogrametryWorkshop.jfif", alt: "Photogrammetry and cultural preservation workshop at ATALM 2025" }
+      { path: "/images/placeholders/PhotogrametryWorkshop.jpg", alt: "Photogrammetry and cultural preservation workshop at ATALM 2025" }
     ]
   },
   {
@@ -175,32 +193,40 @@ export const projects: Project[] = [
     summary:
       "Designed and built an AI-powered advising chatbot for SJSU's School of Information to answer program-specific questions with cited, accurate responses.",
     role: "Developer",
-    tools: ["React", "Python", "LLM APIs", "RAG"],
+    tools: ["Flask", "Python", "Azure App Service", "Azure OpenAI", "RAG"],
     year: "2026",
     impact:
       "Gives students faster answers to common advising questions while freeing up iSchool staff to focus on cases that actually need a person.",
     description: [
       "SJSU advisors and professors already work 40 to 60 hours a week. A big chunk of that goes to answering the same questions over and over. This chatbot handles those.",
-      "Responses are grounded in official iSchool sources like the program handbook and FAQs, so students get cited answers instead of guesses. Anything outside that scope gets routed to a real advisor.",
-      "Built with React on the front end and Python on the back end. We tested several LLMs to find the best fit, and added an admin dashboard so staff can see what questions keep coming up.",
-      "This is an ongoing senior design project with teammates Marios Tawdros and Joshua Rieta, advised by Karen D. Wang."
+      "Answers come from official SJSU catalog pages for BS ISDA students. Retrieval is hybrid BM25 plus vector search, so a reply can cite the page it used. Anything outside that material should go to a real advisor.",
+      "The app is Flask and Python on Azure App Service. Azure OpenAI runs gpt-4o-mini as the primary model, with a backup model when that call fails. Students get chat history in tabs, and answers render as markdown.",
+      "This is my CMPE-195 senior project, team 22, with teammates Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang."
     ],
-    tags: ["AI", "Chatbot", "RAG", "React", "Python", "Higher Education"],
+    tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
     process: [
-      { heading: "Identifying the problem", body: "TODO: describe how you scoped the chatbot's purpose and spoke to advisors about pain points." },
-      { heading: "Building the RAG pipeline", body: "TODO: describe the retrieval-augmented generation setup and how you grounded responses in iSchool sources." },
-      { heading: "Testing and iteration", body: "TODO: describe how you evaluated response quality and iterated with your team." }
+      {
+        heading: "Identifying the problem",
+        body: "This is my CMPE-195 senior project with team 22, advised by Dr. Karen Wang. iSchool advisors already lose hours to the same questions from BS ISDA students. We scoped the bot to those questions, using official SJSU catalog pages, and to hand anything else to a person."
+      },
+      {
+        heading: "Building the RAG pipeline",
+        body: "The service is Flask and Python on Azure App Service. Azure OpenAI serves gpt-4o-mini first and a backup model if that request fails. Search is hybrid BM25 plus vectors built with Azure OpenAI embeddings of the catalog pages. The UI keeps chat history in tabs and renders markdown."
+      },
+      {
+        heading: "Testing and iteration",
+        body: "We store reviews of answers so we can score them instead of guessing from a demo. CI runs pytest and pip-audit. That is how a bad retrieval or a dependency issue gets caught before it sits on main."
+      }
     ],
     challenges: [
-      "TODO: describe the challenge of keeping LLM responses accurate and on-topic for a specific institution.",
-      "TODO: describe any challenges working across a team on a senior design timeline."
+      "Azure rate limits and latency showed up as soon as we used the bot like a student would. I capped answer tokens, fell back to keyword search when vector search was throttled, and turned on Always On so the app was not cold-starting every visit. Stale index detection flags when the crawl is behind the pages people are asking about.",
+      "The model will invent a link if you let it. After each answer, an allowlist strips any URL that was not in the retrieved pages and logs it, which is also how we spot gaps in the knowledge base. A crisis and distress safety layer is in the app and still waiting on advisor review before we treat it as done. I rotated a key that had leaked and added a budget alert so a loop cannot quietly spend the Azure account."
     ],
     lessons: [
-      "TODO: what did you learn about building production-ready AI applications?",
-      "TODO: what would you add or change given more time?"
+      "Swapping the model was the small part. Grounding, and a reviews database we could actually score, changed the answers more than another pass on the prompt.",
+      "Cost and ops are part of the product: token caps, a backup model, Always On, and a budget alert. We shipped that work as small reviewed pull requests so the three of us could see what changed."
     ],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
-    githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22"
+    mediaPath: "/images/placeholders/project-ischool-chatbot.png"
   }
 ];

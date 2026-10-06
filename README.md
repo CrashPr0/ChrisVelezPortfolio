@@ -42,22 +42,28 @@ A production-ready, static portfolio website designed for GitHub Pages deploymen
 ├─ .github/workflows/deploy.yml
 ├─ public/
 │  ├─ favicon.svg
+│  ├─ robots.txt
 │  ├─ resume/
+│  │  ├─ Chris_s_Resume_General.pdf
 │  │  └─ README.txt
 │  ├─ scripts/
 │  │  └─ site.js
 │  └─ images/placeholders/
-│     ├─ headshot-placeholder.svg
-│     ├─ og-default.svg
-│     ├─ project-ar-maps.svg
-│     ├─ project-benthos.svg
-│     ├─ project-cultural-preservation.svg
-│     ├─ project-immersion-2026.svg
-│     └─ project-tilt-five.svg
+│     ├─ Chris_Velez_Headshot.jpeg
+│     ├─ benthos-header.png
+│     ├─ benthos.jpg
+│     ├─ project-immersion-2026.jpg
+│     ├─ project-ischool-chatbot.png
+│     ├─ SharksWayIMG1.jpg
+│     ├─ SharksWayIMG2.jpg
+│     ├─ StemZoneSantaClara1.jpg
+│     ├─ StemZoneSantaClara2.jpg
+│     └─ PhotogrametryWorkshop.jpg
 ├─ src/
 │  ├─ components/
 │  │  ├─ ExperienceCard.astro
 │  │  ├─ Footer.astro
+│  │  ├─ ImageCarousel.astro
 │  │  ├─ NavBar.astro
 │  │  ├─ ProjectCard.astro
 │  │  ├─ SectionHeading.astro
@@ -72,9 +78,9 @@ A production-ready, static portfolio website designed for GitHub Pages deploymen
 │  │  ├─ 404.astro
 │  │  ├─ about.astro
 │  │  ├─ contact.astro
-│  │  ├─ experience.astro
 │  │  ├─ index.astro
 │  │  ├─ projects.astro
+│  │  ├─ projects/[slug].astro
 │  │  └─ resume.astro
 │  ├─ styles/global.css
 │  └─ env.d.ts
@@ -95,15 +101,18 @@ Update these files first:
 
 ### Resume File
 
-1. Add your PDF to `public/resume/` (for example: `public/resume/Christopher-Velez-Resume.pdf`).
-2. Set `resumePath` in `src/data/site.ts` to `/resume/Christopher-Velez-Resume.pdf`.
+The public PDF is `public/resume/Chris_s_Resume_General.pdf`. `resumePath` in `src/data/site.ts` points at `/resume/Chris_s_Resume_General.pdf`. Replace that file in place, or change `resumePath` if the filename changes.
 
-### Replace Placeholder Images
+`/experience` redirects to `/resume` (see `redirects` in `astro.config.mjs`).
 
-Drop your screenshots/headshot into `public/images/` and update the paths in:
+### Images
+
+Project photos and the headshot live in `public/images/placeholders/`. Paths are set in:
 
 - `src/data/site.ts` (`headshotPath`)
-- `src/data/projects.ts` (`mediaPath`)
+- `src/data/projects.ts` (`mediaPath` and `mediaSlides`)
+
+Keep photos as JPEG (`.jpg`) and graphics that need transparency as PNG. Large phone originals should be resized to about 1600px wide before commit.
 
 ## GitHub Pages Deployment
 
@@ -146,14 +155,13 @@ After Actions completes, your site is live on GitHub Pages.
 ## Accessibility and Performance Notes
 
 - Semantic landmarks and heading hierarchy.
-- Reduced-motion support for reveal animations.
-- Lightweight static assets and SVG placeholders.
+- Reduced-motion support for reveal animations and carousel autoplay.
 - Static rendering only (no backend/server features).
 - Responsive layout tuned for mobile and desktop.
+- `robots.txt`, a generated sitemap, and Person JSON-LD on the home page.
 
 ## Optional Enhancements
 
 - Add blog/content collections.
 - Add analytics (Plausible or GA4).
-- Add sitemap and robots customization.
-- Add image optimization pipeline for real project media.
+- Per-page Open Graph images (the site currently shares one image).

@@ -2,17 +2,38 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
-import { currentFocus, siteConfig } from "@/data/site";
+import ExperienceCard from "@/components/ExperienceCard.astro";
+import { currentFocus, education, siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
+import { experiences } from "@/data/experience";
 import { hrefFor, withBase } from "@/utils/paths";
 
-const featuredProjects = projects.slice(0, 3);
+const featuredProjects = projects.slice(0, 4);
+const configuredSite = (Astro.site?.href ?? "https://crashpr0.github.io/ChrisVelezPortfolio/").replace(/\/$/, "");
+const baseSuffix = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
+const siteRoot = (configuredSite.endsWith(baseSuffix) ? configuredSite : `${configuredSite}${baseSuffix}`) + "/";
+const personJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteRoot,
+  image: siteRoot + siteConfig.headshotPath.replace(/^\//, ""),
+  email: siteConfig.email,
+  jobTitle: "Computer Engineering Student",
+  affiliation: {
+    "@type": "CollegeOrUniversity",
+    name: education.university
+  },
+  sameAs: [siteConfig.github, siteConfig.linkedIn],
+  description: siteConfig.description
+}).replace(/</g, "\\u003c");
 ---
 
 <BaseLayout
   title="Christopher Velez | XR, Graphics, and Interactive Systems"
   description="Computer Engineering student building immersive XR, AR/VR, graphics, and interactive systems."
   currentPath="/"
+  jsonLd={personJsonLd}
 >
   <section class="container pb-14 pt-16 md:pb-20 md:pt-28">
     <div class="hero-card grid gap-10 md:grid-cols-[1fr_auto] md:items-start">
@@ -55,7 +76,7 @@ const featuredProjects = projects.slice(0, 3);
 title="Graphics, spatial systems, and public-facing XR"
       description="Game development, immersive deployment, and community-centered technical work."
     />
-    <div class="mt-10 grid gap-6 lg:grid-cols-3 stagger-children">
+    <div class="mt-10 grid gap-6 md:grid-cols-2 stagger-children">
       {featuredProjects.map((project) => (
         <ProjectCard project={project} />
       ))}
@@ -79,6 +100,11 @@ title="Graphics, spatial systems, and public-facing XR"
 title="Internships, research, and collaboration"
       description="XR prototyping, graphics pipelines, and immersive experience engineering."
     />
+    <div class="timeline mt-10">
+      {experiences.map((item) => (
+        <ExperienceCard item={item} />
+      ))}
+    </div>
     <div class="reveal mt-7">
       <a href={withBase("/contact")} class="btn">
         Start a conversation

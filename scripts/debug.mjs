@@ -43,9 +43,9 @@ const requiredPublicAssets = [
   "public/scripts/site.js",
   "public/resume/Chris_s_Resume_General.pdf",
   "public/images/placeholders/Chris_Velez_Headshot.jpeg",
-  "public/images/placeholders/benthos.png",
-  "public/images/placeholders/PhotogrametryWorkshop.jfif",
-  "public/images/placeholders/project-immersion-2026.png"
+  "public/images/placeholders/benthos.jpg",
+  "public/images/placeholders/PhotogrametryWorkshop.jpg",
+  "public/images/placeholders/project-immersion-2026.jpg"
 ];
 
 for (const p of requiredPublicAssets) {
