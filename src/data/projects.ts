@@ -245,11 +245,13 @@ export const projects: Project[] = [
       "The page says the game was built at San José State University. It does not name me, and it does not name a professor. SETUP.md credits Dr. Rocca for the Security+ Prep Terminal: five spreadsheets of CompTIA Security+ practice questions, 294 questions across five NICE categories. That kiosk is a study aid. It does not change the level score. The public commit history is mostly my account, CrashPr0, plus commits from Kashikuzi. I have not assigned either of us a title on this card."
     ],
     tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
-    mediaAlt: "CyVerse landing page with the beta play link",
-    mediaPath: "/images/projects/cyverse-hero.jpg",
+    mediaAlt: "CyVerse hub with the Mission Status board",
+    mediaPath: "/images/projects/cyverse-hub.jpg",
     mediaSlides: [
-      { path: "/images/projects/cyverse-hero.jpg", alt: "CyVerse landing page at San José State University, with the beta play link" },
-      { path: "/images/projects/cyverse-levels.jpg", alt: "CyVerse levels for identity and access, cyber defense, digital forensics, and a cyber attack level marked in development" }
+      { path: "/images/projects/cyverse-hub.jpg", alt: "CyVerse hub with the Mission Status board" },
+      { path: "/images/projects/cyverse-level1-portal.jpg", alt: "Level 1 I/AM portal door" },
+      { path: "/images/projects/cyverse-level1-briefing.jpg", alt: "Level 1 security briefing room with the training checklist" },
+      { path: "/images/projects/cyverse-glossary.jpg", alt: "In-game glossary panel" }
     ],
     githubUrl: "https://github.com/CrashPr0/Cyverse",
     siteUrl: "https://crashpr0.github.io/Cyverse/",
