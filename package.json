@@ -12,9 +12,11 @@
     "debug:full": "node scripts/debug.mjs --check --build"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.0.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@types/node": "^20.16.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",

@@ -10,14 +10,18 @@ type Props = {
   description?: string;
   image?: string;
   currentPath?: string;
+  robots?: string;
+  jsonLd?: string;
 };
 
 const {
   title = siteConfig.title,
   description = siteConfig.description,
-  /* PNG, not SVG — LinkedIn/Twitter/iMessage reject SVG og:images */
+  /* PNG, not SVG. LinkedIn, Twitter, and iMessage reject SVG og:images */
   image = "/images/placeholders/benthos-header.png",
-  currentPath = "/"
+  currentPath = "/",
+  robots = "index,follow",
+  jsonLd
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -33,7 +37,7 @@ const ogImage = new URL(ogImagePath, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={siteConfig.name} />
-    <meta name="robots" content="index,follow" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,6 +53,7 @@ const ogImage = new URL(ogImagePath, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
   </head>
   <body class="min-h-dvh bg-surface-900 text-white/90 antialiased">
     <a href="#main-content" class="skip-link">Skip to content</a>
