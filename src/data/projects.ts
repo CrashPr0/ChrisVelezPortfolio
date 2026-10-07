@@ -228,5 +228,145 @@ export const projects: Project[] = [
     ],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
     mediaPath: "/images/placeholders/project-ischool-chatbot.png"
+  },
+  {
+    slug: "cyverse",
+    title: "CyVerse",
+    summary:
+      "A browser-based, first-person cybersecurity training game. Walk a virtual security operations floor and practice the work, with no install.",
+    role: "Role to confirm",
+    tools: ["Unity 2022.3 LTS", "C#", "WebGL"],
+    year: "Beta",
+    impact:
+      "Public WebGL beta for identity, defense, and forensics practice in a desktop browser, with captions and a reduce-motion option.",
+    description: [
+      "The live page is a desktop game: keyboard and mouse, no VR, no install. You walk a virtual security operations floor and enroll credentials, clear multi-factor authentication, triage an alert queue, contain endpoints, and query logs. Play the beta asks for an access code from the project team. Level 4, Cyber Attack, is marked in development on that page.",
+      "The repo pins Unity 2022.3.40f1. SETUP.md boots through a PasswordLock scene, then a hub, then levels that unlock in order and store that progress in PlayerPrefs. It marks Level 0 feature-complete: onboarding for identification and access, the CIA triad, and NICE workforce roles. It calls Level 1, identity and access, a blockout of a newer template, and Level 2, cyber defense, a playable blockout whose scene file is still named Level1.unity. The live page numbers the same ideas as Levels 1 to 4. I am not folding those two lists into one status.",
+      "The page says the game was built at San José State University. It does not name me, and it does not name a professor. SETUP.md credits Dr. Rocca for the Security+ Prep Terminal: five spreadsheets of CompTIA Security+ practice questions, 294 questions across five NICE categories. That kiosk is a study aid. It does not change the level score. The public commit history is mostly my account, CrashPr0, plus commits from Kashikuzi. I have not assigned either of us a title on this card."
+    ],
+    tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
+    mediaAlt: "CyVerse hub with the Mission Status board",
+    mediaPath: "/images/projects/cyverse-hub.jpg",
+    mediaSlides: [
+      { path: "/images/projects/cyverse-hub.jpg", alt: "CyVerse hub with the Mission Status board" },
+      { path: "/images/projects/cyverse-level1-portal.jpg", alt: "Level 1 I/AM portal door" },
+      { path: "/images/projects/cyverse-level1-briefing.jpg", alt: "Level 1 security briefing room with the training checklist" },
+      { path: "/images/projects/cyverse-glossary.jpg", alt: "In-game glossary panel" }
+    ],
+    githubUrl: "https://github.com/CrashPr0/Cyverse",
+    siteUrl: "https://crashpr0.github.io/Cyverse/",
+    siteLabel: "Play the beta",
+    process: [
+      {
+        heading: "Entry scene and hub",
+        body: "PasswordLock is the first scene, and the login sits on a terminal in the room. Gate mode, the default, never shows the code, and repeated failures wait 30 seconds. revealPassword is the teaching mode: a memo gives the passphrase and explains why it is strong. SETUP.md says the check runs in the browser and the code ships in the WebGL build, so it only keeps casual visitors out of a beta. Hub doors then unlock in order."
+      },
+      {
+        heading: "Accessibility in the build",
+        body: "The live page and the Esc menu both cover captions with adjustable text size, Reduce Motion, look sensitivity, field of view, and status shown by shape and label rather than color alone. Volume splits into master, voice, and effects. In a WebGL build, a line without a recorded clip can be read with the browser Web Speech API. Captions stay on, recorded clips take priority, and TTS is skipped in the editor."
+      },
+      {
+        heading: "Procedural rooms and visual passes",
+        body: "Some levels exist twice: a procedural scene built at play time, and a hand-authored visual pass. SceneCatalog loads the visual pass when that scene is in the build, and falls back to the procedural room if it is missing. Art can live as prefabs under Assets/Resources/Props. If a prefab is absent, the builder uses a primitive, so a missing prop does not break the build."
+      }
+    ],
+    challenges: [
+      "The beta password is not a security boundary. SETUP.md says the code is inside the WebGL build and visible in the repository source. Anything that has to stay private needs the host to protect it.",
+      "The live page and SETUP.md do not share level numbers or the same done state. Level 4 on the site is still in development. In the repo, cyber defense is a playable blockout and the newer identity level is a blockout of the template.",
+      "I do not have a title to put on this card. The public page does not name an author. The setup notes name Dr. Rocca for the question spreadsheets, not for the whole game."
+    ],
+    lessons: [
+      "Reduce Motion in this project freezes shader animation, hologram spin, HUD pulses, and screen fades. Captions stay on when speech is skipped. That is the bar I want on a first-person browser game, not a caption file added at the end.",
+      "A client-side gate is a beta invite. It is a poor place to hide anything private. The setup notes say the host has to do that, with a private link or HTTP basic auth, not this scene."
+    ]
+  },
+  {
+    slug: "nsf-sdg-discovery-hall",
+    title: "UN SDG Discovery Hall",
+    summary:
+      "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample.",
+    role: "Role to confirm",
+    tools: ["Unity 6", "C#", "Meta Quest", "WebGL", "VERA"],
+    year: "Prototype",
+    impact:
+      "Logs gaze, fixations, station visits, and clicks for Passive, Interactive, and Guided conditions, and writes research CSV files. No participant results are reported here.",
+    description: [
+      "The README is a Unity project for an NSF-funded study of information-seeking and attention in immersive environments. It names the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA (Virtual Experience Research Accelerator). I did not find a public play link. The image on this page is a screenshot of that README. SCREENSHOTS.md says scene renders are not checked in, and that producing them needs a local Unity editor with a GPU.",
+      "Quest Pro has eye tracking. Quest 3 does not, so the project falls back to head gaze. The gaze_source column records which signal a sample used. Fixations use I-VT with a 30 degrees per second threshold and a 100 ms minimum, citing Salvucci and Goldberg 2000. The three conditions are Passive, Interactive, and Guided.",
+      "The menu command Build Discovery Hall Scene generates DiscoveryHall.unity with three placeholder stations: SDG 4, SDG 11, and SDG 13. The README says to rebuild that scene before an editor headset build, because the file is generated output. Unity is pinned to 6000.3.9f1. The project started on 2022.3 and moved to Unity 6 because the VERA plugin requires 6000.0 or newer.",
+      "docs/STUDY_DESIGN.md includes my name, Chris Velez, in the team list, in the same sentence as the words undergraduate assistant. I am not printing a job title from that line. The same note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
+    ],
+    tags: ["VR", "Research", "Quest", "Eye tracking", "Unity", "WebGL"],
+    mediaAlt: "GitHub README for the NSF UN SDG Discovery Hall Unity project",
+    mediaPath: "/images/projects/nsf-discovery-hall-readme.jpg",
+    githubUrl: "https://github.com/CrashPr0/NFS-Grant",
+    process: [
+      {
+        heading: "One scene, two rigs",
+        body: "The builder places an OVRCameraRig, with left and right eye gaze, and a DesktopPlayer in the same scene, and switches them at runtime. Desktop controls are WASD or the arrow keys, click to look, and Esc to free the cursor. WEBGL_BUILD.md describes the shareable browser build as that desktop rig, not the Quest APK. On Quest, the README uses the left stick to walk, the right stick to teleport and snap-turn, and either trigger to select what the gaze ray hits."
+      },
+      {
+        heading: "What the session writes",
+        body: "GazeProvider emits one gaze ray per frame. AttentionTarget stores dwell, look count, and time to first look for a labeled area. SdgStation records visits. StudyEventLogger writes clicks, key presses, station enter and exit, docent guidance, quiz responses, and session start and end. A web sample can POST the CSVs through RemoteDataUploader. VeraBridge is the seam to the VERA plugin. Portal credentials load from vera_credentials.json, which is gitignored."
+      },
+      {
+        heading: "WebGL when Meta's registry fails",
+        body: "WEBGL_BUILD.md says Unity can fail the whole package resolve when Meta's npm registry is unreachable, which also blocks VERA's dependencies. The documented escape hatch removes com.meta.xr.sdk.core and the scoped registry, then adds the scripting define NSFGRANT_NO_META so gaze scripts compile against stubs. Those stubs are not a headset runtime. The note says to put the Meta package back and clear the define before a Quest build."
+      }
+    ],
+    challenges: [
+      "Quest 3 has no eye tracker. Head gaze is the fallback, and the two signals have to stay separable. Dropping gaze_source would mix them.",
+      "The Discovery Hall scene file is generated. An editor build that skips the menu command ships whatever scene was already on disk. SCREENSHOTS.md also says the scene files are not in the repository until that command runs.",
+      "The README treats eye-tracking data as identifiable. Logs go to the app's private storage, and StudyData plus CSV exports are gitignored. This page does not include session files, and it does not claim an IRB status."
+    ],
+    lessons: [
+      "A frame-aligned gaze sample is not the headset's native eye-tracker clock. The README says analyses that need the native timestamps should resample on timestamp_utc_ms.",
+      "The browser demo and the lab headset are not the same signal. WEBGL_BUILD.md is explicit that the WebGL build is the desktop rig. I do not want a share link described as the Quest study."
+    ]
+  },
+  {
+    slug: "banned-book-week-ar",
+    title: "Banned Book Week AR",
+    summary:
+      "A phone scanner for Banned Books Week at SJSU King Library. Point the camera at a featured cover and a floating book plus a readable summary appear.",
+    role: "Creator",
+    tools: ["MindAR", "A-Frame", "JavaScript", "jsQR"],
+    year: "2026",
+    impact:
+      "Public scanner for the library event: eighteen cover targets, eight floors, one library, with camera processing kept on the phone.",
+    description: [
+      "The live page credits me, Chris Velez, as the creator. The banner is the 2026 Let Books Be campaign, October 4-10, 2026. Its alt text names SJSU King Library, the College of Humanities and the Arts, the Pride Center, the Campus Reading Program, and the Ethnic Studies Collaborative.",
+      "The landing says 18 books, 8 floors, one library. Find a featured book in King Library, point the camera at the cover, and the app anchors a floating, spinning 3D book. An HTML summary opens at the same time so the text stays readable. Browse all featured books works with no camera. If the camera is blocked, the page offers a visual preview. The privacy line says camera processing stays on the device and is never recorded.",
+      "The README's target pack is eighteen covers: seventeen from the installation sheet, plus the approved 2008 Bantam trade paperback of I, Robot. At runtime the app reads only same-origin files under public/data and public/assets. It does not contact a catalog. The README also lists a private Sites host. I am not linking that here, and I am not putting the cover image files on this portfolio."
+    ],
+    tags: ["AR", "Library", "Mobile", "MindAR", "A-Frame"],
+    mediaAlt: "Banned Books AR landing page for the King Library scanner",
+    mediaPath: "/images/projects/banned-book-week.jpg",
+    githubUrl: "https://github.com/CrashPr0/Banned-Book-Week",
+    siteUrl: "https://crashpr0.github.io/Banned-Book-Week/",
+    siteLabel: "Open the scanner",
+    process: [
+      {
+        heading: "Event page, then the camera",
+        body: "The first screen is the week, not one title. Start the AR scanner requests the camera, which needs HTTPS or localhost. A printed sticker can open one book with ?book= plus the book id, for example candide. QR decoding runs at most four times a second and pauses while a cover is tracked, so MindAR keeps priority."
+      },
+      {
+        heading: "Compiling the image targets",
+        body: "npm run compile:target opens MindAR 1.2.5's compiler in the browser, compiles every cover in order, writes public/assets/banned-books.mind, and records each cover's SHA-256. The live page loads A-Frame 1.6.0 and that MindAR build from vendor files. jsQR is the dependency that reads the stickers. npm run check:target compares the pack with those hashes."
+      },
+      {
+        heading: "Covers and the catalog",
+        body: "npm run scrape can refresh one pinned cover from Penguin Random House's ISBN endpoint. The script allowlists that host, checks that the bytes are a JPEG, and marks the MindAR target stale if the image changes. Live SJPL fetching stays off unless the command is run with --live-sjpl --authorized, and the README says to do that only after permission is documented. Candidate covers are marked unreviewed until they are matched to the physical books."
+      }
+    ],
+    challenges: [
+      "The README says to test the physical library copy, not only a photo on another screen. Jackets, stickers, glare, and reprints can change whether the target still matches.",
+      "The repository records where a cover came from. That note is not a license to reproduce the art. The cover files stay in the project repo, not on this site.",
+      "A-Frame, MindAR, the cover, and the .mind file are pinned together. The README says to re-test iOS Safari and Android Chrome when any of those change. I am not claiming that re-test is done."
+    ],
+    lessons: [
+      "The spinning book is the moment people see. The HTML panel is what makes the summary readable, and it is also the path when the camera never starts.",
+      "Keeping the video on the device is a product rule, not a footer. The app never uploads the camera stream, and the browse path still works when permission is denied."
+    ]
   }
 ];
