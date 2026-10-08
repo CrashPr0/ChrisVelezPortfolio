@@ -234,15 +234,15 @@ export const projects: Project[] = [
     title: "CyVerse",
     summary:
       "A browser-based, first-person cybersecurity training game. Walk a virtual security operations floor and practice the work, with no install.",
-    role: "Role to confirm",
+    role: "Lead Systems Engineer",
     tools: ["Unity 2022.3 LTS", "C#", "WebGL"],
     year: "Beta",
     impact:
       "Public WebGL beta for identity, defense, and forensics practice in a desktop browser, with captions and a reduce-motion option.",
     description: [
-      "The live page is a desktop game: keyboard and mouse, no VR, no install. You walk a virtual security operations floor and enroll credentials, clear multi-factor authentication, triage an alert queue, contain endpoints, and query logs. Play the beta asks for an access code from the project team. Level 4, Cyber Attack, is marked in development on that page.",
-      "The repo pins Unity 2022.3.40f1. SETUP.md boots through a PasswordLock scene, then a hub, then levels that unlock in order and store that progress in PlayerPrefs. It marks Level 0 feature-complete: onboarding for identification and access, the CIA triad, and NICE workforce roles. It calls Level 1, identity and access, a blockout of a newer template, and Level 2, cyber defense, a playable blockout whose scene file is still named Level1.unity. The live page numbers the same ideas as Levels 1 to 4. I am not folding those two lists into one status.",
-      "The page says the game was built at San José State University. It does not name me, and it does not name a professor. SETUP.md credits Dr. Rocca for the Security+ Prep Terminal: five spreadsheets of CompTIA Security+ practice questions, 294 questions across five NICE categories. That kiosk is a study aid. It does not change the level score. The public commit history is mostly my account, CrashPr0, plus commits from Kashikuzi. I have not assigned either of us a title on this card."
+      "I am the lead systems engineer on CyVerse, and I wrote most of the gameplay code. It is a desktop cybersecurity training game you play in the browser: keyboard and mouse, no VR, and no install. You walk a virtual security operations floor and enroll an ID badge, clear multi-factor authentication, triage an alert queue, contain endpoints, and query logs. Level 4, Cyber Attack, is marked in development on the public page.",
+      "The repo pins Unity 2022.3.40f1. The hub is a level select you walk through. LevelProgress stores which levels are done and opens the next hub door, and the Mission Status board reads that same record. Level 1, identity and access, is a briefing, then four tasks: badge enrollment, an MFA vault, data triage, and an audit hunt, then a certification exam. The glossary starts with general entries and unlocks a station's entries once that station is reviewed. The public page numbers the lessons as Levels 1 to 4. The repo also keeps an orientation scene and calls some later levels blockouts. I am not folding those two lists into one status.",
+      "The public page says the game was built at San José State University. SETUP.md credits Dr. Rocca for the Security+ Prep Terminal: five spreadsheets of CompTIA Security+ practice questions, 294 questions across five NICE categories. That kiosk is a study aid. It does not change the level score. The public commit history is mostly my account, CrashPr0, plus commits from Kashikuzi."
     ],
     tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
     mediaAlt: "CyVerse hub with the Mission Status board",
@@ -258,8 +258,8 @@ export const projects: Project[] = [
     siteLabel: "Play the beta",
     process: [
       {
-        heading: "Entry scene and hub",
-        body: "PasswordLock is the first scene, and the login sits on a terminal in the room. Gate mode, the default, never shows the code, and repeated failures wait 30 seconds. revealPassword is the teaching mode: a memo gives the passphrase and explains why it is strong. SETUP.md says the check runs in the browser and the code ships in the WebGL build, so it only keeps casual visitors out of a beta. Hub doors then unlock in order."
+        heading: "Hub and level flow",
+        body: "The hub is the menu you walk around in. Hub doors take their open or locked state from LevelProgress. Orientation and Level 1 start open. A later story level opens when the one before it is complete, and digital forensics also waits until three SOC key items are stored. The Mission Status board refreshes from that same record: operative callsign, clearance out of 4, and each row ready, locked, or in development. A return door inside a level stays shut until that level's manager opens it."
       },
       {
         heading: "Accessibility in the build",
@@ -271,13 +271,12 @@ export const projects: Project[] = [
       }
     ],
     challenges: [
-      "The beta password is not a security boundary. SETUP.md says the code is inside the WebGL build and visible in the repository source. Anything that has to stay private needs the host to protect it.",
-      "The live page and SETUP.md do not share level numbers or the same done state. Level 4 on the site is still in development. In the repo, cyber defense is a playable blockout and the newer identity level is a blockout of the template.",
-      "I do not have a title to put on this card. The public page does not name an author. The setup notes name Dr. Rocca for the question spreadsheets, not for the whole game."
+      "Level 1 finds its stations in the scene, so a procedural room and a hand-built room share one flow: briefing, four tasks, then the exam. Scenes from before that task rework fall back to the older review path, and both paths still have to finish the level.",
+      "The live page and SETUP.md do not share level numbers or the same done state. Level 4 on the site is still in development. In the repo, cyber defense is a playable blockout and the newer identity level is a blockout of the template."
     ],
     lessons: [
       "Reduce Motion in this project freezes shader animation, hologram spin, HUD pulses, and screen fades. Captions stay on when speech is skipped. That is the bar I want on a first-person browser game, not a caption file added at the end.",
-      "A client-side gate is a beta invite. It is a poor place to hide anything private. The setup notes say the host has to do that, with a private link or HTTP basic auth, not this scene."
+      "I keep the hub doors and the Mission Status board on one progress record. Marking a level complete has to open the next door and update clearance together, including the extra keys digital forensics waits on."
     ]
   },
   {
