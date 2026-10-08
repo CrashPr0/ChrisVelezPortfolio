@@ -240,9 +240,8 @@ export const projects: Project[] = [
     impact:
       "Public WebGL beta for identity, defense, and forensics practice in a desktop browser, with captions and a reduce-motion option.",
     description: [
-      "I am the lead systems engineer on CyVerse, and I wrote most of the gameplay code. It is a desktop cybersecurity training game you play in the browser: keyboard and mouse, no VR, and no install. You walk a virtual security operations floor and enroll an ID badge, clear multi-factor authentication, triage an alert queue, contain endpoints, and query logs. Level 4, Cyber Attack, is marked in development on the public page.",
-      "The repo pins Unity 2022.3.40f1. The hub is a level select you walk through. LevelProgress stores which levels are done and opens the next hub door, and the Mission Status board reads that same record. Level 1, identity and access, is a briefing, then four tasks: badge enrollment, an MFA vault, data triage, and an audit hunt, then a certification exam. The glossary starts with general entries and unlocks a station's entries once that station is reviewed. The public page numbers the lessons as Levels 1 to 4. The repo also keeps an orientation scene and calls some later levels blockouts. I am not folding those two lists into one status.",
-      "The public page says the game was built at San José State University. SETUP.md credits Dr. Rocca for the Security+ Prep Terminal: five spreadsheets of CompTIA Security+ practice questions, 294 questions across five NICE categories. That kiosk is a study aid. It does not change the level score. The public commit history is mostly my account, CrashPr0, plus commits from Kashikuzi."
+      "CyVerse is a desktop cybersecurity training game you play in the browser. Keyboard and mouse, no VR, and no install. I built the walkable hub, the level doors and Mission Status board that share one progress record, and the Level 1 identity and access flow: a briefing, badge enrollment, an MFA vault, data triage, an audit hunt, and a certification exam. The glossary starts with general entries and unlocks a station's entries once that station is reviewed.",
+      "It was a team project at San José State University, where I led systems engineering and wrote most of the gameplay code. The Security+ Prep Terminal uses practice question sets provided by Dr. San Nicolas-Rocca."
     ],
     tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
     mediaAlt: "CyVerse hub with the Mission Status board",
@@ -272,7 +271,7 @@ export const projects: Project[] = [
     ],
     challenges: [
       "Level 1 finds its stations in the scene, so a procedural room and a hand-built room share one flow: briefing, four tasks, then the exam. Scenes from before that task rework fall back to the older review path, and both paths still have to finish the level.",
-      "The live page and SETUP.md do not share level numbers or the same done state. Level 4 on the site is still in development. In the repo, cyber defense is a playable blockout and the newer identity level is a blockout of the template."
+      "The public page and the repo do not number every level the same way, and Level 4 is still in development."
     ],
     lessons: [
       "Reduce Motion in this project freezes shader animation, hologram spin, HUD pulses, and screen fades. Captions stay on when speech is skipped. That is the bar I want on a first-person browser game, not a caption file added at the end.",
