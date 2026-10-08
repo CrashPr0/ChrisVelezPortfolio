@@ -240,7 +240,7 @@ export const projects: Project[] = [
     impact:
       "Public WebGL beta for identity, defense, and forensics practice in a desktop browser, with captions and a reduce-motion option.",
     description: [
-      "CyVerse is a desktop cybersecurity training game you play in the browser. Keyboard and mouse, no VR, and no install. I built the walkable hub, the level doors and Mission Status board that share one progress record, and the Level 1 identity and access flow: a briefing, badge enrollment, an MFA vault, data triage, an audit hunt, and a certification exam. The glossary starts with general entries and unlocks a station's entries once that station is reviewed.",
+      "CyVerse is a desktop cybersecurity training game you play in the browser. Keyboard and mouse, no VR, and no install. I built the gameplay across every level, plus the walkable hub, the level doors, and the Mission Status board. Those levels cover orientation, identity and access, cyber defense, and digital forensics. Level 1 is the identity and access example: a briefing, badge enrollment, an MFA vault, data triage, an audit hunt, and a certification exam, with glossary entries that unlock once a station is reviewed.",
       "It was a team project at San José State University, where I led systems engineering and wrote most of the gameplay code. The Security+ Prep Terminal uses practice question sets provided by Dr. San Nicolas-Rocca."
     ],
     tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
