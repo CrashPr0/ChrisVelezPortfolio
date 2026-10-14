@@ -44,7 +44,7 @@ A production-ready, static portfolio website designed for GitHub Pages deploymen
 │  ├─ favicon.svg
 │  ├─ robots.txt
 │  ├─ resume/
-│  │  ├─ Chris_s_Resume_General.pdf
+│  │  ├─ Christopher_Velez_CV.pdf
 │  │  └─ README.txt
 │  ├─ scripts/
 │  │  └─ site.js
@@ -101,7 +101,7 @@ Update these files first:
 
 ### Resume File
 
-The public PDF is `public/resume/Chris_s_Resume_General.pdf`. `resumePath` in `src/data/site.ts` points at `/resume/Chris_s_Resume_General.pdf`. Replace that file in place, or change `resumePath` if the filename changes.
+The public PDF is `public/resume/Christopher_Velez_CV.pdf`. `resumePath` in `src/data/site.ts` points at `/resume/Christopher_Velez_CV.pdf`. Replace that file in place, or change `resumePath` if the filename changes.
 
 `/experience` redirects to `/resume` (see `redirects` in `astro.config.mjs`).
 

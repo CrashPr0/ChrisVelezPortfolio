@@ -191,43 +191,50 @@ export const projects: Project[] = [
     slug: "ischool-advising-chatbot",
     title: "iSchool Advising Support Chatbot",
     summary:
-      "Designed and built an AI-powered advising chatbot for SJSU's School of Information to answer program-specific questions with cited, accurate responses.",
+      "A team project that answers ISDA and MLIS advising questions from official SJSU iSchool sources, with citations and a path to human help.",
     role: "Developer",
-    tools: ["Flask", "Python", "Azure App Service", "Azure OpenAI", "RAG"],
+    tools: ["Flask", "Python", "OpenAI", "Azure OpenAI", "RAG", "BM25", "Azure App Service", "pytest", "pip-audit"],
     year: "2026",
     impact:
-      "Gives students faster answers to common advising questions while freeing up iSchool staff to focus on cases that actually need a person.",
+      "Supports academic advisors with source-based answers while keeping student records out of the bot and routing distress to a human handoff.",
     description: [
-      "SJSU advisors and professors already work 40 to 60 hours a week. A big chunk of that goes to answering the same questions over and over. This chatbot handles those.",
-      "Answers come from official SJSU catalog pages for BS ISDA students. Retrieval is hybrid BM25 plus vector search, so a reply can cite the page it used. Anything outside that material should go to a real advisor.",
-      "The app is Flask and Python on Azure App Service. Azure OpenAI runs gpt-4o-mini as the primary model, with a backup model when that call fails. Students get chat history in tabs, and answers render as markdown.",
-      "This is my CMPE-195 senior project, team 22, with teammates Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang."
+      "I build this chatbot with Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang. Our goal is to support academic advisors in their work without replacing them.",
+      "The app uses Flask and OpenAI / Azure OpenAI for retrieval-augmented generation over official SJSU iSchool sources. Students select ISDA or MLIS, and hybrid BM25 retrieval finds material for their program. Answers cite their sources, and invented links are stripped from replies.",
+      "The mobile-friendly UI includes one-click PDF export. Students can report an issue, and a reviewer dashboard lets the team review those reports. Reports are automatically deleted after 90 days.",
+      "Student records stay out of the bot entirely. Students in distress are routed to a human handoff instead of an automated reply. CI runs pytest and pip-audit, and the app is deployed on Azure App Service."
     ],
     tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
     process: [
       {
-        heading: "Identifying the problem",
-        body: "This is my CMPE-195 senior project with team 22, advised by Dr. Karen Wang. iSchool advisors already lose hours to the same questions from BS ISDA students. We scoped the bot to those questions, using official SJSU catalog pages, and to hand anything else to a person."
+        heading: "Scoping advising support",
+        body: "We use official SJSU iSchool sources for ISDA and MLIS advising questions. The program selector keeps the student's program explicit, and student records stay out of the bot."
       },
       {
-        heading: "Building the RAG pipeline",
-        body: "The service is Flask and Python on Azure App Service. Azure OpenAI serves gpt-4o-mini first and a backup model if that request fails. Search is hybrid BM25 plus vectors built with Azure OpenAI embeddings of the catalog pages. The UI keeps chat history in tabs and renders markdown."
+        heading: "Retrieval and citations",
+        body: "The Flask app uses OpenAI / Azure OpenAI with RAG and hybrid BM25 retrieval. Answers include source citations, and invented links are stripped before the reply reaches the student."
       },
       {
-        heading: "Testing and iteration",
-        body: "We store reviews of answers so we can score them instead of guessing from a demo. CI runs pytest and pip-audit. That is how a bad retrieval or a dependency issue gets caught before it sits on main."
+        heading: "Review and deployment",
+        body: "Issue reporting feeds a reviewer dashboard, with reports automatically deleted after 90 days. We evaluate answers against the advising test set, including distress and sensitive-data cases. CI runs pytest and pip-audit, and we deploy to Azure App Service."
       }
     ],
     challenges: [
-      "Azure rate limits and latency showed up as soon as we used the bot like a student would. I capped answer tokens, fell back to keyword search when vector search was throttled, and turned on Always On so the app was not cold-starting every visit. Stale index detection flags when the crawl is behind the pages people are asking about.",
-      "The model will invent a link if you let it. After each answer, an allowlist strips any URL that was not in the retrieved pages and logs it, which is also how we spot gaps in the knowledge base. A crisis and distress safety layer is in the app and still waiting on advisor review before we treat it as done. I rotated a key that had leaked and added a budget alert so a loop cannot quietly spend the Azure account."
+      "A generated answer can include an invented link. We strip those links and keep source citations tied to official SJSU iSchool material.",
+      "Advising questions can involve private records or distress. We keep student records out of the bot and route students in distress to a human handoff."
     ],
     lessons: [
-      "Swapping the model was the small part. Grounding, and a reviews database we could actually score, changed the answers more than another pass on the prompt.",
-      "Cost and ops are part of the product: token caps, a backup model, Always On, and a budget alert. We shipped that work as small reviewed pull requests so the three of us could see what changed."
+      "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
+      "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
     ],
     mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.png"
+    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
+    mediaSlides: [
+      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
+      { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
+    ],
+    githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22",
+    siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
+    siteLabel: "Try the live chatbot"
   },
   {
     slug: "cyverse",

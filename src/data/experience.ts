@@ -8,17 +8,40 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: "Figure AI (contract via Insight Global)",
+    title: "Robot Pilot",
+    location: "San Jose, CA",
+    dates: "August 2026 - Present",
+    highlights: [
+      "I teleoperate humanoid robots on swing shift, keeping remote sessions stable and collecting data for humanoid robots.",
+      "I run deployment testing on a new robot build as part of a pilot team selected by the head deployment engineer.",
+      "I work with a proprietary robotics stack under strict IP controls on what can be seen, logged, or shared.",
+      "I document each shift in handoff notes so the next crew can pick up without redoing setup."
+    ]
+  },
+  {
+    company: "Meta Summer Academy / Mission Bit",
+    title: "Virtual Reality Teaching Assistant",
+    location: "Menlo Park, CA",
+    dates: "June 2026 - Present",
+    highlights: [
+      "I teach Unity and Meta Quest Pro to 26 high school students at Meta HQ through twice-weekly lectures and live coding.",
+      "I coach students one-on-one on their projects and debug hardware in class, keeping sessions focused on building."
+    ]
+  },
+  {
     company: "San Jose State School of Information",
     title: "Library Technology Integration Assistant",
     location: "San Jose, CA",
-    dates: "June 2025 - Present",
+    dates: "June 2025 - July 2026",
     highlights: [
-      "Deliver 4-hour digital literacy workshops on digitizing Native American cultural artifacts through Polycam photogrammetry.",
-      "Facilitated 3 sessions at ATALM 2025 with 50 participants total, plus additional sessions at State of the Valley, San Jose African American Community Center, and Santa Clara STEMZone with 70-80 attendees per event.",
-      "Collaborate with faculty, librarians, and the Northern Cheyenne Tribe on Seeking Immortality.",
-      "Capture scans, refine 3D models, and develop XR-ready assets that preserve language and cultural artifacts.",
-      "Program and maintain SoftBank Pepper and LG CLOi GuideBot robots on a weekly cadence.",
-      "Update event behaviors, deploy XR and robotics demos for large-scale conferences, and author operational documentation."
+      "I scripted SoftBank Pepper and LG CLOi robot behaviors in Choregraphe and ran them live at library and academic events.",
+      "I created XR, AI, and hologram installations, including Seeking Immortality, on Meta Quest and HoloLens.",
+      "I facilitated an XR and photogrammetry technology literacy workshop at ATALM 2025 for the Cherokee community in North Carolina.",
+      "I was selected by the School of Information director to program the school's robots for the California Library Association.",
+      "I collaborated with faculty, librarians, and the Northern Cheyenne Tribe on Seeking Immortality.",
+      "I prepared 3D-scanned and photogrammetry assets for live public demos.",
+      "I troubleshot hardware and software live at events and documented setups so each run was repeatable."
     ]
   },
   {
