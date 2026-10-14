@@ -11,8 +11,8 @@ import { hrefFor } from "@/utils/paths";
   currentPath="/contact"
 >
   <section class="container py-16 md:py-20">
-    <SectionHeading
-title="Let&apos;s build immersive technology that ships"
+    <SectionHeading level="h1"
+      title="Let&apos;s build immersive technology that ships"
       description="Open to internships, research opportunities, collaborations, and creative technical partnerships."
     />
   </section>
@@ -37,21 +37,21 @@ title="Let&apos;s build immersive technology that ships"
           <h2 class="font-display text-xl font-bold text-white">Direct Contact</h2>
           <div class="mt-5 space-y-4 text-sm text-neutral-300">
             <p>
-              <span class="text-neutral-500">Email</span><br />
+              <span class="text-neutral-400">Email</span><br />
               <a href={`mailto:${siteConfig.email}`} class="footer-link">{siteConfig.email}</a>
             </p>
             <button class="btn btn-sm btn-secondary" data-copy-email data-email={siteConfig.email}>
               Copy Email
             </button>
             <p>
-              <span class="text-neutral-500">LinkedIn</span><br />
-              <a href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noreferrer" class="footer-link">
+              <span class="text-neutral-400">LinkedIn</span><br />
+              <a href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noopener noreferrer" class="footer-link">
                 {siteConfig.linkedIn}
               </a>
             </p>
             <p>
-              <span class="text-neutral-500">GitHub</span><br />
-              <a href={hrefFor(siteConfig.github)} target="_blank" rel="noreferrer" class="footer-link">
+              <span class="text-neutral-400">GitHub</span><br />
+              <a href={hrefFor(siteConfig.github)} target="_blank" rel="noopener noreferrer" class="footer-link">
                 {siteConfig.github}
               </a>
             </p>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { imageDimensions } from "@/utils/imageDimensions";
 import TagPill from "@/components/TagPill.astro";
 import { education, skillGroups, siteConfig } from "@/data/site";
 import { hrefFor, withBase } from "@/utils/paths";
@@ -13,7 +14,7 @@ const highlights = [
   {
     title: "Focus Areas",
     description:
-      "XR and AR/VR systems, immersive graphics pipelines, cultural preservation through photogrammetry, and game technology.",
+      "Robotics and human-robot interaction; embedded foundations in C, x86 assembly, and digital logic; AI advising and XR systems.",
   },
   {
     title: "Availability",
@@ -40,7 +41,7 @@ const socialLinks = [
 
 <BaseLayout
   title="About | Christopher Velez"
-  description="About Christopher Velez - Computer Engineering student specializing in XR and immersive systems."
+  description={siteConfig.description}
   currentPath="/about"
 >
   <section class="container py-16 md:py-20 pb-24 md:pb-32">
@@ -58,12 +59,13 @@ const socialLinks = [
 
           <div class="space-y-4">
             <h1 class="text-2xl font-semibold tracking-tight text-white md:text-3xl">
-              Christopher Velez, Computer Engineer &amp; XR Systems Developer
+              Christopher Velez: robotics, embedded foundations &amp; interactive systems
             </h1>
             <p class="max-w-xl text-base leading-relaxed text-neutral-400">
-              Computer Engineering student at SJSU building immersive systems that combine technical
-              depth with real-world usability — from XR prototypes and graphics pipelines to
-              public-facing interactive demos.
+              B.S. Computer Engineering student at SJSU programming and maintaining SoftBank Pepper
+              and LG CLOi GuideBot robots, developing XR experiences, and building an AI advising
+              chatbot. My interests connect human-robot interaction with embedded foundations
+              in C, x86 assembly, and digital logic using Vivado.
             </p>
           </div>
 
@@ -113,6 +115,10 @@ const socialLinks = [
                     alt="Christopher Velez headshot"
                     class="avatar-img"
                     loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                    width={imageDimensions[siteConfig.headshotPath].width}
+                    height={imageDimensions[siteConfig.headshotPath].height}
                   />
                 </div>
               </div>
@@ -121,13 +127,13 @@ const socialLinks = [
                 <h2 class="text-2xl font-semibold tracking-tight text-white">
                   Christopher Velez
                 </h2>
-                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-neutral-500">
-                  Computer Engineer · XR Systems
+                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-neutral-400">
+                  Computer Engineering · Robotics &amp; XR
                 </p>
               </div>
 
               <p class="mt-4 max-w-xs text-sm leading-relaxed text-neutral-400">
-                Building immersive experiences where engineering rigor meets creative vision.
+                Connecting robotics, AI, and XR through interactive systems.
               </p>
             </div>
 
@@ -139,6 +145,7 @@ const socialLinks = [
                   target="_blank"
                   rel="noopener noreferrer"
                   class="social-link"
+                  aria-label={`${siteConfig.name} on ${link.label}`}
                 >
                   <div class="flex items-center gap-3">
                     <span class="social-icon-wrap">
@@ -155,7 +162,7 @@ const socialLinks = [
                     </span>
                     <div>
                       <p class="text-sm font-semibold text-white">{link.label}</p>
-                      <p class="text-xs text-neutral-500">{link.handle}</p>
+                      <p class="text-xs text-neutral-400">{link.handle}</p>
                     </div>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" class="social-arrow h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -163,6 +170,7 @@ const socialLinks = [
                   </svg>
                 </a>
               ))}
+              <a class="footer-link mt-4" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             </div>
 
             <!-- Skills summary inside profile card -->
@@ -171,7 +179,7 @@ const socialLinks = [
               <div class="space-y-4">
                 {Object.entries(skillGroups).map(([group, skills]) => (
                   <section>
-                    <p class="mb-2 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">{group}</p>
+                    <p class="mb-2 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neutral-400">{group}</p>
                     <div class="flex flex-wrap gap-1.5">
                       {skills.map((skill) => <TagPill label={skill} />)}
                     </div>
@@ -190,7 +198,7 @@ const socialLinks = [
     <div class="edu-strip reveal mt-8">
       <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">{education.university}</p>
       <p class="mt-1 text-sm text-neutral-300">{education.degree}</p>
-      <p class="mt-0.5 text-xs text-neutral-500">{education.graduation}</p>
+      <p class="mt-0.5 text-xs text-neutral-400">{education.graduation}</p>
     </div>
 
   </section>
@@ -206,7 +214,7 @@ const socialLinks = [
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.07),
       0 40px 80px rgba(0, 0, 0, 0.4);
@@ -293,7 +301,7 @@ const socialLinks = [
     border-radius: 1.75rem;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.04);
-    padding: 2rem;
+    padding: 1.25rem;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -344,6 +352,10 @@ const socialLinks = [
   }
 
   /* Social links */
+  @media (min-width: 640px) {
+    .profile-card { padding: 2rem; }
+  }
+
   .social-link {
     display: flex;
     align-items: center;

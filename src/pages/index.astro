@@ -30,8 +30,8 @@ const personJsonLd = JSON.stringify({
 ---
 
 <BaseLayout
-  title="Christopher Velez | XR, Graphics, and Interactive Systems"
-  description="Computer Engineering student building immersive XR, AR/VR, graphics, and interactive systems."
+  title={siteConfig.title}
+  description={siteConfig.description}
   currentPath="/"
   jsonLd={personJsonLd}
 >
@@ -40,13 +40,14 @@ const personJsonLd = JSON.stringify({
       <!-- Left: primary content -->
       <div>
         <p class="kicker hero-seq" style="animation-delay: 80ms">Computer Engineering · SJSU</p>
-        <h1 class="hero-title" aria-label="Christopher Velez builds XR, graphics, and interactive systems.">
+        <h1 class="hero-title">
           <span class="hero-line hero-seq" style="animation-delay: 160ms">Christopher Velez</span>
-          <span class="hero-line hero-seq" style="animation-delay: 260ms">builds XR, graphics,</span>
+          <span class="hero-line hero-seq" style="animation-delay: 260ms">explores robotics, AI,</span>
           <span class="hero-line hero-seq" style="animation-delay: 360ms">and interactive systems.</span>
         </h1>
         <p class="hero-subtitle hero-seq" style="animation-delay: 480ms">
-          Immersive experiences across research, public engagement, and game development.
+          SJSU B.S. Computer Engineering student working with Pepper and LG CLOi robots,
+          AI advising, and XR, with foundations in C, x86 assembly, and digital logic.
         </p>
         <div class="mt-8 flex flex-wrap gap-3 hero-seq" style="animation-delay: 580ms">
           <a href={withBase("/projects")} class="btn">View Projects</a>
@@ -73,7 +74,7 @@ const personJsonLd = JSON.stringify({
 
   <section class="container py-14 md:py-20" id="featured-projects">
     <SectionHeading
-title="Graphics, spatial systems, and public-facing XR"
+      title="Graphics, spatial systems, and public-facing XR"
       description="Game development, immersive deployment, and community-centered technical work."
     />
     <div class="mt-10 grid gap-6 md:grid-cols-2 stagger-children">
@@ -97,8 +98,8 @@ title="Graphics, spatial systems, and public-facing XR"
 
   <section class="container py-14 md:py-20">
     <SectionHeading
-title="Internships, research, and collaboration"
-      description="XR prototyping, graphics pipelines, and immersive experience engineering."
+      title="Internships, research, and collaboration"
+      description="Human-robot interaction, robotics demos, and XR systems for research and public engagement."
     />
     <div class="timeline mt-10">
       {experiences.map((item) => (

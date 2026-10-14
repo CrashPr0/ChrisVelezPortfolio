@@ -12,8 +12,8 @@ import { hrefFor } from "@/utils/paths";
   currentPath="/resume"
 >
   <section class="container py-16 md:py-20">
-    <SectionHeading
-title="Professional snapshot"
+    <SectionHeading level="h1"
+      title="Professional snapshot"
       description="A concise web summary with a downloadable PDF for recruiters, labs, and collaborators."
     />
     <div class="reveal mt-8">
@@ -33,7 +33,7 @@ title="Professional snapshot"
               <section class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-5">
                 <h3 class="font-display text-lg font-bold text-white">{item.title}</h3>
                 <p class="text-sm text-accent-400">{item.company}</p>
-                <p class="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
+                <p class="mt-1 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
                   {item.location} · {item.dates}
                 </p>
                 <ul class="mt-4 space-y-2 text-sm text-neutral-400">
@@ -54,10 +54,10 @@ title="Professional snapshot"
           <section class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-5">
             <h2 class="font-display text-lg font-bold text-white">Contact</h2>
             <p class="mt-3 text-sm text-neutral-400">{siteConfig.email}</p>
-            <a class="mt-2 inline-flex text-sm text-accent-400 hover:text-accent-300" href={hrefFor(siteConfig.linkedIn)}>
+            <a class="mt-2 inline-flex text-sm text-accent-400 hover:text-accent-300" href={hrefFor(siteConfig.linkedIn)} rel="noopener noreferrer">
               LinkedIn
             </a>
-            <a class="mt-1 block text-sm text-accent-400 hover:text-accent-300" href={hrefFor(siteConfig.github)}>
+            <a class="mt-1 block text-sm text-accent-400 hover:text-accent-300" href={hrefFor(siteConfig.github)} rel="noopener noreferrer">
               GitHub
             </a>
           </section>

@@ -7,13 +7,13 @@ import { hrefFor } from "@/utils/paths";
   <div class="container flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
     <div>
       <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white">{siteConfig.name}</p>
-      <p class="mt-2 max-w-lg text-sm text-neutral-500">
-        XR, graphics, and interactive systems.
+      <p class="mt-2 max-w-lg text-sm text-neutral-400">
+        Robotics, embedded foundations, and AI / XR interactive systems.
       </p>
     </div>
     <ul class="flex flex-wrap gap-3 text-sm text-neutral-400">
-      <li><a class="footer-link" href={hrefFor(siteConfig.github)} target="_blank" rel="noreferrer">GitHub</a></li>
-      <li><a class="footer-link" href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noreferrer">LinkedIn</a></li>
+      <li><a class="footer-link" href={hrefFor(siteConfig.github)} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      <li><a class="footer-link" href={hrefFor(siteConfig.linkedIn)} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
       <li>
         <a class="footer-link" href={`mailto:${siteConfig.email}`}>
           {siteConfig.email}
