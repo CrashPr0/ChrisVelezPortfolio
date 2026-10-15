@@ -41,7 +41,7 @@ section("Asset sanity checks");
 const requiredPublicAssets = [
   "public/favicon.svg",
   "public/scripts/site.js",
-  "public/resume/Chris_s_Resume_General.pdf",
+  "public/resume/Christopher_Velez_CV.pdf",
   "public/images/placeholders/Chris_Velez_Headshot.jpeg",
   "public/images/placeholders/benthos.jpg",
   "public/images/placeholders/PhotogrametryWorkshop.jpg",

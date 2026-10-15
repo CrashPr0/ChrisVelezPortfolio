@@ -7,7 +7,7 @@ export const siteConfig = {
   email: "christopher.al.velez@gmail.com",
   linkedIn: "https://www.linkedin.com/in/christopher-velez-437704264/",
   github: "https://github.com/CrashPr0",
-  resumePath: "/resume/Chris_s_Resume_General.pdf",
+  resumePath: "/resume/Christopher_Velez_CV.pdf",
   headshotPath: "/images/placeholders/Chris_Velez_Headshot.jpeg"
 };
 
@@ -29,7 +29,7 @@ export const currentFocus = [
 export const education = {
   university: "San Jose State University",
   degree: "B.S. Computer Engineering",
-  graduation: "Expected Graduation: Fall 2026"
+  graduation: "Expected December 2026"
 };
 
 export const skillGroups = {
