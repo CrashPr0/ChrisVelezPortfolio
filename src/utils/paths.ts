@@ -1,6 +1,7 @@
 export const withBase = (path: string): string => {
-  if (!path || path === "/") return import.meta.env.BASE_URL;
-  return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+  const base = `${import.meta.env.BASE_URL.replace(/\/+$/, "")}/`;
+  if (!path || path === "/") return base;
+  return `${base}${path.replace(/^\/+/, "")}`;
 };
 
 export const hrefFor = (value: string): string => {

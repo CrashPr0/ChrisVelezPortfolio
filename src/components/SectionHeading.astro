@@ -1,15 +1,17 @@
 ---
 type Props = {
   kicker?: string;
+  level?: "h1" | "h2";
   title: string;
   description?: string;
 };
 
-const { kicker, title, description } = Astro.props;
+const { kicker, title, description, level = "h2" } = Astro.props;
+const Heading = level;
 ---
 
 <div class="reveal max-w-2xl">
   {kicker && <p class="kicker">{kicker}</p>}
-  <h2 class="section-title">{title}</h2>
+  <Heading class="section-title">{title}</Heading>
   {description && <p class="section-description">{description}</p>}
 </div>

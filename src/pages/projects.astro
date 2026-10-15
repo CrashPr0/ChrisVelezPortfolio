@@ -1,4 +1,5 @@
 ---
+import { imageDimensions } from "@/utils/imageDimensions";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import TagPill from "@/components/TagPill.astro";
@@ -12,7 +13,7 @@ import { withBase } from "@/utils/paths";
   currentPath="/projects"
 >
   <section class="container py-16 md:py-20">
-    <SectionHeading
+    <SectionHeading level="h1"
       title="Immersive systems and interactive technology"
       description="Technical execution, design intent, and real-world deployment."
     />
@@ -32,16 +33,19 @@ import { withBase } from "@/utils/paths";
           <div class="relative overflow-hidden">
             <img
               src={withBase(project.mediaSlides ? project.mediaSlides[0].path : project.mediaPath)}
-              alt={project.mediaAlt}
+              alt={project.mediaSlides?.[0].alt ?? project.mediaAlt}
               class="aspect-video w-full object-cover"
               loading="lazy"
+              decoding="async"
+              width={imageDimensions[project.mediaSlides?.[0].path ?? project.mediaPath]?.width}
+              height={imageDimensions[project.mediaSlides?.[0].path ?? project.mediaPath]?.height}
               style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
             />
           </div>
 
           <!-- Content -->
           <div class="flex flex-1 flex-col p-6">
-            <div class="mb-3 flex flex-wrap items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
+            <div class="mb-3 flex flex-wrap items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
               <span>{project.year}</span>
               <span class="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true"></span>
               <span>{project.role}</span>

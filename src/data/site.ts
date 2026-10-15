@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "Christopher Velez",
-  title: "Christopher Velez | XR, Graphics, and Interactive Systems",
+  title: "Christopher Velez | Robotics, Embedded & Interactive Systems",
   shortTitle: "Christopher Velez Portfolio",
   description:
-    "Computer Engineering student building XR, AR/VR, graphics, and interactive systems across research, public engagement, and game technology.",
+    "SJSU B.S. Computer Engineering student focused on robotics, human-robot interaction, embedded and digital logic foundations, and AI and XR interactive systems.",
   email: "christopher.al.velez@gmail.com",
   linkedIn: "https://www.linkedin.com/in/christopher-velez-437704264/",
   github: "https://github.com/CrashPr0",
@@ -20,6 +20,9 @@ export const navItems = [
 ] as const;
 
 export const currentFocus = [
+  "Robotics & human-robot interaction",
+  "Embedded & digital logic",
+  "AI & interactive systems",
   "XR, AR, and VR systems",
   "Graphics and immersive experiences",
   "Digital heritage and cultural preservation",

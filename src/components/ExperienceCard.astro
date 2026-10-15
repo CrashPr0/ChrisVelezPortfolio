@@ -13,10 +13,10 @@ const { item } = Astro.props;
   <div class="rounded-lg border border-white/[0.06] bg-surface-800/40 p-6">
     <div class="flex flex-wrap items-end justify-between gap-4">
       <div>
-        <p class="font-display text-lg font-bold text-white">{item.title}</p>
+        <h3 class="font-display text-lg font-bold text-white">{item.title}</h3>
         <p class="mt-1 text-sm text-accent-400">{item.company}</p>
       </div>
-      <div class="text-right text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
+      <div class="text-right text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
         <p>{item.location}</p>
         <p>{item.dates}</p>
       </div>

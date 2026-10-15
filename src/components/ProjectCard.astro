@@ -1,4 +1,5 @@
 ---
+import { imageDimensions } from "@/utils/imageDimensions";
 import type { Project } from "@/data/projects";
 import TagPill from "@/components/TagPill.astro";
 import ImageCarousel from "@/components/ImageCarousel.astro";
@@ -29,13 +30,16 @@ const { project, showLink = true } = Astro.props;
         alt={project.mediaAlt}
         class="project-media"
         loading="lazy"
+        decoding="async"
+        width={imageDimensions[project.mediaPath]?.width}
+        height={imageDimensions[project.mediaPath]?.height}
         style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
       />
     )}
   </div>
 
   <div class="space-y-4 p-6">
-    <div class="flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
+    <div class="flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
       <span>{project.year}</span>
       <span class="dot" aria-hidden="true"></span>
       <span>{project.role}</span>
