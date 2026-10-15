@@ -291,15 +291,23 @@ export const projects: Project[] = [
     impact:
       "Logs gaze, fixations, station visits, and clicks for Passive, Interactive, and Guided conditions, and writes research CSV files. No participant results are reported here.",
     description: [
-      "The README is a Unity project for an NSF-funded study of information-seeking and attention in immersive environments. It names the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA (Virtual Experience Research Accelerator). I did not find a public play link. The image on this page is a screenshot of that README. SCREENSHOTS.md says scene renders are not checked in, and that producing them needs a local Unity editor with a GPU.",
+      "The README is a Unity project for an NSF-funded study of information-seeking and attention in immersive environments. It names the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA (Virtual Experience Research Accelerator). A WebGL build of the desktop sample is playable in the browser, and the images on this page are in-game captures from the Discovery Hall.",
       "Quest Pro has eye tracking. Quest 3 does not, so the project falls back to head gaze. The gaze_source column records which signal a sample used. Fixations use I-VT with a 30 degrees per second threshold and a 100 ms minimum, citing Salvucci and Goldberg 2000. The three conditions are Passive, Interactive, and Guided.",
       "The menu command Build Discovery Hall Scene generates DiscoveryHall.unity with three placeholder stations: SDG 4, SDG 11, and SDG 13. The README says to rebuild that scene before an editor headset build, because the file is generated output. Unity is pinned to 6000.3.9f1. The project started on 2022.3 and moved to Unity 6 because the VERA plugin requires 6000.0 or newer.",
       "docs/STUDY_DESIGN.md includes my name, Chris Velez, in the team list, in the same sentence as the words undergraduate assistant. I am not printing a job title from that line. The same note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
     ],
     tags: ["VR", "Research", "Quest", "Eye tracking", "Unity", "WebGL"],
-    mediaAlt: "GitHub README for the NSF UN SDG Discovery Hall Unity project",
-    mediaPath: "/images/projects/nsf-discovery-hall-readme.jpg",
+    mediaAlt: "In-game view of the Discovery Hall hub with a UN SDG Discovery Hall welcome sign and the SDG 11 room ahead",
+    mediaPath: "/images/projects/nsf-hall-welcome.webp",
+    mediaSlides: [
+      { path: "/images/projects/nsf-hall-welcome.webp", alt: "Discovery Hall hub with the UN SDG Discovery Hall welcome sign and the SDG 11 room ahead" },
+      { path: "/images/projects/nsf-hall-waterfall-sdg4.webp", alt: "Discovery Hall hub with a waterfall beside the entrance to the SDG 4 room" },
+      { path: "/images/projects/nsf-sdg4-minerva.webp", alt: "MINERVA guide character in the SDG 4 Quality Education room next to progress data panels" },
+      { path: "/images/projects/nsf-sdg11-hina.webp", alt: "HINA guide character in the SDG 11 Sustainable Cities room" }
+    ],
     githubUrl: "https://github.com/CrashPr0/NFS-Grant",
+    siteUrl: "https://crashpr0.github.io/NFS-Grant/",
+    siteLabel: "Play in Browser (WebGL)",
     process: [
       {
         heading: "One scene, two rigs",
