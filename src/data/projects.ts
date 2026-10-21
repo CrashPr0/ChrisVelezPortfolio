@@ -17,6 +17,12 @@ export type Project = {
    * Example: "50% 40%" (x y).
    */
   mediaFocus?: string;
+  /** Headline numbers shown on the card and project page. */
+  proof?: { value: string; label: string }[];
+  /** Caveat shown under the proof numbers. */
+  proofNote?: string;
+  /** Short list of what I personally built. */
+  myRole?: string[];
   githubUrl?: string;
   pressUrl?: string;
   siteUrl?: string;
@@ -28,6 +34,70 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "ischool-advising-chatbot",
+    title: "iSchool Advising Support Chatbot",
+    summary:
+      "A team project that answers ISDA and MLIS advising questions from official SJSU iSchool sources, with citations and a path to human help.",
+    role: "Main contributor",
+    tools: ["Flask", "Python", "OpenAI", "Azure OpenAI", "RAG", "BM25", "Azure App Service", "pytest", "pip-audit"],
+    year: "2026",
+    proof: [
+      { value: "~60%", label: "of commits (about 137 of ~230)" },
+      { value: "84/84", label: "citation links valid" },
+      { value: "75%", label: "hit rate at top 4 retrieved results" }
+    ],
+    proofNote:
+      "Citation and retrieval figures come from an offline evaluation that used stand-in embeddings. Commit share is from the team repository history.",
+    myRole: [
+      "Ingestion pipeline",
+      "Azure deployment",
+      "Retrieval tuning",
+      "Link verification",
+      "Advisor handoff",
+      "PDF export",
+      "Canvas embedding"
+    ],
+    impact:
+      "Supports academic advisors with source-based answers while keeping student records out of the bot and routing distress to a human handoff.",
+    description: [
+      "I build this chatbot with Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang. Our goal is to support academic advisors in their work without replacing them.",
+      "The app uses Flask and OpenAI / Azure OpenAI for retrieval-augmented generation over official SJSU iSchool sources. Students select ISDA or MLIS, and hybrid BM25 retrieval finds material for their program. Answers cite their sources, and invented links are stripped from replies.",
+      "The mobile-friendly UI includes one-click PDF export. Students can report an issue, and a reviewer dashboard lets the team review those reports. Reports are automatically deleted after 90 days.",
+      "Student records stay out of the bot entirely. Students in distress are routed to a human handoff instead of an automated reply. CI runs pytest and pip-audit, and the app is deployed on Azure App Service."
+    ],
+    tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
+    process: [
+      {
+        heading: "Scoping advising support",
+        body: "We use official SJSU iSchool sources for ISDA and MLIS advising questions. The program selector keeps the student's program explicit, and student records stay out of the bot."
+      },
+      {
+        heading: "Retrieval and citations",
+        body: "The Flask app uses OpenAI / Azure OpenAI with RAG and hybrid BM25 retrieval. Answers include source citations, and invented links are stripped before the reply reaches the student."
+      },
+      {
+        heading: "Review and deployment",
+        body: "Issue reporting feeds a reviewer dashboard, with reports automatically deleted after 90 days. We evaluate answers against the advising test set, including distress and sensitive-data cases. CI runs pytest and pip-audit, and we deploy to Azure App Service."
+      }
+    ],
+    challenges: [
+      "A generated answer can include an invented link. We strip those links and keep source citations tied to official SJSU iSchool material.",
+      "Advising questions can involve private records or distress. We keep student records out of the bot and route students in distress to a human handoff."
+    ],
+    lessons: [
+      "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
+      "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
+    ],
+    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
+    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
+    mediaSlides: [
+      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
+      { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
+    ],
+    siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
+    siteLabel: "Try the live chatbot"
+  },
   {
     slug: "benthos",
     title: "Benthos",
@@ -186,54 +256,6 @@ export const projects: Project[] = [
       { path: "/images/placeholders/StemZoneSantaClara2.jpg", alt: "Drone coding workshop activity at STEM Zone Santa Clara 2026" },
       { path: "/images/placeholders/PhotogrametryWorkshop.jpg", alt: "Photogrammetry and cultural preservation workshop at ATALM 2025" }
     ]
-  },
-  {
-    slug: "ischool-advising-chatbot",
-    title: "iSchool Advising Support Chatbot",
-    summary:
-      "A team project that answers ISDA and MLIS advising questions from official SJSU iSchool sources, with citations and a path to human help.",
-    role: "Developer",
-    tools: ["Flask", "Python", "OpenAI", "Azure OpenAI", "RAG", "BM25", "Azure App Service", "pytest", "pip-audit"],
-    year: "2026",
-    impact:
-      "Supports academic advisors with source-based answers while keeping student records out of the bot and routing distress to a human handoff.",
-    description: [
-      "I build this chatbot with Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang. Our goal is to support academic advisors in their work without replacing them.",
-      "The app uses Flask and OpenAI / Azure OpenAI for retrieval-augmented generation over official SJSU iSchool sources. Students select ISDA or MLIS, and hybrid BM25 retrieval finds material for their program. Answers cite their sources, and invented links are stripped from replies.",
-      "The mobile-friendly UI includes one-click PDF export. Students can report an issue, and a reviewer dashboard lets the team review those reports. Reports are automatically deleted after 90 days.",
-      "Student records stay out of the bot entirely. Students in distress are routed to a human handoff instead of an automated reply. CI runs pytest and pip-audit, and the app is deployed on Azure App Service."
-    ],
-    tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
-    process: [
-      {
-        heading: "Scoping advising support",
-        body: "We use official SJSU iSchool sources for ISDA and MLIS advising questions. The program selector keeps the student's program explicit, and student records stay out of the bot."
-      },
-      {
-        heading: "Retrieval and citations",
-        body: "The Flask app uses OpenAI / Azure OpenAI with RAG and hybrid BM25 retrieval. Answers include source citations, and invented links are stripped before the reply reaches the student."
-      },
-      {
-        heading: "Review and deployment",
-        body: "Issue reporting feeds a reviewer dashboard, with reports automatically deleted after 90 days. We evaluate answers against the advising test set, including distress and sensitive-data cases. CI runs pytest and pip-audit, and we deploy to Azure App Service."
-      }
-    ],
-    challenges: [
-      "A generated answer can include an invented link. We strip those links and keep source citations tied to official SJSU iSchool material.",
-      "Advising questions can involve private records or distress. We keep student records out of the bot and route students in distress to a human handoff."
-    ],
-    lessons: [
-      "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
-      "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
-    ],
-    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
-    mediaSlides: [
-      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
-      { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
-    ],
-    siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
-    siteLabel: "Try the live chatbot"
   },
   {
     slug: "cyverse",
