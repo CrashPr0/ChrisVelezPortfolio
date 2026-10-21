@@ -7,6 +7,10 @@ import { proofPoints, education, siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import { hrefFor, withBase } from "@/utils/paths";
+import { getImage } from "astro:assets";
+import headshot from "@/assets/images/placeholders/Chris_Velez_Headshot.jpeg";
+
+const headshotWebp = await getImage({ src: headshot, format: "webp", width: 600, quality: 75 });
 
 const featuredProjects = projects.slice(0, 4);
 const configuredSite = (Astro.site?.href ?? "https://crashpr0.github.io/ChrisVelezPortfolio/").replace(/\/$/, "");
@@ -17,7 +21,7 @@ const personJsonLd = JSON.stringify({
   "@type": "Person",
   name: siteConfig.name,
   url: siteRoot,
-  image: siteRoot + siteConfig.headshotPath.replace(/^\//, ""),
+  image: new URL(headshotWebp.src, configuredSite).href,
   email: siteConfig.email,
   jobTitle: "Computer Engineering Student",
   affiliation: {

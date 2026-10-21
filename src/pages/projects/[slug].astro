@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ImageCarousel from "@/components/ImageCarousel.astro";
+import Img from "@/components/Img.astro";
 import TagPill from "@/components/TagPill.astro";
 import { projects } from "@/data/projects";
 import { withBase } from "@/utils/paths";
@@ -96,9 +97,12 @@ const { project } = Astro.props;
     {project.mediaSlides && project.mediaSlides.length > 1 ? (
       <ImageCarousel slides={project.mediaSlides} focus={project.mediaFocus} id={project.slug} />
     ) : (
-      <img
-        src={withBase(project.mediaPath)}
+      <Img
+        path={project.mediaPath}
         alt={project.mediaAlt}
+        sizes="(min-width: 1152px) 1088px, 100vw"
+        widths={[640, 1100, 1600]}
+        loading="eager"
         class="w-full rounded-xl object-cover"
         style={`aspect-ratio: 16/9; object-position: ${project.mediaFocus ?? "center"};`}
       />

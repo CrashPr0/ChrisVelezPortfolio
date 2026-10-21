@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { imageDimensions } from "@/utils/imageDimensions";
+import Img from "@/components/Img.astro";
 import TagPill from "@/components/TagPill.astro";
 import { education, skillGroups, siteConfig } from "@/data/site";
 import { hrefFor, withBase } from "@/utils/paths";
@@ -110,15 +110,14 @@ const socialLinks = [
               <div class="avatar-wrap">
                 <div class="avatar-glow" aria-hidden="true"></div>
                 <div class="avatar-frame">
-                  <img
-                    src={withBase(siteConfig.headshotPath)}
+                  <Img
+                    path={siteConfig.headshotPath}
                     alt="Christopher Velez headshot"
                     class="avatar-img"
+                    sizes="240px"
+                    widths={[240, 480]}
                     loading="eager"
-                    decoding="async"
                     fetchpriority="high"
-                    width={imageDimensions[siteConfig.headshotPath].width}
-                    height={imageDimensions[siteConfig.headshotPath].height}
                   />
                 </div>
               </div>

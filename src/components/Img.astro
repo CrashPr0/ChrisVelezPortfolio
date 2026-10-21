@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+type Props = {
+  /** Site-style path such as "/images/projects/cyverse-hub.jpg". Resolved to src/assets. */
+  path: string;
+  alt: string;
+  class?: string;
+  style?: string;
+  sizes?: string;
+  widths?: number[];
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
+  "aria-hidden"?: "true" | "false";
+};
+
+const assets = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/**/*.{jpg,jpeg,png,webp}",
+  { eager: true }
+);
+
+const {
+  path,
+  alt,
+  sizes = "(min-width: 768px) 540px, 100vw",
+  widths = [480, 800, 1100],
+  loading = "lazy",
+  ...rest
+} = Astro.props;
+
+const asset = assets[`/src/assets${path}`];
+if (!asset) throw new Error(`Img: no asset for "${path}" in src/assets`);
+const usable = widths.filter((w) => w <= asset.default.width);
+---
+
+<Image
+  src={asset.default}
+  alt={alt}
+  format="webp"
+  quality={75}
+  widths={usable.length > 0 ? usable : [asset.default.width]}
+  sizes={sizes}
+  loading={loading}
+  decoding="async"
+  {...rest}
+/>

@@ -48,7 +48,7 @@ A production-ready, static portfolio website designed for GitHub Pages deploymen
 │  │  └─ README.txt
 │  ├─ scripts/
 │  │  └─ site.js
-│  └─ images/placeholders/
+│  └─ (images now live in src/assets/images/)
 │     ├─ Chris_Velez_Headshot.jpeg
 │     ├─ benthos-header.png
 │     ├─ benthos.jpg
@@ -107,7 +107,7 @@ The public PDF is `public/resume/Christopher_Velez_CV.pdf`. `resumePath` in `src
 
 ### Images
 
-Project photos and the headshot live in `public/images/placeholders/`. Paths are set in:
+Project photos and the headshot live in `src/assets/images/placeholders/`. Paths are set in:
 
 - `src/data/site.ts` (`headshotPath`)
 - `src/data/projects.ts` (`mediaPath` and `mediaSlides`)

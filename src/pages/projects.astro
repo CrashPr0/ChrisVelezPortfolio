@@ -1,5 +1,5 @@
 ---
-import { imageDimensions } from "@/utils/imageDimensions";
+import Img from "@/components/Img.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import TagPill from "@/components/TagPill.astro";
@@ -31,14 +31,11 @@ import { withBase } from "@/utils/paths";
         >
           <!-- Media -->
           <div class="relative overflow-hidden">
-            <img
-              src={withBase(project.mediaSlides ? project.mediaSlides[0].path : project.mediaPath)}
+            <Img
+              path={project.mediaSlides ? project.mediaSlides[0].path : project.mediaPath}
               alt={project.mediaSlides?.[0].alt ?? project.mediaAlt}
               class="aspect-video w-full object-cover"
-              loading="lazy"
-              decoding="async"
-              width={imageDimensions[project.mediaSlides?.[0].path ?? project.mediaPath]?.width}
-              height={imageDimensions[project.mediaSlides?.[0].path ?? project.mediaPath]?.height}
+              sizes="(min-width: 1024px) 370px, (min-width: 768px) 50vw, 100vw"
               style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
             />
           </div>

@@ -1,5 +1,5 @@
 ---
-import { imageDimensions } from "@/utils/imageDimensions";
+import Img from "@/components/Img.astro";
 import type { Project } from "@/data/projects";
 import TagPill from "@/components/TagPill.astro";
 import ImageCarousel from "@/components/ImageCarousel.astro";
@@ -25,14 +25,10 @@ const { project, showLink = true } = Astro.props;
         id={`card-${project.slug}`}
       />
     ) : (
-      <img
-        src={withBase(project.mediaPath)}
+      <Img
+        path={project.mediaPath}
         alt={project.mediaAlt}
         class="project-media"
-        loading="lazy"
-        decoding="async"
-        width={imageDimensions[project.mediaPath]?.width}
-        height={imageDimensions[project.mediaPath]?.height}
         style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
       />
     )}
