@@ -40,6 +40,8 @@ export const proofPoints = [
   }
 ] as const;
 
+export const homeSkills = ["Python", "OpenAI / Azure OpenAI", "RAG", "Flask", "Unity / C#", "C / C++"] as const;
+
 export const education = {
   university: "San Jose State University",
   degree: "B.S. Computer Engineering",

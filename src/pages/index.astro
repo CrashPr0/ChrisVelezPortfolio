@@ -2,8 +2,9 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import TagPill from "@/components/TagPill.astro";
 import ExperienceCard from "@/components/ExperienceCard.astro";
-import { proofPoints, education, siteConfig } from "@/data/site";
+import { proofPoints, homeSkills, education, siteConfig } from "@/data/site";
 import { projects } from "@/data/projects";
 import { experiences } from "@/data/experience";
 import { hrefFor, withBase } from "@/utils/paths";
@@ -85,6 +86,13 @@ const personJsonLd = JSON.stringify({
         </ul>
       </aside>
     </div>
+  </section>
+
+  <section class="container mt-5" aria-label="Skills">
+    <ul class="flex flex-wrap items-center gap-2">
+      <li class="focus-areas-label mr-1">Skills</li>
+      {homeSkills.map((skill) => <li><TagPill label={skill} /></li>)}
+    </ul>
   </section>
 
   <section class="container pb-10 pt-6 md:pb-12 md:pt-8" id="featured-projects">
