@@ -19,14 +19,25 @@ export const navItems = [
   { label: "Contact", href: "/contact" }
 ] as const;
 
-export const currentFocus = [
-  "Robotics & human-robot interaction",
-  "Embedded & digital logic",
-  "AI & interactive systems",
-  "XR, AR, and VR systems",
-  "Graphics and immersive experiences",
-  "Digital heritage and cultural preservation",
-  "Game and interactive technology"
+export const proofPoints = [
+  {
+    label: "RAG advising chatbot",
+    detail: "In production on Azure for SJSU iSchool advisors",
+    href: "/projects/ischool-advising-chatbot"
+  },
+  {
+    label: "Robot Pilot, Figure AI",
+    detail: "Humanoid robot teleoperation, via Insight Global"
+  },
+  {
+    label: "VR TA, Meta Summer Academy",
+    detail: "Taught Unity and Meta Quest Pro to 26 high schoolers"
+  },
+  {
+    label: "Public XR and AR projects",
+    detail: "CyVerse and Banned Book Week AR, playable in the browser",
+    href: "/projects"
+  }
 ] as const;
 
 export const education = {
