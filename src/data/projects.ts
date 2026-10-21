@@ -232,7 +232,6 @@ export const projects: Project[] = [
       { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
       { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
     ],
-    githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22",
     siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
     siteLabel: "Try the live chatbot"
   },
