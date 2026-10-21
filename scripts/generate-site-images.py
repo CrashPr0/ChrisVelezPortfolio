@@ -18,10 +18,20 @@ def font(size, bold=False):
 og = Image.new('RGB', (1200, 630), '#0a0a0a')
 draw = ImageDraw.Draw(og)
 draw.rounded_rectangle((64, 64, 72, 566), radius=4, fill='#3ad2f2')
-draw.text((108, 112), 'CHRISTOPHER VELEZ', font=font(52, True), fill='#ffffff')
-draw.text((108, 228), 'Robotics, embedded foundations', font=font(42), fill='#ffffff')
-draw.text((108, 290), '& AI / XR interactive systems', font=font(42), fill='#ffffff')
-draw.text((108, 478), 'SJSU · B.S. Computer Engineering student', font=font(28), fill='#b5b5b5')
+draw.text((108, 96), 'CHRISTOPHER VELEZ', font=font(52, True), fill='#ffffff')
+draw.text((108, 176), 'Robotics, AI & XR engineer', font=font(40), fill='#3ad2f2')
+proof = [
+    'RAG advising chatbot in production on Azure (SJSU iSchool)',
+    'Robot Pilot at Figure AI: humanoid robot teleoperation',
+    'VR TA for 26 high schoolers, Meta Summer Academy',
+    'Public XR and AR projects: CyVerse, Banned Book Week AR',
+]
+for i, line in enumerate(proof):
+    y = 270 + i * 52
+    draw.ellipse((112, y + 12, 124, y + 24), fill='#3ad2f2')
+    draw.text((144, y), line, font=font(27), fill='#e5e5e5')
+draw.text((108, 500), 'SJSU B.S. Computer Engineering \u00b7 Graduating December 2026', font=font(26), fill='#b5b5b5')
+draw.text((108, 538), 'Seeking full-time roles', font=font(26), fill='#b5b5b5')
 og.save(PUBLIC / 'images/og-default.png', optimize=True)
 
 # CV letterforms rendered at high resolution for crisp small-size icons.
