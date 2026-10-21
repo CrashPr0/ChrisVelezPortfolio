@@ -310,7 +310,8 @@ export const projects: Project[] = [
     slug: "nsf-sdg-discovery-hall",
     title: "UN SDG Discovery Hall",
     summary:
-      "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample.",
+      "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample. I built the Unity scene for the VERA software and wrote nearly all of the code, including all interaction logic and behavior.",
+    role: "Unity Developer (sole programmer)",
     tools: ["Unity 6", "C#", "Meta Quest", "WebGL", "VERA"],
     year: "Prototype",
     impact:
@@ -319,7 +320,11 @@ export const projects: Project[] = [
       "The README is a Unity project for an NSF-funded study of information-seeking and attention in immersive environments. It names the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA (Virtual Experience Research Accelerator). A WebGL build of the desktop sample is playable in the browser, and the images on this page are in-game captures from the Discovery Hall.",
       "Quest Pro has eye tracking. Quest 3 does not, so the project falls back to head gaze. The gaze_source column records which signal a sample used. Fixations use I-VT with a 30 degrees per second threshold and a 100 ms minimum, citing Salvucci and Goldberg 2000. The three conditions are Passive, Interactive, and Guided.",
       "The menu command Build Discovery Hall Scene generates DiscoveryHall.unity with three placeholder stations: SDG 4, SDG 11, and SDG 13. The README says to rebuild that scene before an editor headset build, because the file is generated output. Unity is pinned to 6000.3.9f1. The project started on 2022.3 and moved to Unity 6 because the VERA plugin requires 6000.0 or newer.",
-      "docs/STUDY_DESIGN.md includes my name, Chris Velez, in the team list, in the same sentence as the words undergraduate assistant. I am not printing a job title from that line. The same note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
+      "The study design note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
+    ],
+    myRole: [
+      "Built the Unity scene for the VERA software at Discovery Hall and wrote nearly all of the code, including all interaction logic and behavior (looking around, how interactions work).",
+      "Worked from provided assets and a target look. Dr. Chow, the former director, helped design the physical space."
     ],
     tags: ["VR", "Research", "Quest", "Eye tracking", "Unity", "WebGL"],
     mediaAlt: "In-game view of the Discovery Hall hub with a UN SDG Discovery Hall welcome sign and the SDG 11 room ahead",
