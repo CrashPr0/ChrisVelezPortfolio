@@ -47,8 +47,8 @@ import { withBase } from "@/utils/paths";
           <div class="flex flex-1 flex-col p-6">
             <div class="mb-3 flex flex-wrap items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
               <span>{project.year}</span>
-              <span class="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true"></span>
-              <span>{project.role}</span>
+              {project.role && <span class="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true"></span>}
+              {project.role && <span>{project.role}</span>}
             </div>
             <h2 class="font-display text-xl font-extrabold tracking-tight text-white group-hover:text-accent-300" style="transition: color 160ms ease;">{project.title}</h2>
             <p class="mt-2 flex-1 text-sm leading-relaxed text-neutral-400">{project.summary}</p>

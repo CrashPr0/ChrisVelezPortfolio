@@ -23,10 +23,10 @@ export const experiences: Experience[] = [
     company: "Meta Summer Academy / Mission Bit",
     title: "Virtual Reality Teaching Assistant",
     location: "Menlo Park, CA",
-    dates: "June 2026 - Present",
+    dates: "Jun 2026 – Aug 2026",
     highlights: [
-      "I teach Unity and Meta Quest Pro to 26 high school students at Meta HQ through twice-weekly lectures and live coding.",
-      "I coach students one-on-one on their projects and debug hardware in class, keeping sessions focused on building."
+      "I taught Unity and Meta Quest Pro to 26 high school students at Meta HQ through twice-weekly lectures and live coding.",
+      "I coached students one-on-one on their projects and debugged hardware in class, keeping sessions focused on building."
     ]
   },
   {

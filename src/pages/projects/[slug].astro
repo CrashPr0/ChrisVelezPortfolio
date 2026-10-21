@@ -38,8 +38,8 @@ const { project } = Astro.props;
   <section class="container pb-10 pt-8 md:pt-12">
     <div class="mb-4 flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-500">
       <span>{project.year}</span>
-      <span class="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true"></span>
-      <span>{project.role}</span>
+      {project.role && <span class="h-1 w-1 rounded-full bg-neutral-600" aria-hidden="true"></span>}
+      {project.role && <span>{project.role}</span>}
     </div>
     <h1 class="font-display text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
       {project.title}
@@ -176,10 +176,12 @@ const { project } = Astro.props;
 
       <!-- Right: sidebar -->
       <aside class="space-y-6">
-        <div class="reveal rounded-xl border border-white/[0.06] bg-surface-800/40 p-5">
-          <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">Role</p>
-          <p class="mt-2 text-sm text-neutral-300">{project.role}</p>
-        </div>
+        {project.role && (
+          <div class="reveal rounded-xl border border-white/[0.06] bg-surface-800/40 p-5">
+            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">Role</p>
+            <p class="mt-2 text-sm text-neutral-300">{project.role}</p>
+          </div>
+        )}
         <div class="reveal rounded-xl border border-white/[0.06] bg-surface-800/40 p-5">
           <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-accent-400">Year</p>
           <p class="mt-2 text-sm text-neutral-300">{project.year}</p>

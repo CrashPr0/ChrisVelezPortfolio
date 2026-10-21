@@ -2,7 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   summary: string;
-  role: string;
+  role?: string;
   tools: string[];
   year: string;
   impact: string;
@@ -289,7 +289,6 @@ export const projects: Project[] = [
     title: "UN SDG Discovery Hall",
     summary:
       "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample.",
-    role: "Role to confirm",
     tools: ["Unity 6", "C#", "Meta Quest", "WebGL", "VERA"],
     year: "Prototype",
     impact:
