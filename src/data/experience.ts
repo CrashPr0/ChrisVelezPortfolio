@@ -8,8 +8,8 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    company: "Figure AI (contract via Insight Global)",
-    title: "Robot Pilot",
+    company: "Figure (Contract)",
+    title: "Robot Pilot Team",
     location: "San Jose, CA",
     dates: "August 2026 - Present",
     highlights: [
@@ -20,20 +20,20 @@ export const experiences: Experience[] = [
     ]
   },
   {
-    company: "Meta Summer Academy / Mission Bit",
-    title: "Virtual Reality Teaching Assistant",
+    company: "Meta Summer Academy (Mission Bit), Contract",
+    title: "Teaching Assistant — Virtual Reality",
     location: "Menlo Park, CA",
-    dates: "Jun 2026 – Aug 2026",
+    dates: "June 2026 - August 2026",
     highlights: [
       "I taught Unity and Meta Quest Pro to 26 high school students at Meta HQ through twice-weekly lectures and live coding.",
       "I coached students one-on-one on their projects and debugged hardware in class, keeping sessions focused on building."
     ]
   },
   {
-    company: "San Jose State School of Information",
-    title: "Library Technology Integration Assistant",
+    company: "San Jose State School Of Information",
+    title: "Technology Assistant",
     location: "San Jose, CA",
-    dates: "June 2025 - July 2026",
+    dates: "June 2025 - August 2026",
     highlights: [
       "I scripted SoftBank Pepper and LG CLOi robot behaviors in Choregraphe and ran them live at library and academic events.",
       "I created XR, AI, and hologram installations, including Seeking Immortality, on Meta Quest and HoloLens.",
@@ -46,7 +46,7 @@ export const experiences: Experience[] = [
   },
   {
     company: "Martin Luther King Library",
-    title: "Virtual Reality Software Engineer & Coordinator",
+    title: "Virtual Reality Software Engineer",
     location: "San Jose, CA",
     dates: "September 2023 - June 2025",
     highlights: [
