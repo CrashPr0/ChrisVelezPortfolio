@@ -1,12 +1,8 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const isUserSite = repoName.endsWith(".github.io");
-
-const base =
-  process.env.BASE_PATH ??
-  (process.env.GITHUB_ACTIONS ? (isUserSite ? "/" : `/${repoName}/`) : "/");
+// Served from the custom domain chrisvelez.dev (see public/CNAME), so base is root.
+const base = process.env.BASE_PATH ?? "/";
 
 const withBasePath = (path) => {
   const prefix = base === "/" ? "" : base.replace(/\/$/, "");
@@ -14,7 +10,7 @@ const withBasePath = (path) => {
 };
 
 export default defineConfig({
-  site: process.env.SITE_URL ?? "https://crashpr0.github.io/ChrisVelezPortfolio",
+  site: process.env.SITE_URL ?? "https://chrisvelez.dev",
   base,
   output: "static",
   integrations: [sitemap()],

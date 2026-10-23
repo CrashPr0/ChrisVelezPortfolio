@@ -140,7 +140,7 @@ The Astro config also auto-detects project-site base path from the repository na
 
 For this repo (`CrashPr0/ChrisVelezPortfolio`), the expected GitHub Pages URL is:
 
-- `https://crashpr0.github.io/ChrisVelezPortfolio`
+- `https://chrisvelez.dev` (custom domain via `public/CNAME`)
 
 ### 3) Push to deploy
 
