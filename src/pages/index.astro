@@ -9,7 +9,7 @@ import { experiences } from "@/data/experience";
 import { hrefFor, withBase } from "@/utils/paths";
 
 const featuredProjects = projects.slice(0, 4);
-const configuredSite = (Astro.site?.href ?? "https://crashpr0.github.io/ChrisVelezPortfolio/").replace(/\/$/, "");
+const configuredSite = (Astro.site?.href ?? "https://chrisvelez.dev/").replace(/\/$/, "");
 const baseSuffix = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
 const siteRoot = (configuredSite.endsWith(baseSuffix) ? configuredSite : `${configuredSite}${baseSuffix}`) + "/";
 const personJsonLd = JSON.stringify({
