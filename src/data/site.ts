@@ -27,7 +27,7 @@ export const proofPoints = [
   },
   {
     label: "Robot Pilot, Figure AI",
-    detail: "Humanoid robot teleoperation, via Insight Global"
+    detail: "Humanoid robot teleoperation"
   },
   {
     label: "VR TA, Meta Summer Academy",
