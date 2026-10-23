@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://crashpr0.github.io/ChrisVelezPortfolio/sitemap-index.xml
+Sitemap: https://chrisvelez.dev/sitemap-index.xml
