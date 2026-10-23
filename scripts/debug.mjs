@@ -42,10 +42,10 @@ const requiredPublicAssets = [
   "public/favicon.svg",
   "public/scripts/site.js",
   "public/resume/Christopher_Velez_CV.pdf",
-  "public/images/placeholders/Chris_Velez_Headshot.jpeg",
-  "public/images/placeholders/benthos.jpg",
-  "public/images/placeholders/PhotogrametryWorkshop.jpg",
-  "public/images/placeholders/project-immersion-2026.jpg"
+  "src/assets/images/placeholders/Chris_Velez_Headshot.jpeg",
+  "src/assets/images/placeholders/benthos.jpg",
+  "src/assets/images/placeholders/PhotogrametryWorkshop.jpg",
+  "src/assets/images/placeholders/project-immersion-2026.jpg"
 ];
 
 for (const p of requiredPublicAssets) {
