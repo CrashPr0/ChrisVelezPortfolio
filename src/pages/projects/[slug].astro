@@ -19,6 +19,8 @@ const { project } = Astro.props;
 <BaseLayout
   title={`${project.title} | Christopher Velez`}
   description={project.summary}
+  image={`/images/og/${project.slug}.jpg`}
+  imageAlt={project.mediaAlt}
   currentPath="/projects"
 >
   <!-- Back link -->

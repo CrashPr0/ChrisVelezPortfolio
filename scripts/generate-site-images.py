@@ -42,6 +42,28 @@ icon.resize((180, 180), Image.Resampling.LANCZOS).save(PUBLIC / 'apple-touch-ico
 icon.resize((32, 32), Image.Resampling.LANCZOS).save(PUBLIC / 'favicon.png')
 icon.save(PUBLIC / 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
 
+# Per-project share cards: each project's cover, cropped to 1200x630 JPEG
+# (LinkedIn and iMessage handle JPEG previews more reliably than WebP).
+import re
+projects_src = (ROOT / 'src/data/projects.ts').read_text()
+og_dir = PUBLIC / 'images/og'
+og_dir.mkdir(parents=True, exist_ok=True)
+for block in re.split(r'\n\s*slug: ', projects_src)[1:]:
+    slug_match = re.match(r'"([^"]+)"', block)
+    if not slug_match:  # the Project type declaration, not an entry
+        continue
+    slug = slug_match.group(1)
+    media = re.search(r'mediaPath: "([^"]+)"', block).group(1)
+    focus = re.search(r'mediaFocus: "([\d.]+)% ([\d.]+)%"', block)
+    fx, fy = (float(focus.group(1)) / 100, float(focus.group(2)) / 100) if focus else (0.5, 0.5)
+    with Image.open(ROOT / 'src/assets' / media.lstrip('/')) as src:
+        src = src.convert('RGB')
+        scale = max(1200 / src.width, 630 / src.height)
+        w, h = round(src.width * scale), round(src.height * scale)
+        src = src.resize((w, h), Image.Resampling.LANCZOS)
+        left, top = round((w - 1200) * fx), round((h - 630) * fy)
+        src.crop((left, top, left + 1200, top + 630)).save(og_dir / f'{slug}.jpg', quality=85, optimize=True, progressive=True)
+
 sizes = {}
 for path in sorted((PUBLIC / 'images').rglob('*')):
     if path.is_file():
