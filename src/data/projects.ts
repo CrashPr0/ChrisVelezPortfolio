@@ -2,7 +2,7 @@ export type Project = {
   slug: string;
   title: string;
   summary: string;
-  role: string;
+  role?: string;
   tools: string[];
   year: string;
   impact: string;
@@ -17,6 +17,12 @@ export type Project = {
    * Example: "50% 40%" (x y).
    */
   mediaFocus?: string;
+  /** Headline numbers shown on the card and project page. */
+  proof?: { value: string; label: string }[];
+  /** Caveat shown under the proof numbers. */
+  proofNote?: string;
+  /** Short list of what I personally built. */
+  myRole?: string[];
   githubUrl?: string;
   pressUrl?: string;
   siteUrl?: string;
@@ -28,6 +34,70 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "ischool-advising-chatbot",
+    title: "iSchool Advising Support Chatbot",
+    summary:
+      "A team project that answers ISDA and MLIS advising questions from official SJSU iSchool sources, with citations and a path to human help.",
+    role: "Main contributor",
+    tools: ["Flask", "Python", "OpenAI", "Azure OpenAI", "RAG", "BM25", "Azure App Service", "pytest", "pip-audit"],
+    year: "2026",
+    proof: [
+      { value: "~60%", label: "of commits (about 137 of ~230)" },
+      { value: "84/84", label: "citation links valid" },
+      { value: "75%", label: "hit rate at top 4 retrieved results" }
+    ],
+    proofNote:
+      "Citation and retrieval figures come from an offline evaluation that used stand-in embeddings. Commit share is from the team repository history.",
+    myRole: [
+      "Ingestion pipeline",
+      "Azure deployment",
+      "Retrieval tuning",
+      "Link verification",
+      "Advisor handoff",
+      "PDF export",
+      "Canvas embedding"
+    ],
+    impact:
+      "Supports academic advisors with source-based answers while keeping student records out of the bot and routing distress to a human handoff.",
+    description: [
+      "I build this chatbot with Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang. Our goal is to support academic advisors in their work without replacing them.",
+      "The app uses Flask and OpenAI / Azure OpenAI for retrieval-augmented generation over official SJSU iSchool sources. Students select ISDA or MLIS, and hybrid BM25 retrieval finds material for their program. Answers cite their sources, and invented links are stripped from replies.",
+      "The mobile-friendly UI includes one-click PDF export. Students can report an issue, and a reviewer dashboard lets the team review those reports. Reports are automatically deleted after 90 days.",
+      "Student records stay out of the bot entirely. Students in distress are routed to a human handoff instead of an automated reply. CI runs pytest and pip-audit, and the app is deployed on Azure App Service."
+    ],
+    tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
+    process: [
+      {
+        heading: "Scoping advising support",
+        body: "We use official SJSU iSchool sources for ISDA and MLIS advising questions. The program selector keeps the student's program explicit, and student records stay out of the bot."
+      },
+      {
+        heading: "Retrieval and citations",
+        body: "The Flask app uses OpenAI / Azure OpenAI with RAG and hybrid BM25 retrieval. Answers include source citations, and invented links are stripped before the reply reaches the student."
+      },
+      {
+        heading: "Review and deployment",
+        body: "Issue reporting feeds a reviewer dashboard, with reports automatically deleted after 90 days. We evaluate answers against the advising test set, including distress and sensitive-data cases. CI runs pytest and pip-audit, and we deploy to Azure App Service."
+      }
+    ],
+    challenges: [
+      "A generated answer can include an invented link. We strip those links and keep source citations tied to official SJSU iSchool material.",
+      "Advising questions can involve private records or distress. We keep student records out of the bot and route students in distress to a human handoff."
+    ],
+    lessons: [
+      "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
+      "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
+    ],
+    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
+    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
+    mediaSlides: [
+      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
+      { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
+    ],
+    siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
+    siteLabel: "Try the live chatbot"
+  },
   {
     slug: "benthos",
     title: "Benthos",
@@ -188,55 +258,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "ischool-advising-chatbot",
-    title: "iSchool Advising Support Chatbot",
-    summary:
-      "A team project that answers ISDA and MLIS advising questions from official SJSU iSchool sources, with citations and a path to human help.",
-    role: "Developer",
-    tools: ["Flask", "Python", "OpenAI", "Azure OpenAI", "RAG", "BM25", "Azure App Service", "pytest", "pip-audit"],
-    year: "2026",
-    impact:
-      "Supports academic advisors with source-based answers while keeping student records out of the bot and routing distress to a human handoff.",
-    description: [
-      "I build this chatbot with Marios Tawdros and Joshua Rieta, advised by Dr. Karen Wang. Our goal is to support academic advisors in their work without replacing them.",
-      "The app uses Flask and OpenAI / Azure OpenAI for retrieval-augmented generation over official SJSU iSchool sources. Students select ISDA or MLIS, and hybrid BM25 retrieval finds material for their program. Answers cite their sources, and invented links are stripped from replies.",
-      "The mobile-friendly UI includes one-click PDF export. Students can report an issue, and a reviewer dashboard lets the team review those reports. Reports are automatically deleted after 90 days.",
-      "Student records stay out of the bot entirely. Students in distress are routed to a human handoff instead of an automated reply. CI runs pytest and pip-audit, and the app is deployed on Azure App Service."
-    ],
-    tags: ["AI", "Chatbot", "RAG", "Flask", "Azure", "Higher Education"],
-    process: [
-      {
-        heading: "Scoping advising support",
-        body: "We use official SJSU iSchool sources for ISDA and MLIS advising questions. The program selector keeps the student's program explicit, and student records stay out of the bot."
-      },
-      {
-        heading: "Retrieval and citations",
-        body: "The Flask app uses OpenAI / Azure OpenAI with RAG and hybrid BM25 retrieval. Answers include source citations, and invented links are stripped before the reply reaches the student."
-      },
-      {
-        heading: "Review and deployment",
-        body: "Issue reporting feeds a reviewer dashboard, with reports automatically deleted after 90 days. We evaluate answers against the advising test set, including distress and sensitive-data cases. CI runs pytest and pip-audit, and we deploy to Azure App Service."
-      }
-    ],
-    challenges: [
-      "A generated answer can include an invented link. We strip those links and keep source citations tied to official SJSU iSchool material.",
-      "Advising questions can involve private records or distress. We keep student records out of the bot and route students in distress to a human handoff."
-    ],
-    lessons: [
-      "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
-      "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
-    ],
-    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
-    mediaSlides: [
-      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
-      { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
-    ],
-    githubUrl: "https://github.com/SJSU-CMPE-195/group-project-team-22",
-    siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
-    siteLabel: "Try the live chatbot"
-  },
-  {
     slug: "cyverse",
     title: "CyVerse",
     summary:
@@ -289,8 +310,8 @@ export const projects: Project[] = [
     slug: "nsf-sdg-discovery-hall",
     title: "UN SDG Discovery Hall",
     summary:
-      "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample.",
-    role: "Role to confirm",
+      "Unity project for an NSF-funded attention study with the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA. One build is documented for Quest in the lab and a desktop or WebGL sample. I built the Unity scene for the VERA software and wrote nearly all of the code, including all interaction logic and behavior.",
+    role: "Unity Developer (sole programmer)",
     tools: ["Unity 6", "C#", "Meta Quest", "WebGL", "VERA"],
     year: "Prototype",
     impact:
@@ -299,7 +320,11 @@ export const projects: Project[] = [
       "The README is a Unity project for an NSF-funded study of information-seeking and attention in immersive environments. It names the SJSU LTI Lab, the ALA IRC UN Subcommittee, and VERA (Virtual Experience Research Accelerator). A WebGL build of the desktop sample is playable in the browser, and the images on this page are in-game captures from the Discovery Hall.",
       "Quest Pro has eye tracking. Quest 3 does not, so the project falls back to head gaze. The gaze_source column records which signal a sample used. Fixations use I-VT with a 30 degrees per second threshold and a 100 ms minimum, citing Salvucci and Goldberg 2000. The three conditions are Passive, Interactive, and Guided.",
       "The menu command Build Discovery Hall Scene generates DiscoveryHall.unity with three placeholder stations: SDG 4, SDG 11, and SDG 13. The README says to rebuild that scene before an editor headset build, because the file is generated output. Unity is pinned to 6000.3.9f1. The project started on 2022.3 and moved to Unity 6 because the VERA plugin requires 6000.0 or newer.",
-      "docs/STUDY_DESIGN.md includes my name, Chris Velez, in the team list, in the same sentence as the words undergraduate assistant. I am not printing a job title from that line. The same note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
+      "The study design note has planned sample sizes and dates. Those stay off this page. CONTENT_SOURCES.md says UN icons and photos in the Unity project should be checked against UN guidelines before redistributing them. I did not copy those files here."
+    ],
+    myRole: [
+      "Built the Unity scene for the VERA software at Discovery Hall and wrote nearly all of the code, including all interaction logic and behavior (looking around, how interactions work).",
+      "Worked from provided assets and a target look. Dr. Chow, the former director, helped design the physical space."
     ],
     tags: ["VR", "Research", "Quest", "Eye tracking", "Unity", "WebGL"],
     mediaAlt: "In-game view of the Discovery Hall hub with a UN SDG Discovery Hall welcome sign and the SDG 11 room ahead",

@@ -1,5 +1,5 @@
 ---
-import { imageDimensions } from "@/utils/imageDimensions";
+import Img from "@/components/Img.astro";
 interface Slide {
   path: string;
   alt: string;
@@ -9,23 +9,20 @@ interface Props {
   slides: Slide[];
   focus?: string;
   id: string;
+  sizes?: string;
 }
 
-const { slides, focus, id } = Astro.props;
-import { withBase } from "@/utils/paths";
+const { slides, focus, id, sizes } = Astro.props;
 ---
 
 <div class="carousel" id={`carousel-${id}`} data-count={slides.length}>
   <div class="carousel-track">
     {slides.map((slide, i) => (
-      <img
-        src={withBase(slide.path)}
+      <Img
+        path={slide.path}
         alt={slide.alt}
         class="carousel-slide"
-        loading="lazy"
-        decoding="async"
-        width={imageDimensions[slide.path]?.width}
-        height={imageDimensions[slide.path]?.height}
+        sizes={sizes}
         aria-hidden={i !== 0 ? "true" : undefined}
         style={focus ? `object-position: ${focus};` : undefined}
       />

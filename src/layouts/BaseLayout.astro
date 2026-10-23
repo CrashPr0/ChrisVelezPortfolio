@@ -21,7 +21,7 @@ const {
   description = siteConfig.description,
   /* PNG, not SVG. LinkedIn, Twitter, and iMessage reject SVG og:images */
   image = "/images/og-default.png",
-  imageAlt = "Christopher Velez — robotics, embedded foundations, and AI / XR interactive systems",
+  imageAlt = "Christopher Velez, robotics, AI and XR engineer: RAG advising chatbot on Azure, Robot Pilot at Figure AI, Meta Summer Academy VR TA, public XR and AR projects",
   currentPath = "/",
   robots = "index,follow",
   jsonLd
@@ -60,6 +60,8 @@ const imageSize = imageDimensions[image];
     <meta property="og:image" content={ogImage} />
     {imageSize && <meta property="og:image:width" content={String(imageSize.width)} />}
     {imageSize && <meta property="og:image:height" content={String(imageSize.height)} />}
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:image:alt" content={imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />

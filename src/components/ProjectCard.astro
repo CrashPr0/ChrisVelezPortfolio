@@ -1,5 +1,5 @@
 ---
-import { imageDimensions } from "@/utils/imageDimensions";
+import Img from "@/components/Img.astro";
 import type { Project } from "@/data/projects";
 import TagPill from "@/components/TagPill.astro";
 import ImageCarousel from "@/components/ImageCarousel.astro";
@@ -25,14 +25,10 @@ const { project, showLink = true } = Astro.props;
         id={`card-${project.slug}`}
       />
     ) : (
-      <img
-        src={withBase(project.mediaPath)}
+      <Img
+        path={project.mediaPath}
         alt={project.mediaAlt}
         class="project-media"
-        loading="lazy"
-        decoding="async"
-        width={imageDimensions[project.mediaPath]?.width}
-        height={imageDimensions[project.mediaPath]?.height}
         style={project.mediaFocus ? `object-position: ${project.mediaFocus};` : undefined}
       />
     )}
@@ -41,12 +37,22 @@ const { project, showLink = true } = Astro.props;
   <div class="space-y-4 p-6">
     <div class="flex flex-wrap items-center gap-3 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-400">
       <span>{project.year}</span>
-      <span class="dot" aria-hidden="true"></span>
-      <span>{project.role}</span>
+      {project.role && <span class="dot" aria-hidden="true"></span>}
+      {project.role && <span>{project.role}</span>}
     </div>
     <h3 class="font-display text-2xl font-bold tracking-tight text-white">{project.title}</h3>
     <p class="text-sm text-neutral-400">{project.summary}</p>
     <p class="text-sm text-neutral-300"><strong class="font-medium text-white/80">Impact:</strong> {project.impact}</p>
+    {project.proof && (
+      <dl class="grid grid-cols-3 gap-3 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+        {project.proof.map((item) => (
+          <div>
+            <dt class="font-display text-xl font-bold leading-none text-accent-400">{item.value}</dt>
+            <dd class="mt-1 text-[0.65rem] leading-snug text-neutral-400">{item.label}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
     <ul class="flex flex-wrap gap-2">
       {project.tags.map((tag) => <TagPill label={tag} />)}
     </ul>
