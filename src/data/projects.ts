@@ -35,6 +35,63 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "spatial-drop",
+    title: "Spatial Drop",
+    summary:
+      "Turns GLB models into AR web experiences with shareable links and QR codes.",
+    role: "Role to confirm",
+    tools: ["TypeScript", "React", "vinext", "Vite", "Cloudflare R2", "@google/model-viewer"],
+    year: "Not specified",
+    impact:
+      "Supports viewing models through Apple Quick Look, Android Scene Viewer, and WebXR.",
+    description: [
+      "The full application stores uploaded GLB models in Cloudflare R2 and provides shareable viewing pages with QR codes.",
+      "The static GitHub Pages preview can preview local GLB files and share links to public HTTPS GLB URLs; persistent uploads require the upload API and object storage."
+    ],
+    tags: ["AR", "3D", "WebXR"],
+    mediaAlt: "",
+    mediaPath: "",
+    githubUrl: "https://github.com/CrashPr0/spatial-drop"
+  },
+  {
+    slug: "echoes-of-expression",
+    title: "Echoes of Expression",
+    summary:
+      "A location-based AR exhibition for Immersion 2026 across SJSU, the MLK Library, and San José City Hall.",
+    role: "Role to confirm",
+    tools: ["JavaScript", "A-Frame", "Niantic Spatial XR"],
+    year: "2026",
+    impact:
+      "Places artworks at geographic coordinates and opens artist statements when visitors tap them.",
+    description: [
+      "The browser experience uses GPS, compass readings, and the Niantic Spatial XR engine to place artworks along a walking route. Models load as visitors approach and are released as they leave.",
+      "A desktop preview offers mouse-look and WASD navigation without a camera or GPS. Exhibition content and placement settings live in artworks.js."
+    ],
+    tags: ["AR", "Exhibition", "Location-based"],
+    mediaAlt: "",
+    mediaPath: "",
+    githubUrl: "https://github.com/CrashPr0/EchoesOfExpression"
+  },
+  {
+    slug: "ischool-hologram-workshop",
+    title: "Spectre Hologram Workshop",
+    summary:
+      "A browser tool that formats images and videos for Spectre pyramid displays, styled for the SJSU School of Information.",
+    role: "Role to confirm",
+    tools: ["JavaScript", "Canvas API", "Tailwind CSS", "CSS 3D transforms"],
+    year: "Not specified",
+    impact:
+      "Provides four-face formatting, live previews, a simulated viewer, and downloads for pyramid display content.",
+    description: [
+      "Users upload an image or video, preview its four-face layout, and download the formatted content for a phone topped with a Spectre pyramid prism.",
+      "Canvas handles image and video processing, while CSS 3D transforms simulate the viewer. The display uses the reflection-based Pepper's Ghost effect."
+    ],
+    tags: ["Hologram", "Workshop", "Image Processing"],
+    mediaAlt: "",
+    mediaPath: "",
+    githubUrl: "https://github.com/CrashPr0/ischool-hologram-workshop"
+  },
+  {
     slug: "ischool-advising-chatbot",
     title: "iSchool Advising Support Chatbot",
     summary:
