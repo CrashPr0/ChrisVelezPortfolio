@@ -30,11 +30,11 @@ const {
 } = Astro.props;
 
 const asset = assets[`/src/assets${path}`];
-if (!asset) throw new Error(`Img: no asset for "${path}" in src/assets`);
-const usable = widths.filter((w) => w <= asset.default.width);
+if (path && !asset) throw new Error(`Img: no asset for "${path}" in src/assets`);
+const usable = asset ? widths.filter((w) => w <= asset.default.width) : [];
 ---
 
-<Image
+{asset && <Image
   src={asset.default}
   alt={alt}
   format="webp"
@@ -44,4 +44,4 @@ const usable = widths.filter((w) => w <= asset.default.width);
   loading={loading}
   decoding="async"
   {...rest}
-/>
+/>}
