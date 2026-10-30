@@ -39,7 +39,7 @@ export const projects: Project[] = [
     title: "Spatial Drop",
     summary:
       "Turns GLB models into AR web experiences with shareable links and QR codes.",
-    role: "Role to confirm",
+    role: "Lead Developer",
     tools: ["TypeScript", "React", "vinext", "Vite", "Cloudflare R2", "@google/model-viewer"],
     year: "Not specified",
     impact:
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: "Echoes of Expression",
     summary:
       "A location-based AR exhibition for Immersion 2026 across SJSU, the MLK Library, and San José City Hall.",
-    role: "Role to confirm",
+    role: "Lead Developer",
     tools: ["JavaScript", "A-Frame", "Niantic Spatial XR"],
     year: "2026",
     impact:
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     title: "Spectre Hologram Workshop",
     summary:
       "A browser tool that formats images and videos for Spectre pyramid displays, styled for the SJSU School of Information.",
-    role: "Role to confirm",
+    role: "Lead Developer",
     tools: ["JavaScript", "Canvas API", "Tailwind CSS", "CSS 3D transforms"],
     year: "Not specified",
     impact:
