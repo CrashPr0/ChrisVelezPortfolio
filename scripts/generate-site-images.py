@@ -62,7 +62,7 @@ for block in re.split(r'\n\s*slug: ', projects_src)[1:]:
         w, h = round(src.width * scale), round(src.height * scale)
         src = src.resize((w, h), Image.Resampling.LANCZOS)
         left, top = round((w - 1200) * fx), round((h - 630) * fy)
-        src.crop((left, top, left + 1200, top + 630)).save(og_dir / f'{slug}.jpg', quality=85, optimize=True, progressive=True)
+        src.crop((left, top, left + 1200, top + 630)).save(og_dir / f'{slug}.jpg', quality=90, optimize=True, progressive=True)
 
 sizes = {}
 for path in sorted((PUBLIC / 'images').rglob('*')):
