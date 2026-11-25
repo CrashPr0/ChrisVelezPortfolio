@@ -13,7 +13,9 @@ import headshot from "@/assets/images/placeholders/Chris_Velez_Headshot.jpeg";
 
 const headshotWebp = await getImage({ src: headshot, format: "webp", width: 600, quality: 75 });
 
-const featuredProjects = projects.slice(0, 4);
+const featuredProjects = projects
+  .filter((project) => project.featured != null)
+  .sort((a, b) => (a.featured ?? 0) - (b.featured ?? 0));
 const configuredSite = (Astro.site?.href ?? "https://chrisvelez.dev/").replace(/\/$/, "");
 const baseSuffix = import.meta.env.BASE_URL === "/" ? "" : import.meta.env.BASE_URL.replace(/\/$/, "");
 const siteRoot = (configuredSite.endsWith(baseSuffix) ? configuredSite : `${configuredSite}${baseSuffix}`) + "/";
@@ -99,7 +101,7 @@ const personJsonLd = JSON.stringify({
     <SectionHeading
       title="Selected projects"
       size="sm"
-      description="An advising chatbot on Azure, public-facing XR, and a co-op game."
+      description="A co-op submarine game, public WebAR, a cybersecurity training sim, and a library AR scanner."
     />
     <div class="mt-5 grid gap-6 md:grid-cols-2 stagger-children">
       {featuredProjects.map((project) => (

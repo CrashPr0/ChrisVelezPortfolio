@@ -23,6 +23,8 @@ export type Project = {
   proofNote?: string;
   /** Short list of what I personally built. */
   myRole?: string[];
+  /** 1-based homepage Selected Projects order. Omitted projects are not featured. */
+  featured?: number;
   githubUrl?: string;
   pressUrl?: string;
   siteUrl?: string;
@@ -178,6 +180,7 @@ export const projects: Project[] = [
   },
   {
     slug: "benthos",
+    featured: 1,
     title: "Benthos",
     summary:
       "A co-op submarine underwater exploration game where players work together to uncover the secrets of Europa's ocean.",
@@ -242,6 +245,7 @@ export const projects: Project[] = [
   },
   {
     slug: "immersion-2026-featured-showcase",
+    featured: 2,
     title: "Immersion 2026 Featured Showcase",
     summary:
       "Built a mobile WebAR experience showcased to 50 attendees at Hometown Heroes, featured in SJSU Spring 2026 Magazine.",
@@ -337,6 +341,7 @@ export const projects: Project[] = [
   },
   {
     slug: "cyverse",
+    featured: 3,
     title: "CyVerse",
     summary:
       "A browser-based, first-person cybersecurity training game built with Dr. Tonia San Nicolas-Rocca at SJSU. Four playable levels, a 294-question Security+ bank, and an end-of-game certificate.",
@@ -358,7 +363,6 @@ export const projects: Project[] = [
       { path: "/images/projects/cyverse-level1-briefing.webp", alt: "Level 1 Identity and Access security briefing screen and six-step training checklist" },
       { path: "/images/projects/cyverse-level2-soc-floor.webp", alt: "Level 2 Cyber Defense SOC floor showing analyst pods WS-01 through WS-04" },
       { path: "/images/projects/cyverse-level2-alert-board.webp", alt: "Level 2 SOC Alert Board listing workstation events across WS-01 through WS-04 for investigation" },
-      { path: "/images/projects/cyverse-level2-evidence-locker.webp", alt: "Level 2 Pass-Through Evidence Locker between SOC and Digital Forensics with the seized device sealed inside" },
       { path: "/images/projects/cyverse-level3-imaging-hash.webp", alt: "Level 3 Digital Forensics imaging station after write-blocked acquisition, with matching hash values ready for analysis" },
       { path: "/images/projects/cyverse-level3-evidence-explorer.webp", alt: "Level 3 Evidence Explorer three-pane phone triage for Case 1 Spartan Gold, with text messages open to tag as evidence" },
       { path: "/images/projects/cyverse-level3-knowledge-check.webp", alt: "Level 3 knowledge check question on chain-of-custody item numbers after the phone moves from the SOC to the lab" },
@@ -452,6 +456,7 @@ export const projects: Project[] = [
   },
   {
     slug: "banned-book-week-ar",
+    featured: 4,
     title: "Banned Book Week AR",
     summary:
       "A phone scanner for Banned Books Week at SJSU King Library. Point the camera at a featured cover and a floating book plus a readable summary appear.",
