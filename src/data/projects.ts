@@ -49,9 +49,16 @@ export const projects: Project[] = [
       "The static GitHub Pages preview can preview local GLB files and share links to public HTTPS GLB URLs; persistent uploads require the upload API and object storage."
     ],
     tags: ["AR", "3D", "WebXR"],
-    mediaAlt: "",
-    mediaPath: "",
-    githubUrl: "https://github.com/CrashPr0/spatial-drop"
+    mediaAlt: "Spatial Drop Studio showing the SJSU Spartan Loop 3D model in the live browser preview",
+    mediaPath: "/images/projects/spatial-drop-studio.webp",
+    mediaSlides: [
+      { path: "/images/projects/spatial-drop-studio.webp", alt: "Spatial Drop Studio showing the SJSU Spartan Loop 3D model in the live browser preview" },
+      { path: "/images/projects/spatial-drop-share.webp", alt: "Spatial Drop share panel with generated AR link and scannable QR code" },
+      { path: "/images/projects/spatial-drop-beam.webp", alt: "Spatial Drop QR Beam mode for serverless Fountain QR and Cimbar optical model transfer" }
+    ],
+    githubUrl: "https://github.com/CrashPr0/spatial-drop",
+    siteUrl: "https://crashpr0.github.io/spatial-drop/",
+    siteLabel: "Open Studio preview"
   },
   {
     slug: "echoes-of-expression",
@@ -68,9 +75,17 @@ export const projects: Project[] = [
       "A desktop preview offers mouse-look and WASD navigation without a camera or GPS. Exhibition content and placement settings live in artworks.js."
     ],
     tags: ["AR", "Exhibition", "Location-based"],
-    mediaAlt: "",
-    mediaPath: "",
-    githubUrl: "https://github.com/CrashPr0/EchoesOfExpression"
+    mediaAlt: "Echoes of Expression AR exhibition start screen for SJSU campus, MLK Library, and San José City Hall",
+    mediaPath: "/images/projects/echoes-landing.webp",
+    mediaSlides: [
+      { path: "/images/projects/echoes-landing.webp", alt: "Echoes of Expression AR exhibition start screen for SJSU campus, MLK Library, and San José City Hall" },
+      { path: "/images/projects/echoes-works.webp", alt: "All works exhibition directory showing AR artworks and distances across the walking route" },
+      { path: "/images/projects/echoes-3d-preview.webp", alt: "Commotion, Part 1 3D television sculpture loaded in Echoes of Expression desktop preview mode" },
+      { path: "/images/projects/echoes-statement.webp", alt: "Artwork detail panel showing location metadata and preview for Commotion, Part 1" }
+    ],
+    githubUrl: "https://github.com/CrashPr0/EchoesOfExpression",
+    siteUrl: "https://crashpr0.github.io/EchoesOfExpression/?preview",
+    siteLabel: "Open Desktop Preview"
   },
   {
     slug: "ischool-hologram-workshop",
@@ -87,9 +102,15 @@ export const projects: Project[] = [
       "Canvas handles image and video processing, while CSS 3D transforms simulate the viewer. The display uses the reflection-based Pepper's Ghost effect."
     ],
     tags: ["Hologram", "Workshop", "Image Processing"],
-    mediaAlt: "",
-    mediaPath: "",
-    githubUrl: "https://github.com/CrashPr0/ischool-hologram-workshop"
+    mediaAlt: "Spectre Hologram Workshop prism viewer displaying a four-face SJSU Spartan layout",
+    mediaPath: "/images/projects/hologram-viewer.webp",
+    mediaSlides: [
+      { path: "/images/projects/hologram-viewer.webp", alt: "Spectre Hologram Workshop prism viewer displaying a four-face SJSU Spartan layout" },
+      { path: "/images/projects/hologram-home.webp", alt: "Spectre Hologram Workshop interface showing Pepper's Ghost instructions and upload controls" }
+    ],
+    githubUrl: "https://github.com/CrashPr0/ischool-hologram-workshop",
+    siteUrl: "https://crashpr0.github.io/ischool-hologram-workshop/",
+    siteLabel: "Open Workshop Tool"
   },
   {
     slug: "ischool-advising-chatbot",
@@ -146,10 +167,10 @@ export const projects: Project[] = [
       "Source citations and the ISDA / MLIS selector make it easier to see which program and material an answer covers.",
       "Issue reports give the team a way to review answers, while automatic deletion limits how long those reports are kept."
     ],
-    mediaAlt: "iSchool Advising Support Chatbot interface screenshot",
-    mediaPath: "/images/placeholders/project-ischool-chatbot.png",
+    mediaAlt: "SJSU iSchool Advising Support Chatbot live web interface for BS ISDA, MLIS, MARA, and MS Informatics",
+    mediaPath: "/images/projects/ischool-chatbot-live.webp",
     mediaSlides: [
-      { path: "/images/placeholders/project-ischool-chatbot.png", alt: "iSchool Advising Support Chatbot interface screenshot" },
+      { path: "/images/projects/ischool-chatbot-live.webp", alt: "SJSU iSchool Advising Support Chatbot live web interface for BS ISDA, MLIS, MARA, and MS Informatics" },
       { path: "/images/projects/ischool-chatbot-architecture.png", alt: "Architecture diagram of the iSchool Advising Chatbot" }
     ],
     siteUrl: "https://ischooladvisingchatbot-dx4ynl.azurewebsites.net",
@@ -318,49 +339,51 @@ export const projects: Project[] = [
     slug: "cyverse",
     title: "CyVerse",
     summary:
-      "A browser-based, first-person cybersecurity training game. Walk a virtual security operations floor and practice the work, with no install.",
+      "A browser-based, first-person cybersecurity training game built with Dr. Tonia San Nicolas-Rocca at SJSU. Four playable levels, a 294-question Security+ bank, and an end-of-game certificate.",
     role: "Lead Systems Engineer",
-    tools: ["Unity 2022.3 LTS", "C#", "WebGL"],
-    year: "Beta",
+    tools: ["Unity 2022.3 LTS", "C#", "WebGL", "Unity Test Framework", "GitHub Actions"],
+    year: "2026",
     impact:
-      "Public WebGL beta for identity, defense, and forensics practice in a desktop browser, with captions and a reduce-motion option.",
+      "Public WebGL training game covering Identity & Access, Cyber Defense, Digital Forensics, and Cyber Attack, verified through Play Mode end-flow tests and playtest telemetry export.",
     description: [
-      "CyVerse is a desktop cybersecurity training game you play in the browser. Keyboard and mouse, no VR, and no install. I built the gameplay across every level, plus the walkable hub, the level doors, and the Mission Status board. Those levels cover orientation, identity and access, cyber defense, and digital forensics. Level 1 is the identity and access example: a briefing, badge enrollment, an MFA vault, data triage, an audit hunt, and a certification exam, with glossary entries that unlock once a station is reviewed.",
-      "It was a team project at San José State University, where I led systems engineering and wrote most of the gameplay code. The Security+ Prep Terminal uses practice question sets provided by Dr. San Nicolas-Rocca."
+      "CyVerse is a desktop cybersecurity training simulation built for the CyberVerse Project at San José State University with Dr. Tonia San Nicolas-Rocca. Players use keyboard and mouse in a browser with no install and no VR headset required. As Lead Systems Engineer and primary developer, I built the walkable Hub, Mission Status board, progression system, accessibility controls, automated tests, and the gameplay across Orientation and all four story levels.",
+      "The game opens in the Hub, where players set an operative callsign and move sequentially through Identity & Access (badge enrollment, MFA vault with an in-world authenticator phone, data triage, audit hunt, and exam), Cyber Defense (four-workstation SOC alert queue, evidence locker handoff, and incident response playbook), Digital Forensics (chain-of-custody intake, write-blocked imaging with SHA-256 verification, an interactive Evidence Explorer with optional OCR, hash matching, and AI triage leads, plus a five-question knowledge check), and Cyber Attack (four red-team arcade stations teaching phishing lures, MFA fatigue, privilege escalation, and network attack surfaces).",
+      "Completing a normal run unlocks Hard Mode for that level in the Hub's west wing, removing the objective beacon and adding a 1.5x score multiplier. Dr. San Nicolas-Rocca provided the 294-question CompTIA Security+ study bank organized across five NICE Workforce Framework categories. Finishing all four story levels unlocks a personalized Certificate of Completion that players can save as a PNG from the browser, and Settings includes local CSV or JSON playtest log export and a Start Over reset for study sessions."
     ],
-    tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility"],
-    mediaAlt: "CyVerse hub with the Mission Status board",
-    mediaPath: "/images/projects/cyverse-hub.jpg",
+    tags: ["Cybersecurity", "Unity", "WebGL", "Education", "Accessibility", "Digital Forensics"],
+    mediaAlt: "CyVerse Hub showing the Mission Status board for all four levels and Orientation",
+    mediaPath: "/images/projects/cyverse-hub.webp",
     mediaSlides: [
-      { path: "/images/projects/cyverse-hub.jpg", alt: "CyVerse hub with the Mission Status board" },
-      { path: "/images/projects/cyverse-level1-portal.jpg", alt: "Level 1 I/AM portal door" },
-      { path: "/images/projects/cyverse-level1-briefing.jpg", alt: "Level 1 security briefing room with the training checklist" },
-      { path: "/images/projects/cyverse-glossary.jpg", alt: "In-game glossary panel" }
+      { path: "/images/projects/cyverse-hub.webp", alt: "CyVerse Hub showing the Mission Status board for all four levels, Orientation, and central beacon" },
+      { path: "/images/projects/cyverse-hub-concourse.webp", alt: "CyVerse Hub concourse with the Concierge robot, patrol drone, and portals to Levels 1 through 4" },
+      { path: "/images/projects/cyverse-level1-briefing.webp", alt: "Level 1 Identity and Access briefing room with the six-step training checklist" },
+      { path: "/images/projects/cyverse-settings-export.webp", alt: "In-game Settings menu with accessibility toggles, Start Over reset, and CSV or JSON playtest export" },
+      { path: "/images/projects/cyverse-title.webp", alt: "CyVerse opening title screen with callsign entry and overview of the four levels" }
     ],
     githubUrl: "https://github.com/CrashPr0/Cyverse",
-    siteUrl: "https://crashpr0.github.io/Cyverse/",
-    siteLabel: "Play the beta",
+    siteUrl: "https://crashpr0.github.io/Cyverse/play/",
+    siteLabel: "Play in Browser (WebGL)",
     process: [
       {
-        heading: "Hub and level flow",
-        body: "The hub is the menu you walk around in. Hub doors take their open or locked state from LevelProgress. Orientation and Level 1 start open. A later story level opens when the one before it is complete, and digital forensics also waits until three SOC key items are stored. The Mission Status board refreshes from that same record: operative callsign, clearance out of 4, and each row ready, locked, or in development. A return door inside a level stays shut until that level's manager opens it."
+        heading: "Hub progression, Hard Mode, and session reset",
+        body: "The Hub serves as a walkable menu backed by LevelProgress and HardMode. Orientation and Level 1 start open, and Levels 2 through 4 unlock in sequence, with Cyber Defense handing seized device evidence directly into Digital Forensics. Each page load starts a fresh run while keeping user settings, and Settings -> Start Over resets progress, score, and callsign between playtesters without reloading the tab."
       },
       {
-        heading: "Accessibility in the build",
-        body: "The live page and the Esc menu both cover captions with adjustable text size, Reduce Motion, look sensitivity, field of view, and status shown by shape and label rather than color alone. Volume splits into master, voice, and effects. In a WebGL build, a line without a recorded clip can be read with the browser Web Speech API. Captions stay on, recorded clips take priority, and TTS is skipped in the editor."
+        heading: "Evidence Explorer, knowledge checks, and end-of-game certificate",
+        body: "Level 3 centers on a three-pane Evidence Explorer where players configure case acquisition, run optional keyword, hash-match, OCR, and fallible AI triage passes, pivot across phone artifacts, and tag proof before taking a five-question knowledge check. Level 4 pairs four simulated red-team stations with immediate defensive debriefs, and completing all four levels unlocks CertificateCard with browser PNG download marked as a training keepsake."
       },
       {
-        heading: "Procedural rooms and visual passes",
-        body: "Some levels exist twice: a procedural scene built at play time, and a hand-authored visual pass. SceneCatalog loads the visual pass when that scene is in the build, and falls back to the procedural room if it is missing. Art can live as prefabs under Assets/Resources/Props. If a prefab is absent, the builder uses a primitive, so a missing prop does not break the build."
+        heading: "Accessibility, custom WebGL font, and automated CI",
+        body: "A release audit uncovered missing glyphs in the default WebGL font, so the project ships a bundled Cyverse Sans font alongside adjustable caption sizing, Reduce Motion, Invert Colors, optional Web Speech voiceover, and per-frame look clamping. Pull requests run Unity Play Mode tests (covering end-to-end Level 1 flow, SOC handoff, and playtest CSV/JSON export) before building and deploying WebGL to GitHub Pages."
       }
     ],
     challenges: [
-      "Level 1 finds its stations in the scene, so a procedural room and a hand-built room share one flow: briefing, four tasks, then the exam. Scenes from before that task rework fall back to the older review path, and both paths still have to finish the level.",
-      "The public page and the repo do not number every level the same way, and Level 4 is still in development."
+      "Replacing legacy Level 3 KQL queries with the multi-pass Evidence Explorer and building four playable Level 4 red-team stations while keeping every objective deterministic and verifiable in headless Play Mode tests.",
+      "Making WebGL playtest-ready for shared study browsers: fixing missing Unicode glyphs in builds, preventing pointer-lock camera snaps, and separating consecutive participant runs cleanly with playthrough counters in local CSV/JSON exports."
     ],
     lessons: [
-      "Reduce Motion in this project freezes shader animation, hologram spin, HUD pulses, and screen fades. Captions stay on when speech is skipped. That is the bar I want on a first-person browser game, not a caption file added at the end.",
-      "I keep the hub doors and the Mission Status board on one progress record. Marking a level complete has to open the next door and update clearance together, including the extra keys digital forensics waits on."
+      "Driving the live WebGL build with automated Play Mode tests and headless browser checks catches font, UI-layering, and scene-wiring regressions before playtesters ever sit down.",
+      "Combining hands-on forensic pivoting and simulated attack stations with immediate defensive debriefs and a saveable completion certificate gives students both practice and a clear takeaway."
     ]
   },
   {
