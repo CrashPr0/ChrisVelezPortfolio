@@ -357,6 +357,13 @@ export const projects: Project[] = [
       { path: "/images/projects/cyverse-hub.webp", alt: "CyVerse Hub showing the Mission Status board for all four levels, Orientation, and central beacon" },
       { path: "/images/projects/cyverse-hub-concourse.webp", alt: "CyVerse Hub concourse with the Concierge robot, patrol drone, and portals to Levels 1 through 4" },
       { path: "/images/projects/cyverse-level1-briefing.webp", alt: "Level 1 Identity and Access briefing room with the six-step training checklist" },
+      { path: "/images/projects/cyverse-level1-audit.webp", alt: "Level 1 Access Audit Log terminal showing account activity entries for anomaly triage" },
+      { path: "/images/projects/cyverse-level1-complete.webp", alt: "Level 1 completion summary showing S security clearance rank, score, and Level 2 unlock" },
+      { path: "/images/projects/cyverse-level2-soc-floor.webp", alt: "Level 2 Cyber Defense SOC operations floor with server racks, Evidence Locker, Forensics Lab door, and IR Playbook" },
+      { path: "/images/projects/cyverse-level2-alert-board.webp", alt: "Level 2 SOC Alert Board listing workstation events across WS-01 through WS-04 for investigation" },
+      { path: "/images/projects/cyverse-level2-custody.webp", alt: "Level 2 Chain of Custody form logging the seized mobile phone handoff from workstation WS-03" },
+      { path: "/images/projects/cyverse-level2-evidence-locker.webp", alt: "Level 2 Pass-Through Evidence Locker between SOC and Digital Forensics with the seized device sealed inside" },
+      { path: "/images/projects/cyverse-level2-ir-playbook.webp", alt: "Level 2 Incident Response Playbook board after placing Preparation on Step 1" },
       { path: "/images/projects/cyverse-settings-export.webp", alt: "In-game Settings menu with accessibility toggles, Start Over reset, and CSV or JSON playtest export" },
       { path: "/images/projects/cyverse-title.webp", alt: "CyVerse opening title screen with callsign entry and overview of the four levels" }
     ],
