@@ -16,6 +16,10 @@ export const imageDimensions: Record<string, { width: number; height: number }> 
     "width": 1200,
     "height": 630
   },
+  "/images/og/echoes-of-expression.jpg": {
+    "width": 1200,
+    "height": 630
+  },
   "/images/og/immersion-2026-featured-showcase.jpg": {
     "width": 1200,
     "height": 630
@@ -24,7 +28,15 @@ export const imageDimensions: Record<string, { width: number; height: number }> 
     "width": 1200,
     "height": 630
   },
+  "/images/og/ischool-hologram-workshop.jpg": {
+    "width": 1200,
+    "height": 630
+  },
   "/images/og/nsf-sdg-discovery-hall.jpg": {
+    "width": 1200,
+    "height": 630
+  },
+  "/images/og/spatial-drop.jpg": {
     "width": 1200,
     "height": 630
   },
