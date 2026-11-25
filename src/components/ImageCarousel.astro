@@ -10,9 +10,12 @@ interface Props {
   focus?: string;
   id: string;
   sizes?: string;
+  widths?: number[];
+  quality?: number;
+  maxHeight?: string;
 }
 
-const { slides, focus, id, sizes } = Astro.props;
+const { slides, focus, id, sizes, widths, quality, maxHeight } = Astro.props;
 ---
 
 <div class="carousel" id={`carousel-${id}`} data-count={slides.length}>
@@ -23,8 +26,13 @@ const { slides, focus, id, sizes } = Astro.props;
         alt={slide.alt}
         class="carousel-slide"
         sizes={sizes}
+        widths={widths}
+        quality={quality}
         aria-hidden={i !== 0 ? "true" : undefined}
-        style={focus ? `object-position: ${focus};` : undefined}
+        style={[
+          focus ? `object-position: ${focus}` : "",
+          maxHeight ? `max-height: ${maxHeight}` : "",
+        ].filter(Boolean).join("; ") || undefined}
       />
     ))}
   </div>
